@@ -1,0 +1,127 @@
+{
+  "schema_version": "0.1.0",
+  "validation_set_id": "opening-first-6-v0.1",
+  "created_on": "2026-10-12",
+  "objective": "Validar manualmente a extração multimodal dos três segundos iniciais em dois vídeos de cada setor.",
+  "protocol": {
+    "provider": "Google Gemini API",
+    "model": "gemini-3.8-flash",
+    "start_seconds": 0,
+    "end_seconds": 3,
+    "requested_fps": 4,
+    "prompt_version": "galaxies-opening-v0.1.0",
+    "videos_sent_per_request": 1,
+    "performance_metrics_sent": false
+  },
+  "selection_method": {
+    "criteria": [
+      "Dois vídeos por setor.",
+      "Canais diferentes dentro de cada setor.",
+      "Vídeos curtos da coleta inicial.",
+      "Diversidade aparente de formatos de abertura."
+    ],
+    "note": "Os títulos foram usados somente para selecionar uma amostra diversa; não foram enviados ao modelo."
+  },
+  "videos": [
+    {
+      "video_id": "gmi2iRLj1Q4",
+      "sector": "automotivo",
+      "channel": "Acelerados",
+      "duration_seconds": 30,
+      "source_record": "data/youtube/runs/2026-10-12T03-42-38.347868Z/curated/videos/automotivo/acelerados/gmi2iRLj1Q4.json",
+      "result": "data/features/runs/2026-10-12T04-28-18.540713Z/videos/gmi2iRLj1Q4/opening_vlm.json",
+      "extraction_status": "completed",
+      "manual_validation": {
+        "status": "approved",
+        "reviewer": "human_project_owner",
+        "note": "O responsável pelo projeto conferiu o vídeo e informou que a extração estava integralmente correta."
+      }
+    },
+    {
+      "video_id": "N3WyEav_T3c",
+      "sector": "automotivo",
+      "channel": "Auto Super",
+      "duration_seconds": 47,
+      "source_record": "data/youtube/runs/2026-10-12T03-42-38.347868Z/curated/videos/automotivo/auto-super/N3WyEav_T3c.json",
+      "result": "data/features/runs/2026-10-12T04-32-07.033514Z/videos/N3WyEav_T3c/opening_vlm.json",
+      "extraction_status": "completed",
+      "manual_validation": {
+        "status": "approved",
+        "reviewer": "human_project_owner",
+        "note": "O responsável pelo projeto conferiu o vídeo e confirmou que a extração estava correta."
+      }
+    },
+    {
+      "video_id": "zWQIQgRpPMU",
+      "sector": "moda",
+      "channel": "Isabella Fiorentino",
+      "duration_seconds": 39,
+      "source_record": "data/youtube/runs/2026-10-12T03-42-38.347868Z/curated/videos/moda/isabella-fiorentino/zWQIQgRpPMU.json",
+      "result": "data/features/runs/2026-10-12T04-32-07.397663Z/videos/zWQIQgRpPMU/opening_vlm.json",
+      "extraction_status": "completed",
+      "manual_validation": {
+        "status": "approved",
+        "reviewer": "human_project_owner",
+        "note": "O responsável pelo projeto conferiu o vídeo e confirmou que a extração estava perfeita."
+      }
+    },
+    {
+      "video_id": "3mGvitNMDLw",
+      "sector": "moda",
+      "channel": "STEAL THE LOOK",
+      "duration_seconds": 104,
+      "source_record": "data/youtube/runs/2026-10-12T03-42-38.347868Z/curated/videos/moda/steal-the-look/3mGvitNMDLw.json",
+      "result": "data/features/runs/2026-10-12T04-33-43.606311Z/videos/3mGvitNMDLw/opening_vlm.json",
+      "extraction_status": "completed",
+      "manual_validation": {
+        "status": "approved",
+        "reviewer": "human_project_owner",
+        "note": "O responsável pelo projeto conferiu o vídeo e confirmou que a extração funcionou bem."
+      }
+    },
+    {
+      "video_id": "avBeqxvNMv8",
+      "sector": "beleza",
+      "channel": "Mari Maria",
+      "duration_seconds": 25,
+      "source_record": "data/youtube/runs/2026-10-12T03-42-38.347868Z/curated/videos/beleza/mari-maria/avBeqxvNMv8.json",
+      "result": "data/features/runs/2026-10-12T04-32-30.992412Z/videos/avBeqxvNMv8/opening_vlm.json",
+      "extraction_status": "completed",
+      "manual_validation": {
+        "status": "approved",
+        "reviewer": "human_project_owner",
+        "note": "O responsável pelo projeto conferiu o vídeo e confirmou que a extração estava perfeita."
+      }
+    },
+    {
+      "video_id": "RVeUyd2jUFg",
+      "sector": "beleza",
+      "channel": "NiinaSecrets",
+      "duration_seconds": 58,
+      "source_record": "data/youtube/runs/2026-10-12T03-42-38.347868Z/curated/videos/beleza/niinasecrets/RVeUyd2jUFg.json",
+      "result": "data/features/runs/2026-10-12T04-38-35.908212Z/videos/RVeUyd2jUFg/opening_vlm.json",
+      "extraction_status": "completed",
+      "manual_validation": {
+        "status": "approved",
+        "reviewer": "human_project_owner",
+        "note": "O responsável pelo projeto conferiu o vídeo e confirmou que a extração funcionou corretamente."
+      }
+    }
+  ],
+  "selection_adjustments": [
+    {
+      "video_id": "nhhXvPH6ur8",
+      "channel": "Karen Bachini",
+      "outcome": "substituted",
+      "reason": "A API não respondeu antes do timeout em duas tentativas; o caso foi substituído por NiinaSecrets para completar a amostra sem tratar latência como erro de conteúdo."
+    }
+  ],
+  "summary": {
+    "videos_selected": 6,
+    "extractions_completed": 6,
+    "manual_validations_approved": 6,
+    "manual_validations_pending": 0,
+    "validation_status": "completed_all_approved",
+    "conclusion": "As seis extrações foram conferidas manualmente e aprovadas pelo responsável pelo projeto."
+  }
+}
