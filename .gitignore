@@ -1,0 +1,6 @@
+.env
+__pycache__/
+*.py[cod]
+data/youtube/channel_resolution/
+data/youtube/runs/
+data/features/runs/

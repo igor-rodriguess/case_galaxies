@@ -1,0 +1,23 @@
+{
+  "selection_version": "initial-2026-10-12",
+  "selection_method": "Top relevant result from YouTube Data API v3 search.list, manually checked by channel title. Chata de Galocha was rejected because the result was incompatible and replaced by Camila Coelho Português.",
+  "channels": [
+    {"sector": "automotivo", "label": "Acelerados", "channel_id": "UCGBIIPnw0AYM3BFsmTsjeAw"},
+    {"sector": "automotivo", "label": "FlatOut Brasil", "channel_id": "UCi7NjYyIQk6hPRbZ4BVKHyw"},
+    {"sector": "automotivo", "label": "FullPowerTV", "channel_id": "UCfReg1ecXWG9Gscjba-dGgw"},
+    {"sector": "automotivo", "label": "Auto Super", "channel_id": "UC08IZDh4NSFHl8KYpYNdoVg"},
+    {"sector": "automotivo", "label": "Opinião Sincera", "channel_id": "UCc0cU92Tf7rvd2gr-CpVO4Q"},
+
+    {"sector": "moda", "label": "Steal The Look", "channel_id": "UC7eUDymR_ThtyGV1IxUSpcw"},
+    {"sector": "moda", "label": "Lela Brandão", "channel_id": "UCnZZpT_goFtRY8H8XpfYxAg"},
+    {"sector": "moda", "label": "Camila Coelho Português", "channel_id": "UCnmaW_YVh9iJAFVOsLR7W2w"},
+    {"sector": "moda", "label": "Thássia Naves", "channel_id": "UCbU4-Yr0DjIExjS4ki_1lSA"},
+    {"sector": "moda", "label": "Isabella Fiorentino", "channel_id": "UCF7x0GAB3T14UwahfMu-5_g"},
+
+    {"sector": "beleza", "label": "Karen Bachini", "channel_id": "UCYcClChNM-0rjqCGobSfJ4A"},
+    {"sector": "beleza", "label": "Niina Secrets", "channel_id": "UCAkZ7bimIU9m7wT6Th0FcEw"},
+    {"sector": "beleza", "label": "Bianca Andrade", "channel_id": "UCgSvw7asvNq7wJWKMSW28Eg"},
+    {"sector": "beleza", "label": "Mari Maria", "channel_id": "UCcHR0RvLYk33ppkjBw3UaEA"},
+    {"sector": "beleza", "label": "Tour da Beleza", "channel_id": "UCK0oFT3Lk0kVB9rnjU4nTYg"}
+  ]
+}

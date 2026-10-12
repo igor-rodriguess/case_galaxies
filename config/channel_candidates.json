@@ -1,0 +1,24 @@
+{
+  "selection_version": "initial-2026-10-12",
+  "country_focus": "BR",
+  "language_focus": "pt-BR",
+  "candidates": [
+    {"sector": "automotivo", "label": "Acelerados", "query": "Acelerados canal oficial"},
+    {"sector": "automotivo", "label": "FlatOut Brasil", "query": "FlatOut Brasil canal oficial"},
+    {"sector": "automotivo", "label": "FullPowerTV", "query": "FullPowerTV canal oficial"},
+    {"sector": "automotivo", "label": "Auto Super", "query": "Auto Super canal automotivo"},
+    {"sector": "automotivo", "label": "Opinião Sincera", "query": "Opinião Sincera carros canal"},
+
+    {"sector": "moda", "label": "Steal The Look", "query": "Steal The Look canal oficial"},
+    {"sector": "moda", "label": "Lela Brandão", "query": "Lela Brandão canal oficial"},
+    {"sector": "moda", "label": "Chata de Galocha", "query": "Chata de Galocha Lu Ferreira canal"},
+    {"sector": "moda", "label": "Thássia Naves", "query": "Thássia Naves canal oficial"},
+    {"sector": "moda", "label": "Isabella Fiorentino", "query": "Isabella Fiorentino canal oficial"},
+
+    {"sector": "beleza", "label": "Karen Bachini", "query": "Karen Bachini canal oficial"},
+    {"sector": "beleza", "label": "Niina Secrets", "query": "Niina Secrets canal oficial"},
+    {"sector": "beleza", "label": "Boca Rosa", "query": "Boca Rosa Bianca Andrade canal oficial"},
+    {"sector": "beleza", "label": "Mari Maria", "query": "Mari Maria canal oficial beleza"},
+    {"sector": "beleza", "label": "Tour da Beleza", "query": "Tour da Beleza canal oficial"}
+  ]
+}
