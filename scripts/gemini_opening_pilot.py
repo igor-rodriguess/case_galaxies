@@ -14,11 +14,10 @@ import json
 import os
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
-
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 YOUTUBE_RUNS_DIR = PROJECT_ROOT / "data" / "youtube" / "runs"
@@ -29,6 +28,14 @@ PROMPT_VERSION = "galaxies-opening-v0.1.0"
 
 class QuotaExhaustedError(RuntimeError):
     """Indica que a cota do projeto/modelo foi esgotada."""
+
+
+class ProviderUnavailableError(RuntimeError):
+    """Indica falha temporária do provedor que pode ser retomada depois."""
+
+    def __init__(self, message: str, status_code: int | None = None):
+        self.status_code = status_code
+        super().__init__(message)
 
 
 def load_dotenv(path: Path) -> None:
@@ -45,15 +52,17 @@ def load_dotenv(path: Path) -> None:
 
 
 def utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    return datetime.now(UTC).isoformat().replace("+00:00", "Z")
 
 
 def save_json(path: Path, data: object) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
-        json.dumps(data, ensure_ascii=False, indent=2),
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(
+        json.dumps(data, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
+    temporary.replace(path)
 
 
 def find_video_record(video_id: str) -> tuple[Path, dict]:
@@ -68,9 +77,7 @@ def find_video_record(video_id: str) -> tuple[Path, dict]:
         if matches:
             source_path = matches[0]
             return source_path, json.loads(source_path.read_text(encoding="utf-8"))
-    raise FileNotFoundError(
-        f"Não encontrei {video_id}.json em nenhuma coleta curada do YouTube."
-    )
+    raise FileNotFoundError(f"Não encontrei {video_id}.json em nenhuma coleta curada do YouTube.")
 
 
 def build_prompt(start_seconds: float, end_seconds: float, fps: float) -> str:
@@ -180,11 +187,7 @@ def extract_text(raw_response: dict) -> str:
         raise ValueError("A API não retornou candidatos de resposta.")
 
     parts = candidates[0].get("content", {}).get("parts", [])
-    texts = [
-        part["text"]
-        for part in parts
-        if part.get("text") and not part.get("thought")
-    ]
+    texts = [part["text"] for part in parts if part.get("text") and not part.get("thought")]
     if not texts:
         raise ValueError("A resposta não contém uma parte textual utilizável.")
     return "\n".join(texts).strip()
@@ -215,10 +218,7 @@ def request_gemini(
     prompt: str,
     max_attempts: int,
 ) -> tuple[dict, dict]:
-    endpoint = (
-        "https://generativelanguage.googleapis.com/v1beta/models/"
-        f"{model}:generateContent"
-    )
+    endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
     payload = {
         "contents": [
             {
@@ -260,17 +260,9 @@ def request_gemini(
                 raw_response = json.loads(response.read().decode("utf-8"))
             break
         except HTTPError as exc:
-            body = (
-                exc.read()
-                .decode("utf-8", errors="replace")
-                .replace(api_key, "<redacted>")
-            )
-            if exc.code == 429 and (
-                "RESOURCE_EXHAUSTED" in body or "Quota exceeded" in body
-            ):
-                raise QuotaExhaustedError(
-                    f"Gemini API retornou HTTP {exc.code}: {body}"
-                ) from exc
+            body = exc.read().decode("utf-8", errors="replace").replace(api_key, "<redacted>")
+            if exc.code == 429 and ("RESOURCE_EXHAUSTED" in body or "Quota exceeded" in body):
+                raise QuotaExhaustedError(f"Gemini API retornou HTTP {exc.code}: {body}") from exc
             if exc.code in transient_statuses and attempt < max_attempts:
                 delay_seconds = 5 * attempt
                 print(
@@ -279,9 +271,12 @@ def request_gemini(
                 )
                 time.sleep(delay_seconds)
                 continue
-            raise RuntimeError(
-                f"Gemini API retornou HTTP {exc.code}: {body}"
-            ) from exc
+            if exc.code in transient_statuses:
+                raise ProviderUnavailableError(
+                    f"Gemini API temporariamente indisponível (HTTP {exc.code}): {body}",
+                    status_code=exc.code,
+                ) from exc
+            raise RuntimeError(f"Gemini API retornou HTTP {exc.code}: {body}") from exc
         except (URLError, TimeoutError) as exc:
             if attempt < max_attempts:
                 delay_seconds = 5 * attempt
@@ -292,8 +287,8 @@ def request_gemini(
                 time.sleep(delay_seconds)
                 continue
             reason = getattr(exc, "reason", str(exc))
-            raise RuntimeError(
-                f"Falha de rede ao consultar a Gemini API: {reason}"
+            raise ProviderUnavailableError(
+                f"Falha temporária de rede ao consultar a Gemini API: {reason}"
             ) from exc
 
     return payload, raw_response
@@ -304,15 +299,9 @@ def parse_args() -> argparse.Namespace:
         description="Analisa uma abertura curta por URL pública usando Gemini."
     )
     parser.add_argument("--video-id", required=True, help="ID do vídeo já coletado.")
-    parser.add_argument(
-        "--start", type=float, default=0.0, help="Início do trecho, em segundos."
-    )
-    parser.add_argument(
-        "--end", type=float, default=3.0, help="Fim do trecho, em segundos."
-    )
-    parser.add_argument(
-        "--fps", type=float, default=4.0, help="Taxa de amostragem solicitada."
-    )
+    parser.add_argument("--start", type=float, default=0.0, help="Início do trecho, em segundos.")
+    parser.add_argument("--end", type=float, default=3.0, help="Fim do trecho, em segundos.")
+    parser.add_argument("--fps", type=float, default=4.0, help="Taxa de amostragem solicitada.")
     parser.add_argument("--model", help=f"Modelo Gemini. Padrão: {DEFAULT_MODEL}.")
     parser.add_argument(
         "--run-id",
@@ -331,6 +320,10 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> int:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    if hasattr(sys.stderr, "reconfigure"):
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
     load_dotenv(PROJECT_ROOT / ".env")
     args = parse_args()
 
@@ -406,7 +399,7 @@ def main() -> int:
     save_json(output_dir / "request_manifest.json", request_manifest)
 
     print(f"Vídeo: {args.video_id}")
-    print(f"Trecho enviado: {args.start:g}s–{args.end:g}s a {args.fps:g} FPS")
+    print(f"Trecho enviado: {args.start:g}s-{args.end:g}s a {args.fps:g} FPS")
     print(f"Modelo solicitado: {model}")
     print("Aguardando a análise do Gemini...")
 
@@ -438,6 +431,21 @@ def main() -> int:
         print(f"ERRO DE COTA: {exc}", file=sys.stderr)
         print(f"Diagnóstico salvo em: {output_dir}", file=sys.stderr)
         return 75
+    except ProviderUnavailableError as exc:
+        save_json(
+            output_dir / "error.json",
+            {
+                "schema_version": "0.1.0",
+                "failed_at": utc_now(),
+                "error_type": type(exc).__name__,
+                "provider_status": exc.status_code,
+                "retryable": True,
+                "message": str(exc).replace(api_key, "<redacted>"),
+            },
+        )
+        print(f"ERRO TEMPORÁRIO DO PROVEDOR: {exc}", file=sys.stderr)
+        print(f"Diagnóstico salvo em: {output_dir}", file=sys.stderr)
+        return 69
     except (RuntimeError, ValueError, json.JSONDecodeError) as exc:
         save_json(
             output_dir / "error.json",

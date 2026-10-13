@@ -13,24 +13,23 @@ from __future__ import annotations
 
 import argparse
 import json
-import locale
 import subprocess
 import sys
 import time
-from collections import Counter
-from datetime import datetime, timezone
+from collections import Counter, defaultdict, deque
+from datetime import UTC, datetime
 from pathlib import Path
-
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 YOUTUBE_RUNS_DIR = PROJECT_ROOT / "data" / "youtube" / "runs"
 FEATURE_RUNS_DIR = PROJECT_ROOT / "data" / "features" / "runs"
 PILOT_SCRIPT = PROJECT_ROOT / "scripts" / "gemini_opening_pilot.py"
 DEFAULT_MODEL = "gemini-3.8-flash"
+SECTOR_ORDER = ("automotivo", "moda", "beleza")
 
 
 def utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    return datetime.now(UTC).isoformat().replace("+00:00", "Z")
 
 
 def save_json(path: Path, data: object) -> None:
@@ -61,9 +60,7 @@ def latest_youtube_records() -> tuple[Path, list[dict]]:
         raise FileNotFoundError("Nenhuma coleta normalizada do YouTube foi encontrada.")
 
     run_dir = candidates[0]
-    payload = json.loads(
-        (run_dir / "normalized_records.json").read_text(encoding="utf-8")
-    )
+    payload = json.loads((run_dir / "normalized_records.json").read_text(encoding="utf-8"))
     records = payload.get("records", [])
     if not records:
         raise ValueError("A coleta mais recente não contém registros de vídeo.")
@@ -114,10 +111,44 @@ def refresh_summary(manifest: dict) -> None:
         "completed_in_batch": counts["completed"],
         "pending": counts["pending"],
         "failed": counts["failed"],
+        "provider_unavailable": counts["provider_unavailable"],
         "quota_blocked": counts["quota_blocked"],
         "running": counts["running"],
     }
     manifest["updated_at"] = utc_now()
+
+
+def balance_pending(videos: list[dict]) -> list[dict]:
+    """Intercala setores e canais para usar a cota diária de forma representativa."""
+    by_sector_and_channel: dict[str, dict[str, deque[dict]]] = defaultdict(
+        lambda: defaultdict(deque)
+    )
+    for video in videos:
+        sector = str(video.get("sector") or "unknown")
+        channel_id = str(video.get("channel_id") or "unknown")
+        by_sector_and_channel[sector][channel_id].append(video)
+
+    sector_queues: dict[str, deque[dict]] = {}
+    ordered_sectors = [
+        *[sector for sector in SECTOR_ORDER if sector in by_sector_and_channel],
+        *sorted(set(by_sector_and_channel) - set(SECTOR_ORDER)),
+    ]
+    for sector in ordered_sectors:
+        channel_queues = by_sector_and_channel[sector]
+        channel_ids = list(channel_queues)
+        sector_queue: deque[dict] = deque()
+        while any(channel_queues.values()):
+            for channel_id in channel_ids:
+                if channel_queues[channel_id]:
+                    sector_queue.append(channel_queues[channel_id].popleft())
+        sector_queues[sector] = sector_queue
+
+    balanced: list[dict] = []
+    while any(sector_queues.values()):
+        for sector in ordered_sectors:
+            if sector_queues[sector]:
+                balanced.append(sector_queues[sector].popleft())
+    return balanced
 
 
 def build_manifest(
@@ -131,6 +162,8 @@ def build_manifest(
     end: float,
     fps: float,
     max_attempts_per_video: int,
+    max_consecutive_provider_failures: int,
+    selection_order: str,
 ) -> dict:
     videos = []
     for record in records:
@@ -169,7 +202,9 @@ def build_manifest(
             "prompt_version": "galaxies-opening-v0.1.0",
             "performance_metrics_sent": False,
             "max_attempts_per_video": max_attempts_per_video,
+            "max_consecutive_provider_failures": max_consecutive_provider_failures,
             "resume_behavior": "Reutiliza opening_vlm.json existente por video_id.",
+            "selection_order": selection_order,
         },
         "videos": videos,
         "summary": {},
@@ -199,6 +234,12 @@ def parse_args() -> argparse.Namespace:
         help="Limita quantos vídeos pendentes serão tentados nesta execução.",
     )
     parser.add_argument(
+        "--selection-order",
+        choices=("balanced", "source"),
+        default="balanced",
+        help="Ordem dos pendentes; balanced intercala setores e canais.",
+    )
+    parser.add_argument(
         "--max-attempts-per-video",
         type=int,
         default=1,
@@ -206,6 +247,12 @@ def parse_args() -> argparse.Namespace:
             "Tentativas por vídeo. O padrão 1 preserva a cota gratuita; "
             "falhas podem ser retomadas depois."
         ),
+    )
+    parser.add_argument(
+        "--max-consecutive-provider-failures",
+        type=int,
+        default=3,
+        help="Pausa o lote após falhas temporárias consecutivas do provedor.",
     )
     parser.add_argument(
         "--dry-run",
@@ -217,9 +264,9 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     if hasattr(sys.stdout, "reconfigure"):
-        sys.stdout.reconfigure(errors="replace")
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     if hasattr(sys.stderr, "reconfigure"):
-        sys.stderr.reconfigure(errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
     args = parse_args()
     if args.start < 0 or args.end <= args.start:
@@ -237,6 +284,12 @@ def main() -> int:
     if not 1 <= args.max_attempts_per_video <= 5:
         print(
             "ERRO: max-attempts-per-video deve ficar entre 1 e 5",
+            file=sys.stderr,
+        )
+        return 1
+    if not 1 <= args.max_consecutive_provider_failures <= 10:
+        print(
+            "ERRO: max-consecutive-provider-failures deve ficar entre 1 e 10",
             file=sys.stderr,
         )
         return 1
@@ -259,12 +312,16 @@ def main() -> int:
         end=args.end,
         fps=args.fps,
         max_attempts_per_video=args.max_attempts_per_video,
+        max_consecutive_provider_failures=args.max_consecutive_provider_failures,
+        selection_order=args.selection_order,
     )
     batch_dir = FEATURE_RUNS_DIR / batch_id
     manifest_path = batch_dir / "batch_manifest.json"
     save_json(manifest_path, manifest)
 
     pending = [video for video in manifest["videos"] if video["status"] == "pending"]
+    if args.selection_order == "balanced":
+        pending = balance_pending(pending)
     if args.limit is not None:
         pending = pending[: args.limit]
 
@@ -290,6 +347,7 @@ def main() -> int:
     save_json(manifest_path, manifest)
 
     try:
+        consecutive_provider_failures = 0
         for position, video in enumerate(pending, start=1):
             video_id = video["video_id"]
             video["status"] = "running"
@@ -326,7 +384,7 @@ def main() -> int:
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 text=True,
-                encoding=locale.getpreferredencoding(False),
+                encoding="utf-8",
                 errors="replace",
                 check=False,
             )
@@ -340,18 +398,13 @@ def main() -> int:
             video["finished_at"] = utc_now()
             if completed.returncode == 75:
                 video["status"] = "quota_blocked"
-                video["error"] = (
-                    relative_path(error_path) if error_path.exists() else None
-                )
+                video["error"] = relative_path(error_path) if error_path.exists() else None
                 refresh_summary(manifest)
                 manifest["status"] = "paused_quota_exhausted"
                 manifest["pause_reason"] = {
                     "provider_status": 429,
                     "provider_error": "RESOURCE_EXHAUSTED",
-                    "decision": (
-                        "Execução interrompida automaticamente no primeiro "
-                        "erro de cota."
-                    ),
+                    "decision": ("Execução interrompida automaticamente no primeiro erro de cota."),
                 }
                 save_json(manifest_path, manifest)
                 print(
@@ -359,15 +412,39 @@ def main() -> int:
                     flush=True,
                 )
                 return 75
+            if completed.returncode == 69:
+                video["status"] = "provider_unavailable"
+                video["error"] = relative_path(error_path) if error_path.exists() else None
+                consecutive_provider_failures += 1
+                refresh_summary(manifest)
+                if consecutive_provider_failures >= args.max_consecutive_provider_failures:
+                    manifest["status"] = "paused_provider_unavailable"
+                    manifest["pause_reason"] = {
+                        "provider_error": "UNAVAILABLE",
+                        "consecutive_failures": consecutive_provider_failures,
+                        "decision": (
+                            "Execução pausada automaticamente para preservar a cota; "
+                            "tente novamente mais tarde."
+                        ),
+                    }
+                    save_json(manifest_path, manifest)
+                    print(
+                        "Provedor temporariamente indisponível; lote pausado com "
+                        "progresso preservado.",
+                        flush=True,
+                    )
+                    return 69
+                save_json(manifest_path, manifest)
+                continue
             if completed.returncode == 0 and result_path.exists():
                 video["status"] = "completed"
                 video["result"] = relative_path(result_path)
                 video["error"] = None
+                consecutive_provider_failures = 0
             else:
                 video["status"] = "failed"
-                video["error"] = (
-                    relative_path(error_path) if error_path.exists() else None
-                )
+                video["error"] = relative_path(error_path) if error_path.exists() else None
+                consecutive_provider_failures = 0
 
             refresh_summary(manifest)
             save_json(manifest_path, manifest)

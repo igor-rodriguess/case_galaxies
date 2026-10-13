@@ -8,7 +8,6 @@ import unicodedata
 from collections import Counter
 from pathlib import Path
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RUNS_DIR = PROJECT_ROOT / "data" / "youtube" / "runs"
 SCHEMA_VERSION = "0.1.0"
@@ -65,7 +64,9 @@ def main() -> int:
         channel_id = record["channel_id"]
         video_id = record["video_id"]
         sector = record["sector"]
-        channel_title = record.get("channel_title") or record.get("selected_channel_label") or channel_id
+        channel_title = (
+            record.get("channel_title") or record.get("selected_channel_label") or channel_id
+        )
         channel_folder = slugify(channel_title)
         duration_seconds = iso_duration_seconds(record.get("duration"))
         raw_base = f"raw/{channel_id}"
@@ -77,38 +78,42 @@ def main() -> int:
                 "youtube_watch_url": f"https://www.youtube.com/watch?v={video_id}",
                 "channel_id": channel_id,
                 "channel_folder": channel_folder,
-                "uploads_playlist_id": record.get("uploads_playlist_id")
+                "uploads_playlist_id": record.get("uploads_playlist_id"),
             },
             "classification": {
                 "sector": sector,
                 "selected_channel_label": record.get("selected_channel_label"),
                 "youtube_short_confirmed": None,
-                "youtube_short_confirmation_note": "A Data API v3 não fornece neste registro um indicador direto e confiável de Short. Duração isolada não confirma o formato."
+                "youtube_short_confirmation_note": "A Data API v3 não fornece neste registro um indicador direto e confiável de Short. Duração isolada não confirma o formato.",
             },
             "publication": {
                 "published_at": record.get("published_at"),
                 "title": record.get("title"),
                 "description": record.get("description"),
                 "tags": record.get("tags"),
-                "category_id": record.get("category_id")
+                "category_id": record.get("category_id"),
             },
             "content_details": {
                 "duration_iso8601": record.get("duration"),
                 "duration_seconds": duration_seconds,
-                "definition": record.get("definition")
+                "definition": record.get("definition"),
             },
             "metrics_snapshot": {
                 "observed_at": record.get("collected_at"),
                 "view_count": optional_int(record.get("view_count")),
                 "like_count": optional_int(record.get("like_count")),
                 "comment_count": optional_int(record.get("comment_count")),
-                "interpretation_note": "Valores observados na coleta; não representam automaticamente desempenho no dia 30."
+                "interpretation_note": "Valores observados na coleta; não representam automaticamente desempenho no dia 30.",
             },
             "channel_snapshot": {
                 "channel_title": record.get("channel_title"),
-                "subscriber_count_observed_at_collection": optional_int(record.get("channel_subscriber_count_at_collection")),
-                "video_count_observed_at_collection": optional_int(record.get("channel_video_count_at_collection")),
-                "interpretation_note": "Inscritos atuais na coleta; não representam inscritos na data de publicação."
+                "subscriber_count_observed_at_collection": optional_int(
+                    record.get("channel_subscriber_count_at_collection")
+                ),
+                "video_count_observed_at_collection": optional_int(
+                    record.get("channel_video_count_at_collection")
+                ),
+                "interpretation_note": "Inscritos atuais na coleta; não representam inscritos na data de publicação.",
             },
             "provenance": {
                 "provider": "YouTube",
@@ -119,22 +124,24 @@ def main() -> int:
                 "raw_files": {
                     "channel": f"{raw_base}/channels.json",
                     "playlist_items": f"{raw_base}/playlistItems.json",
-                    "video_details": f"{raw_base}/videos.json"
+                    "video_details": f"{raw_base}/videos.json",
                 },
                 "selection_file": "config/selected_channels.json",
                 "selection_path_base": "project_root",
-                "playlist_position_at_collection": record.get("playlist_position")
-            }
+                "playlist_position_at_collection": record.get("playlist_position"),
+            },
         }
 
-        save_json(curated_dir / "videos" / sector / channel_folder / f"{video_id}.json", video_document)
+        save_json(
+            curated_dir / "videos" / sector / channel_folder / f"{video_id}.json", video_document
+        )
         channel_counts[channel_id] += 1
         sector_counts[sector] += 1
         channel_index[channel_id] = {
             "channel_id": channel_id,
             "channel_title": channel_title,
             "sector": sector,
-            "folder": f"curated/videos/{sector}/{channel_folder}"
+            "folder": f"curated/videos/{sector}/{channel_folder}",
         }
         for field in ("description", "tags", "view_count", "like_count", "comment_count"):
             if record.get(field) in (None, "", []):
@@ -150,18 +157,20 @@ def main() -> int:
         "unique_video_count": len({record["video_id"] for record in normalized}),
         "sector_counts": dict(sorted(sector_counts.items())),
         "channel_counts": dict(sorted(channel_counts.items())),
-        "channel_index": sorted(channel_index.values(), key=lambda item: (item["sector"], item["channel_title"].lower())),
+        "channel_index": sorted(
+            channel_index.values(), key=lambda item: (item["sector"], item["channel_title"].lower())
+        ),
         "missing_value_counts": dict(sorted(missing_counts.items())),
         "storage": {
             "raw": "raw/<channel_id>/{channels,playlistItems,videos}.json",
-            "curated": "curated/videos/<sector>/<channel-name>/<video_id>.json"
+            "curated": "curated/videos/<sector>/<channel-name>/<video_id>.json",
         },
         "known_limitations": [
             "A amostra contém os cinco uploads mais recentes de cada canal, não cinco Shorts confirmados.",
             "Métricas são snapshots no instante da coleta.",
             "Contagem de inscritos é atual na coleta, não histórica na publicação.",
-            "Camila Coelho Português e Thássia Naves apresentaram baixa atividade recente nesta rodada."
-        ]
+            "Camila Coelho Português e Thássia Naves apresentaram baixa atividade recente nesta rodada.",
+        ],
     }
     save_json(curated_dir / "manifest.json", manifest)
     print(f"Organizados {len(normalized)} vídeos em {curated_dir}")

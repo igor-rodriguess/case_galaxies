@@ -18,12 +18,11 @@ from __future__ import annotations
 import json
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
-
 
 BASE_URL = "https://www.googleapis.com/youtube/v3"
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -46,7 +45,7 @@ def load_dotenv(path: Path) -> None:
 
 
 def utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    return datetime.now(UTC).isoformat().replace("+00:00", "Z")
 
 
 def youtube_get(resource: str, params: dict[str, str | int]) -> dict:
@@ -122,8 +121,7 @@ def main() -> int:
     save_json(raw_dir / "playlistItems.json", playlist_response)
 
     video_ids = [
-        item.get("contentDetails", {}).get("videoId")
-        for item in playlist_response.get("items", [])
+        item.get("contentDetails", {}).get("videoId") for item in playlist_response.get("items", [])
     ]
     video_ids = [video_id for video_id in video_ids if video_id]
 
