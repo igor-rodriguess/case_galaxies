@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "case-galaxies"
+version = "0.1.0"
+description = "Pipeline rastreável para previsão de desempenho de criativos."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "joblib>=1.4,<2",
+  "numpy>=2,<3",
+  "pandas>=2.2,<4",
+  "pydantic>=2.8,<3",
+  "scikit-learn>=1.5,<2",
+  "scipy>=1.13,<2",
+]
+
+[project.optional-dependencies]
+mcp = ["mcp[cli]>=2,<3"]
+explain = ["shap>=0.46,<1"]
+boosting = [
+  "catboost>=1.2,<2",
+  "lightgbm>=4,<5",
+  "xgboost>=2,<4",
+]
+dev = [
+  "pytest>=8,<10",
+  "ruff>=0.13,<1",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+ignore = ["E501"]

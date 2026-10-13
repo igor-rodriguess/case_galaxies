@@ -1,0 +1,60 @@
+{
+  "schema_version": "0.1.0",
+  "sector": "automotivo",
+  "target": {
+    "column": "target_view_count",
+    "metric_name": "view_count",
+    "transform": "log1p",
+    "horizon_days": 30,
+    "requires_fixed_horizon": true
+  },
+  "minimum_data": {"rows": 200, "channels": 4, "vlm_coverage": 0.8},
+  "validation": {
+    "temporal_test_fraction": 0.2,
+    "channel_test_fraction": 0.2,
+    "minimum_test_rows": 20,
+    "random_state": 42
+  },
+  "features": {
+    "numeric": [
+      "duration_seconds", "title_character_count", "description_character_count",
+      "tag_count", "publish_hour_utc", "channel_subscriber_count_at_prediction",
+      "channel_video_count_at_prediction", "prior_video_count",
+      "prior_views_mean_observed", "prior_views_median_observed",
+      "prior_likes_median_observed", "prior_comments_median_observed",
+      "prior_upload_interval_median_days", "days_since_previous_upload",
+      "vlm_mean_confidence", "people_count_estimate", "on_screen_text_count",
+      "scene_change_count", "speech_start_seconds", "transcript_excerpt_word_count",
+      "sound_effect_count", "evidence_count", "uncertainty_count"
+    ],
+    "categorical": [
+      "definition", "category_id", "publish_weekday_utc", "people_present",
+      "faces_visible", "product_in_focus", "brand_legible", "framing",
+      "camera_movement", "motion_intensity", "speech_present", "audio_language",
+      "music_present", "opening_type", "product_prominence",
+      "call_to_action_present", "automotive_car_closeup_present",
+      "automotive_engine_sound_present", "automotive_driving_pov_present",
+      "automotive_interior_present"
+    ]
+  },
+  "regression_models": [
+    "dummy_median", "linear_regression", "ridge", "gradient_boosting",
+    "random_forest", "mlp"
+  ],
+  "optional_regression_models": ["xgboost", "catboost", "lightgbm"],
+  "classification": {
+    "enabled": false,
+    "label_column": "target_performance_band",
+    "thresholds": null,
+    "models": [
+      "logistic_regression", "random_forest_classifier",
+      "hist_gradient_boosting_classifier", "mlp_classifier"
+    ]
+  },
+  "prediction_interval": {"enabled": true, "lower_quantile": 0.1, "upper_quantile": 0.9},
+  "promotion": {
+    "require_temporal_baseline_win": true,
+    "require_channel_baseline_win": true
+  },
+  "serving": {"max_missing_fraction": 0.5}
+}

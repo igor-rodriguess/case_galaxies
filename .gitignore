@@ -1,6 +1,13 @@
 .env
+.venv/
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.coverage
+*.egg-info/
+*.joblib
 data/youtube/channel_resolution/
 data/youtube/runs/
 data/features/runs/
+data/modeling/runs/
+models/*/artifacts/
