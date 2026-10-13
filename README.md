@@ -282,27 +282,113 @@ Para planejar ou retomar um lote sem repetir vídeos concluídos:
 
 ```powershell
 python scripts/gemini_opening_batch.py --dry-run
-python scripts/gemini_opening_batch.py --run-id batch-opening-all-2026-10-12 --delay-seconds 2
+python scripts/gemini_opening_batch.py --run-id batch-opening-AAAA-MM-DD --delay-seconds 2
 ```
 
 O lote salva o progresso após cada vídeo e pausa no primeiro erro de cota. Uma
 nova execução com o mesmo `run-id` reutiliza resultados válidos e tenta apenas o
-que continua pendente.
+que continua pendente. Por padrão, os pendentes são intercalados por setor e canal
+para que uma cota diária pequena não fique concentrada em uma única categoria. O
+lote também pausa depois de três falhas temporárias consecutivas do provedor.
+
+## Camada de modelagem preparada
+
+O código de modelagem fica em `src/galaxies/` e usa um motor comum com uma
+configuração separada para cada setor:
+
+```text
+models/
+├── automotivo/config.json
+├── moda/config.json
+└── beleza/config.json
+```
+
+Essa separação mantém três modelos e três conjuntos de artefatos sem copiar o
+mesmo código de tratamento e avaliação. Cada configuração declara alvo, features,
+quantidade mínima de dados, candidatos, splits e intervalo de predição.
+
+Os candidatos de regressão preparados são:
+
+- baselines pela mediana global e pela mediana histórica do canal;
+- regressão linear;
+- Ridge, Gradient Boosting e Random Forest;
+- rede neural tabular com `MLPRegressor`;
+- XGBoost, CatBoost e LightGBM como extras opcionais.
+
+A regressão logística está na trilha separada de classificação por faixas. Ela não
+é usada para prever diretamente `view_count`, porque essa é uma variável contínua.
+Os limiares de `abaixo`, `na_média`, `acima` e `viral` ainda precisam ser decididos
+antes de ativar esse experimento.
+
+Para instalar o núcleo, os testes e o servidor MCP em um ambiente isolado:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python -m pip install -e ".[dev,mcp]"
+```
+
+Os extras de boosting e explicabilidade podem ser instalados depois:
+
+```powershell
+.\.venv\Scripts\python -m pip install -e ".[boosting,explain]"
+```
+
+Primeiro eu gero o mapa achatado e sua auditoria, sem treinar nada:
+
+```powershell
+.\.venv\Scripts\python scripts/build_modeling_dataset.py
+```
+
+O treino final recusa automaticamente uma base sem horizonte fixo, volume mínimo,
+cobertura VLM e histórico temporalmente válido. Mesmo com os dados aprovados, um
+modelo só é promovido quando supera os baselines no corte temporal e no corte de
+canais não vistos:
+
+```powershell
+.\.venv\Scripts\python scripts/train_sector_models.py --sector automotivo
+.\.venv\Scripts\python scripts/train_sector_models.py --sector moda
+.\.venv\Scripts\python scripts/train_sector_models.py --sector beleza
+```
+
+Existe `--allow-exploratory` apenas para testar se todo o encanamento executa. Um
+artefato criado dessa forma recebe a marca `exploratory`, não é promovido e não
+pode ser usado como resultado científico.
+
+O servidor MCP já expõe contratos tipados, o status dos modelos, a validação das
+features, a consulta do mapa materializado por `video_id`, a previsão e o ranking.
+Enquanto não houver um modelo promovido, ele responde `model_not_ready` em vez de
+inventar um número:
+
+```powershell
+.\.venv\Scripts\python scripts/run_mcp_server.py --transport stdio
+.\.venv\Scripts\python scripts/run_mcp_server.py --transport streamable-http
+```
+
+O front-end fica para depois. A interface obrigatória agora é a função Python em
+`src/galaxies/prediction.py` e o servidor em `src/galaxies/mcp_server.py`.
 
 ## Estado atual
 
-Em 12 de outubro de 2026, o projeto tem:
+Em 13 de outubro de 2026, o projeto tem:
 
 - 15 canais selecionados, cinco por setor;
 - 75 vídeos coletados pela YouTube Data API v3;
 - registros brutos, normalizados e curados ligados por IDs;
 - oito resultados de abertura disponíveis localmente;
 - seis vídeos, dois por setor, conferidos manualmente e aprovados;
-- execução em lote retomável para continuar depois da renovação da cota.
+- execução em lote retomável para continuar depois da renovação da cota;
+- seleção diária balanceada e pausa automática para cota ou indisponibilidade;
+- gerador de mapa de features ligado aos JSONs por `video_id`;
+- auditoria automática de prontidão por setor;
+- comparação reproduzível de algoritmos com splits temporal e por canal;
+- contratos de configuração e MCP validados com Pydantic;
+- lint, formatação e testes automatizados;
+- função de predição e servidor MCP preparados, ainda sem modelo promovido.
 
-Ainda não foram implementados a transcrição completa, os embeddings, o mapa final
-de features, a engenharia temporal do alvo, o treinamento dos três modelos e o
-servidor MCP. Essas etapas serão discutidas antes de serem construídas.
+Ainda faltam a transcrição completa, os embeddings, a coleta em escala, o alvo em
+horizonte fixo e o treinamento válido dos três modelos. A estrutura existe, mas
+nenhum resultado preditivo será tratado como válido antes de esses dados passarem
+pelos gates declarados.
 
 ## Limites e cuidados
 
