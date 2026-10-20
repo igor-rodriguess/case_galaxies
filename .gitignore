@@ -9,5 +9,7 @@ __pycache__/
 data/youtube/channel_resolution/
 data/youtube/runs/
 data/features/runs/
+data/media/
 data/modeling/runs/
 models/*/artifacts/
+data/agent/

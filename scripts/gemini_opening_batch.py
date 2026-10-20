@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import subprocess
 import sys
 import time
@@ -47,19 +48,15 @@ def relative_path(path: Path) -> str:
 
 
 def latest_youtube_records() -> tuple[Path, list[dict]]:
-    candidates = sorted(
-        (
-            run_dir
-            for run_dir in YOUTUBE_RUNS_DIR.iterdir()
-            if run_dir.is_dir() and (run_dir / "normalized_records.json").exists()
-        ),
-        key=lambda path: path.name,
-        reverse=True,
-    )
+    candidates = [
+        run_dir
+        for run_dir in YOUTUBE_RUNS_DIR.iterdir()
+        if run_dir.is_dir() and (run_dir / "normalized_records.json").exists()
+    ]
     if not candidates:
         raise FileNotFoundError("Nenhuma coleta normalizada do YouTube foi encontrada.")
 
-    run_dir = candidates[0]
+    run_dir = max(candidates, key=lambda path: path.stat().st_mtime_ns)
     payload = json.loads((run_dir / "normalized_records.json").read_text(encoding="utf-8"))
     records = payload.get("records", [])
     if not records:
@@ -84,6 +81,10 @@ def existing_successes() -> dict[str, dict]:
             completed_at = result.get("provenance", {}).get("completed_at", "")
         except (OSError, json.JSONDecodeError):
             continue
+        prompt_version = result.get("provenance", {}).get("extractor", {}).get("prompt_version", "")
+        validation_status = result.get("validation", {}).get("status")
+        if str(prompt_version).startswith("galaxies-opening-v0.2") and validation_status != "complete":
+            continue
         if not video_id:
             continue
 
@@ -94,6 +95,38 @@ def existing_successes() -> dict[str, dict]:
                 "result": relative_path(result_path),
             }
     return successes
+
+
+def existing_permission_denials(
+    runs_dir: Path = FEATURE_RUNS_DIR,
+) -> dict[str, dict]:
+    """Retorna vídeos que o provedor recusou explicitamente com HTTP 403.
+
+    Esses erros são ligados ao recurso de origem, não à disponibilidade geral da
+    API. Mantê-los fora de novas filas evita consumir chamadas repetidas sem
+    apagar o registro nem transformar ausência em resultado.
+    """
+    blocked: dict[str, dict] = {}
+    if not runs_dir.exists():
+        return blocked
+
+    for error_path in runs_dir.rglob("error.json"):
+        try:
+            error = json.loads(error_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        message = str(error.get("message") or "")
+        if "HTTP 403" not in message or "PERMISSION_DENIED" not in message:
+            continue
+        video_id = error_path.parent.name
+        failed_at = str(error.get("failed_at") or "")
+        previous = blocked.get(video_id)
+        if previous is None or failed_at > previous["failed_at"]:
+            blocked[video_id] = {
+                "failed_at": failed_at,
+                "error": relative_path(error_path),
+            }
+    return blocked
 
 
 def is_valid_run_id(value: str) -> bool:
@@ -113,6 +146,7 @@ def refresh_summary(manifest: dict) -> None:
         "failed": counts["failed"],
         "provider_unavailable": counts["provider_unavailable"],
         "quota_blocked": counts["quota_blocked"],
+        "source_blocked": counts["source_blocked"],
         "running": counts["running"],
     }
     manifest["updated_at"] = utc_now()
@@ -151,12 +185,139 @@ def balance_pending(videos: list[dict]) -> list[dict]:
     return balanced
 
 
+def _parse_timestamp(value: str) -> datetime:
+    """Interpreta timestamps ISO da coleta como instantes UTC."""
+    return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(UTC)
+
+
+def performance_strata(
+    records: list[dict],
+    *,
+    minimum_age_days: float,
+) -> dict[str, str]:
+    """Cria estratos de desempenho observado para priorizar a amostra VLM.
+
+    A pontuação é um resíduo de log(views) contra log(idade), ajustado na
+    própria coleta e ordenado dentro de cada canal. Ela serve apenas para
+    selecionar vídeos para anotação audiovisual; não é usada como feature nem
+    substitui o alvo de views em horizonte fixo.
+    """
+    if minimum_age_days < 0:
+        raise ValueError("minimum_age_days não pode ser negativo.")
+
+    eligible: list[tuple[dict, float, float]] = []
+    for record in records:
+        try:
+            observed_at = _parse_timestamp(str(record["collected_at"]))
+            published_at = _parse_timestamp(str(record["published_at"]))
+            age_days = max((observed_at - published_at).total_seconds() / 86_400, 0.0)
+            views = max(float(record.get("view_count") or 0), 0.0)
+        except (KeyError, TypeError, ValueError):
+            continue
+        if age_days >= minimum_age_days:
+            eligible.append((record, age_days, views))
+
+    if len(eligible) < 2:
+        return {}
+
+    age_logs = [math.log1p(age_days) for _, age_days, _ in eligible]
+    view_logs = [math.log1p(views) for _, _, views in eligible]
+    age_mean = sum(age_logs) / len(age_logs)
+    view_mean = sum(view_logs) / len(view_logs)
+    variance = sum((value - age_mean) ** 2 for value in age_logs)
+    slope = (
+        sum(
+            (age_log - age_mean) * (view_log - view_mean)
+            for age_log, view_log in zip(age_logs, view_logs, strict=False)
+        )
+        / variance
+        if variance
+        else 0.0
+    )
+    intercept = view_mean - slope * age_mean
+
+    by_channel: dict[str, list[tuple[float, str]]] = defaultdict(list)
+    for record, age_days, views in eligible:
+        channel_id = str(record.get("channel_id") or "unknown")
+        score = math.log1p(views) - (intercept + slope * math.log1p(age_days))
+        by_channel[channel_id].append((score, str(record["video_id"])))
+
+    strata: dict[str, str] = {}
+    for channel_scores in by_channel.values():
+        ordered = sorted(channel_scores)
+        size = len(ordered)
+        for index, (_, video_id) in enumerate(ordered):
+            percentile = (index + 0.5) / size
+            if percentile <= 0.20:
+                strata[video_id] = "baixo"
+            elif percentile >= 0.80:
+                strata[video_id] = "viral"
+            elif 0.40 <= percentile <= 0.60:
+                strata[video_id] = "tipico"
+            else:
+                strata[video_id] = "intermediario"
+    return strata
+
+
+def performance_stratified_pending(videos: list[dict]) -> list[dict]:
+    """Intercala setor, estrato e canal, priorizando a cauda viral.
+
+    A ordem garante que cada bloco curto contenha exemplos virais, típicos e
+    baixos dos três setores, em vez de consumir apenas uploads recentes. Vídeos
+    recentes demais para pontuar entram por último, com ausência explícita.
+    """
+    tier_order = ("viral", "tipico", "baixo", "intermediario", "recente_ou_sem_score")
+    by_sector_tier_channel: dict[str, dict[str, dict[str, deque[dict]]]] = defaultdict(
+        lambda: defaultdict(lambda: defaultdict(deque))
+    )
+    for video in videos:
+        sector = str(video.get("sector") or "unknown")
+        tier = str(video.get("performance_stratum") or "recente_ou_sem_score")
+        channel_id = str(video.get("channel_id") or "unknown")
+        by_sector_tier_channel[sector][tier][channel_id].append(video)
+
+    ordered_sectors = [
+        *[sector for sector in SECTOR_ORDER if sector in by_sector_tier_channel],
+        *sorted(set(by_sector_tier_channel) - set(SECTOR_ORDER)),
+    ]
+    sector_queues: dict[str, deque[dict]] = {}
+    for sector in ordered_sectors:
+        tier_queues: dict[str, deque[dict]] = {}
+        tiers = [
+            *[tier for tier in tier_order if tier in by_sector_tier_channel[sector]],
+            *sorted(set(by_sector_tier_channel[sector]) - set(tier_order)),
+        ]
+        for tier in tiers:
+            channels = by_sector_tier_channel[sector][tier]
+            tier_queue: deque[dict] = deque()
+            while any(channels.values()):
+                for channel_id in sorted(channels):
+                    if channels[channel_id]:
+                        tier_queue.append(channels[channel_id].popleft())
+            tier_queues[tier] = tier_queue
+
+        sector_queue: deque[dict] = deque()
+        while any(tier_queues.values()):
+            for tier in tiers:
+                if tier_queues[tier]:
+                    sector_queue.append(tier_queues[tier].popleft())
+        sector_queues[sector] = sector_queue
+
+    selected: list[dict] = []
+    while any(sector_queues.values()):
+        for sector in ordered_sectors:
+            if sector_queues[sector]:
+                selected.append(sector_queues[sector].popleft())
+    return selected
+
+
 def build_manifest(
     *,
     batch_id: str,
     source_run: Path,
     records: list[dict],
     successes: dict[str, dict],
+    permission_denials: dict[str, dict],
     model: str,
     start: float,
     end: float,
@@ -164,11 +325,15 @@ def build_manifest(
     max_attempts_per_video: int,
     max_consecutive_provider_failures: int,
     selection_order: str,
+    performance_strata_by_video: dict[str, str],
+    performance_minimum_age_days: float,
 ) -> dict:
     videos = []
     for record in records:
         video_id = record["video_id"]
         existing = successes.get(video_id)
+        blocked = permission_denials.get(video_id)
+        status = "reused_existing" if existing else "source_blocked" if blocked else "pending"
         videos.append(
             {
                 "video_id": video_id,
@@ -177,9 +342,12 @@ def build_manifest(
                 "channel_title": record.get("channel_title"),
                 "published_at": record.get("published_at"),
                 "duration_iso8601": record.get("duration"),
-                "status": "reused_existing" if existing else "pending",
+                "performance_stratum": performance_strata_by_video.get(
+                    video_id, "recente_ou_sem_score"
+                ),
+                "status": status,
                 "result": existing["result"] if existing else None,
-                "error": None,
+                "error": blocked["error"] if blocked and not existing else None,
             }
         )
 
@@ -203,8 +371,21 @@ def build_manifest(
             "performance_metrics_sent": False,
             "max_attempts_per_video": max_attempts_per_video,
             "max_consecutive_provider_failures": max_consecutive_provider_failures,
-            "resume_behavior": "Reutiliza opening_vlm.json existente por video_id.",
+            "resume_behavior": (
+                "Reutiliza opening_vlm.json existente e não repete recursos "
+                "já recusados com HTTP 403 por video_id."
+            ),
             "selection_order": selection_order,
+            "performance_stratification": {
+                "enabled": selection_order == "performance_stratified",
+                "definition": (
+                    "Percentil de views ajustadas pela idade, dentro do canal; "
+                    "usado apenas para selecionar a amostra audiovisual."
+                ),
+                "minimum_age_days": performance_minimum_age_days,
+                "tiers": ["baixo", "tipico", "intermediario", "viral"],
+                "recent_or_unscored_label": "recente_ou_sem_score",
+            },
         },
         "videos": videos,
         "summary": {},
@@ -235,9 +416,30 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--selection-order",
-        choices=("balanced", "source"),
+        choices=("balanced", "performance_stratified", "source"),
         default="balanced",
-        help="Ordem dos pendentes; balanced intercala setores e canais.",
+        help=(
+            "Ordem dos pendentes; performance_stratified prioriza, por canal, "
+            "vídeos virais, típicos e baixos ajustados pela idade."
+        ),
+    )
+    parser.add_argument(
+        "--case-control-plan",
+        type=Path,
+        help=(
+            "Manifesto gerado por build_case_control_queue.py. Quando informado, "
+            "a fila de video_ids desse plano substitui a seleção ampla; os rótulos "
+            "de auditoria do plano não são encaminhados ao Gemini."
+        ),
+    )
+    parser.add_argument(
+        "--performance-minimum-age-days",
+        type=float,
+        default=30.0,
+        help=(
+            "Idade mínima para estratificar desempenho observado; vídeos mais "
+            "novos permanecem como recente_ou_sem_score."
+        ),
     )
     parser.add_argument(
         "--max-attempts-per-video",
@@ -262,6 +464,33 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def records_from_case_control_plan(plan_path: Path, records: list[dict]) -> list[dict]:
+    """Recorta e ordena os registros conforme uma fila caso-controle auditada."""
+    try:
+        payload = json.loads(plan_path.read_text(encoding="utf-8"))
+    except OSError as exc:
+        raise ValueError(f"Não foi possível ler o plano caso-controle: {plan_path}") from exc
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Plano caso-controle inválido: {plan_path}") from exc
+    queue = payload.get("queue")
+    if not isinstance(queue, list) or not queue:
+        raise ValueError("O plano caso-controle não contém uma fila não vazia.")
+    by_id = {str(record["video_id"]): record for record in records}
+    selected: list[dict] = []
+    seen: set[str] = set()
+    for item in queue:
+        if not isinstance(item, dict):
+            raise ValueError("O plano caso-controle contém item inválido.")
+        video_id = str(item.get("video_id") or "")
+        if not video_id or video_id in seen:
+            raise ValueError("O plano caso-controle contém video_id ausente ou duplicado.")
+        if video_id not in by_id:
+            raise ValueError(f"O plano referencia vídeo ausente da coleta: {video_id}")
+        selected.append(by_id[video_id])
+        seen.add(video_id)
+    return selected
+
+
 def main() -> int:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -277,6 +506,9 @@ def main() -> int:
         return 1
     if args.delay_seconds < 0:
         print("ERRO: delay-seconds não pode ser negativo", file=sys.stderr)
+        return 1
+    if args.performance_minimum_age_days < 0:
+        print("ERRO: performance-minimum-age-days não pode ser negativo", file=sys.stderr)
         return 1
     if args.limit is not None and args.limit < 1:
         print("ERRO: limit precisa ser maior ou igual a 1", file=sys.stderr)
@@ -301,12 +533,22 @@ def main() -> int:
         return 1
 
     source_run, records = latest_youtube_records()
+    plan_path: Path | None = None
+    if args.case_control_plan is not None:
+        plan_path = args.case_control_plan.resolve()
+        records = records_from_case_control_plan(plan_path, records)
     successes = existing_successes()
+    permission_denials = existing_permission_denials()
+    strata_by_video = performance_strata(
+        records,
+        minimum_age_days=args.performance_minimum_age_days,
+    )
     manifest = build_manifest(
         batch_id=batch_id,
         source_run=source_run,
         records=records,
         successes=successes,
+        permission_denials=permission_denials,
         model=args.model,
         start=args.start,
         end=args.end,
@@ -314,7 +556,15 @@ def main() -> int:
         max_attempts_per_video=args.max_attempts_per_video,
         max_consecutive_provider_failures=args.max_consecutive_provider_failures,
         selection_order=args.selection_order,
+        performance_strata_by_video=strata_by_video,
+        performance_minimum_age_days=args.performance_minimum_age_days,
     )
+    if plan_path is not None:
+        manifest["source"]["selection"] = (
+            "Fila caso-controle auditada; os rótulos de seleção permanecem no plano "
+            "e não são enviados ao extrator."
+        )
+        manifest["source"]["case_control_plan"] = relative_path(plan_path)
     batch_dir = FEATURE_RUNS_DIR / batch_id
     manifest_path = batch_dir / "batch_manifest.json"
     save_json(manifest_path, manifest)
@@ -322,13 +572,34 @@ def main() -> int:
     pending = [video for video in manifest["videos"] if video["status"] == "pending"]
     if args.selection_order == "balanced":
         pending = balance_pending(pending)
+    elif args.selection_order == "performance_stratified":
+        pending = performance_stratified_pending(pending)
     if args.limit is not None:
         pending = pending[: args.limit]
+    manifest["selection"] = {
+        "order": args.selection_order,
+        "selected_candidates": [
+            {
+                "position": position,
+                "video_id": video["video_id"],
+                "sector": video.get("sector"),
+                "channel_id": video.get("channel_id"),
+                "channel_title": video.get("channel_title"),
+                "performance_stratum": video.get("performance_stratum"),
+            }
+            for position, video in enumerate(pending, start=1)
+        ],
+    }
+    save_json(manifest_path, manifest)
 
     print(f"Lote: {batch_id}", flush=True)
     print(f"Vídeos na coleta: {len(records)}", flush=True)
     print(
         f"Resultados já existentes: {manifest['summary']['reused_existing']}",
+        flush=True,
+    )
+    print(
+        f"Vídeos bloqueados na origem: {manifest['summary']['source_blocked']}",
         flush=True,
     )
     print(f"Vídeos pendentes selecionados: {len(pending)}", flush=True)
@@ -363,8 +634,7 @@ def main() -> int:
             command = [
                 sys.executable,
                 str(PILOT_SCRIPT),
-                "--video-id",
-                video_id,
+                f"--video-id={video_id}",
                 "--start",
                 str(args.start),
                 "--end",

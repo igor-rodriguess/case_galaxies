@@ -69,11 +69,20 @@ def test_feature_map_joins_vlm_and_uses_only_prior_posts(tmp_path: Path) -> None
             },
             "analysis": {
                 "visual": {
-                    "people": {"present": True, "count_estimate": 1},
+                    "people": {
+                        "present": True,
+                        "count_estimate": 1,
+                        "faces_visible": [{"timestamp_seconds": 0.0}],
+                    },
                     "on_screen_text": [{"text": "oi"}],
                     "scene_changes": [],
                 },
-                "audio": {"speech_present": True, "sound_effects": []},
+                "audio": {
+                    "speech_present": True,
+                    "speech_start_seconds": 0.5,
+                    "transcript_excerpt": "Você quer conferir 3 carros? Compre agora!",
+                    "sound_effects": [],
+                },
                 "interpretation": {
                     "opening_type": {"label": "person_speaking"},
                     "product_prominence": {"label": "none"},
@@ -94,6 +103,14 @@ def test_feature_map_joins_vlm_and_uses_only_prior_posts(tmp_path: Path) -> None
     assert by_id["middle"]["prior_views_median_observed"] == 100
     assert by_id["new"]["prior_views_median_observed"] == 150
     assert by_id["middle"]["vlm_available"] is True
+    assert by_id["middle"]["faces_visible"] is True
     assert by_id["middle"]["opening_type"] == "person_speaking"
+    assert by_id["middle"]["transcript_available"] is True
+    assert by_id["middle"]["transcript_excerpt_word_count"] == 7
+    assert by_id["middle"]["transcript_number_token_count"] == 1
+    assert by_id["middle"]["transcript_second_person_cue"] is True
+    assert by_id["middle"]["transcript_call_to_action_cue"] is True
+    assert by_id["middle"]["transcript_question_mark_count"] == 1
+    assert by_id["middle"]["transcript_exclamation_mark_count"] == 1
     assert by_id["old"]["target_is_fixed_horizon"] is False
     assert by_id["new"]["channel_history_temporally_valid"] is False

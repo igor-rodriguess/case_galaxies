@@ -1,5 +1,5 @@
 {
-  "selection_version": "initial-2026-10-12",
+  "selection_version": "expanded-2026-10-14",
   "country_focus": "BR",
   "language_focus": "pt-BR",
   "candidates": [
@@ -8,17 +8,32 @@
     {"sector": "automotivo", "label": "FullPowerTV", "query": "FullPowerTV canal oficial"},
     {"sector": "automotivo", "label": "Auto Super", "query": "Auto Super canal automotivo"},
     {"sector": "automotivo", "label": "Opinião Sincera", "query": "Opinião Sincera carros canal"},
+    {"sector": "automotivo", "label": "Webmotors", "query": "Webmotors canal oficial"},
+    {"sector": "automotivo", "label": "Quatro Rodas", "query": "Quatro Rodas canal oficial"},
+    {"sector": "automotivo", "label": "AutoPapo", "query": "AutoPapo canal oficial Boris Feldman"},
+    {"sector": "automotivo", "label": "Carros com Camanzi", "query": "Carros com Camanzi canal oficial"},
+    {"sector": "automotivo", "label": "Motor1 Brasil", "query": "Motor1 Brasil canal oficial"},
 
     {"sector": "moda", "label": "Steal The Look", "query": "Steal The Look canal oficial"},
     {"sector": "moda", "label": "Lela Brandão", "query": "Lela Brandão canal oficial"},
     {"sector": "moda", "label": "Chata de Galocha", "query": "Chata de Galocha Lu Ferreira canal"},
     {"sector": "moda", "label": "Thássia Naves", "query": "Thássia Naves canal oficial"},
     {"sector": "moda", "label": "Isabella Fiorentino", "query": "Isabella Fiorentino canal oficial"},
+    {"sector": "moda", "label": "Vogue Brasil", "query": "Vogue Brasil canal oficial"},
+    {"sector": "moda", "label": "C&A Brasil", "query": "C&A Brasil canal oficial"},
+    {"sector": "moda", "label": "Renner", "query": "Lojas Renner canal oficial"},
+    {"sector": "moda", "label": "Riachuelo", "query": "Riachuelo canal oficial"},
+    {"sector": "moda", "label": "Camila Coutinho", "query": "Camila Coutinho Garotas Estúpidas canal oficial"},
 
     {"sector": "beleza", "label": "Karen Bachini", "query": "Karen Bachini canal oficial"},
     {"sector": "beleza", "label": "Niina Secrets", "query": "Niina Secrets canal oficial"},
     {"sector": "beleza", "label": "Boca Rosa", "query": "Boca Rosa Bianca Andrade canal oficial"},
     {"sector": "beleza", "label": "Mari Maria", "query": "Mari Maria canal oficial beleza"},
-    {"sector": "beleza", "label": "Tour da Beleza", "query": "Tour da Beleza canal oficial"}
+    {"sector": "beleza", "label": "Tour da Beleza", "query": "Tour da Beleza canal oficial"},
+    {"sector": "beleza", "label": "Bruna Tavares", "query": "Bruna Tavares canal oficial beleza"},
+    {"sector": "beleza", "label": "Franciny Ehlke", "query": "Franciny Ehlke canal oficial"},
+    {"sector": "beleza", "label": "Jana Taffarel", "query": "Jana Taffarel canal oficial beleza"},
+    {"sector": "beleza", "label": "Vult", "query": "Vult Cosmética canal oficial"},
+    {"sector": "beleza", "label": "Beleza na Web", "query": "Beleza na Web canal oficial"}
   ]
 }

@@ -23,7 +23,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 YOUTUBE_RUNS_DIR = PROJECT_ROOT / "data" / "youtube" / "runs"
 FEATURE_RUNS_DIR = PROJECT_ROOT / "data" / "features" / "runs"
 DEFAULT_MODEL = "gemini-3.8-flash"
-PROMPT_VERSION = "galaxies-opening-v0.1.0"
+PROMPT_VERSION = "galaxies-opening-v0.2.0-closed-taxonomy"
 
 
 class QuotaExhaustedError(RuntimeError):
@@ -167,11 +167,36 @@ Regras:
       "present": null,
       "text_or_description": null,
       "confidence": 0.0
+    }},
+    "sector_specific": {{
+      "beauty_swatch_present": null,
+      "beauty_skin_application_present": null,
+      "beauty_before_after_present": null,
+      "fashion_try_on_present": null,
+      "fashion_full_body_present": null,
+      "fashion_garment_detail_present": null,
+      "automotive_car_closeup_present": null,
+      "automotive_engine_sound_present": null,
+      "automotive_driving_pov_present": null,
+      "automotive_interior_present": null
     }}
   }},
   "evidence": [],
   "uncertainties": []
 }}
+
+Use obrigatoriamente estas taxonomias fechadas:
+- visual.shot_and_camera.framing: "pov", "extreme_close_up", "close_up",
+  "medium_close_up", "medium", "wide", "other" ou "unknown".
+- visual.shot_and_camera.camera_movement: "static", "handheld", "zoom",
+  "moving", "cut", "dynamic", "other" ou "unknown".
+- visual.motion_intensity.label: "low", "medium", "high" ou "unknown".
+- interpretation.opening_type.label: "question", "statement", "demonstration",
+  "product_reveal", "person_speaking", "montage", "text_hook", "other" ou "unknown".
+- interpretation.product_prominence.label: "none", "low", "medium", "high" ou "unknown".
+- interpretation.sector_specific: use apenas true, false ou null para cada atributo.
+  Eles descrevem presença observável, não a qualidade do criativo. Preencha somente
+  o que é observável no trecho, independentemente do setor do canal.
 
 Cada item de "on_screen_text" deve conter "text", "timestamp_seconds" e
 "legibility". Cada item de "scene_changes" deve conter "timestamp_seconds" e
@@ -292,6 +317,43 @@ def request_gemini(
             ) from exc
 
     return payload, raw_response
+
+
+def validate_analysis(analysis: dict) -> None:
+    """Recusa respostas JSON parciais antes que elas entrem no mapa de features."""
+    required_paths = (
+        ("analysis_scope",),
+        ("visual", "first_visible_element"),
+        ("visual", "people"),
+        ("visual", "product_or_object_in_focus"),
+        ("visual", "on_screen_text"),
+        ("visual", "setting"),
+        ("visual", "shot_and_camera", "framing"),
+        ("visual", "shot_and_camera", "camera_movement"),
+        ("visual", "scene_changes"),
+        ("visual", "motion_intensity"),
+        ("audio", "speech_present"),
+        ("audio", "transcript_excerpt"),
+        ("audio", "language"),
+        ("audio", "music_present"),
+        ("audio", "sound_effects"),
+        ("interpretation", "opening_type", "label"),
+        ("interpretation", "product_prominence", "label"),
+        ("interpretation", "call_to_action", "present"),
+        ("interpretation", "sector_specific"),
+        ("evidence",),
+        ("uncertainties",),
+    )
+    missing: list[str] = []
+    for path in required_paths:
+        current: object = analysis
+        for key in path:
+            if not isinstance(current, dict) or key not in current:
+                missing.append(".".join(path))
+                break
+            current = current[key]
+    if missing:
+        raise ValueError("Resposta VLM incompleta; campos ausentes: " + ", ".join(missing))
 
 
 def parse_args() -> argparse.Namespace:
@@ -416,6 +478,7 @@ def main() -> int:
         )
         response_text = extract_text(raw_response)
         analysis = parse_json_response(response_text)
+        validate_analysis(analysis)
     except QuotaExhaustedError as exc:
         save_json(
             output_dir / "error.json",
@@ -478,6 +541,10 @@ def main() -> int:
         "response_metadata": {
             "model_version": raw_response.get("modelVersion"),
             "usage_metadata": raw_response.get("usageMetadata"),
+        },
+        "validation": {
+            "status": "complete",
+            "validator": "required-opening-fields-v0.1.0",
         },
         "analysis": analysis,
     }

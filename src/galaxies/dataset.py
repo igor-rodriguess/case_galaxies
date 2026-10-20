@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import math
+import re
 from collections import defaultdict
 from collections.abc import Iterable
 from datetime import UTC, datetime
@@ -98,6 +99,26 @@ def optional_int(value: Any) -> int | None:
     return None if number is None else int(number)
 
 
+def optional_bool(value: Any) -> bool | None:
+    """Normaliza saídas booleanas tolerando evidências estruturadas do VLM."""
+    if value is None:
+        return None
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        normalized = value.strip().lower()
+        if normalized in {"true", "yes", "sim", "1"}:
+            return True
+        if normalized in {"false", "no", "não", "nao", "0"}:
+            return False
+        return None
+    if isinstance(value, (list, tuple, set, dict)):
+        return bool(value)
+    if isinstance(value, (int, float)):
+        return bool(value)
+    return None
+
+
 def nested(value: dict[str, Any] | None, *keys: str, default: Any = None) -> Any:
     current: Any = value
     for key in keys:
@@ -110,14 +131,14 @@ def nested(value: dict[str, Any] | None, *keys: str, default: Any = None) -> Any
 def latest_youtube_run(runs_dir: Path = YOUTUBE_RUNS_DIR) -> Path:
     if not runs_dir.exists():
         raise FileNotFoundError(f"Diretório de coletas não encontrado: {runs_dir}")
-    candidates = sorted(
+    candidates = [
         path
         for path in runs_dir.iterdir()
         if path.is_dir() and (path / "curated" / "videos").exists()
-    )
+    ]
     if not candidates:
         raise FileNotFoundError("Nenhuma coleta curada do YouTube foi encontrada.")
-    return candidates[-1]
+    return max(candidates, key=lambda path: path.stat().st_mtime_ns)
 
 
 def load_youtube_documents(run_dir: Path | None = None) -> list[dict[str, Any]]:
@@ -154,6 +175,12 @@ def load_latest_vlm_results(
             result = read_json(path)
         except OSError as exc:
             raise OSError(f"Não foi possível ler o resultado VLM {path}.") from exc
+        prompt_version = nested(result, "provenance", "extractor", "prompt_version", default="")
+        validation_status = nested(result, "validation", "status")
+        if str(prompt_version).startswith("galaxies-opening-v0.2") and validation_status != "complete":
+            # A versão 0.2 passou a rejeitar JSONs parciais. Resultados antigos
+            # sem esse selo não podem ocupar a vaga de uma nova tentativa válida.
+            continue
         video_id = nested(result, "identity", "video_id")
         if not video_id:
             raise ValueError(f"Resultado VLM sem video_id: {path}")
@@ -205,11 +232,71 @@ def _extract_target(document: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def _word_count(value: Any) -> int | None:
-    if value is None:
-        return None
-    text = str(value).strip()
-    return len(text.split()) if text else 0
+def _extract_transcript_features(
+    value: Any,
+    *,
+    speech_start_seconds: Any,
+    interval_end_seconds: Any,
+) -> dict[str, Any]:
+    """Converte a fala observada em atributos compactos sem copiar o texto bruto."""
+    text = str(value).strip() if value is not None else ""
+    tokens = re.findall(r"[^\W_]+", text.casefold(), flags=re.UNICODE)
+    word_count = len(tokens)
+    unique_ratio = len(set(tokens)) / word_count if word_count else None
+    start = optional_float(speech_start_seconds)
+    end = optional_float(interval_end_seconds)
+    speech_window = max(end - start, 0.25) if start is not None and end is not None else None
+
+    second_person_terms = {
+        "tu",
+        "você",
+        "voce",
+        "vocês",
+        "voces",
+        "seu",
+        "sua",
+        "teu",
+        "tua",
+        "you",
+        "your",
+    }
+    cta_terms = {
+        "acesse",
+        "assista",
+        "compre",
+        "confira",
+        "clique",
+        "compartilhe",
+        "curta",
+        "inscreva",
+        "siga",
+        "veja",
+        "watch",
+        "buy",
+        "click",
+        "follow",
+        "shop",
+        "subscribe",
+    }
+    token_set = set(tokens)
+    return {
+        "transcript_available": bool(text),
+        "transcript_excerpt_word_count": word_count if text else None,
+        "transcript_character_count": len(text) if text else None,
+        "transcript_unique_word_ratio": unique_ratio,
+        "transcript_words_per_second": (
+            word_count / speech_window if text and speech_window is not None else None
+        ),
+        "transcript_question_mark_count": text.count("?") if text else None,
+        "transcript_exclamation_mark_count": text.count("!") if text else None,
+        "transcript_number_token_count": (
+            sum(token.isdigit() for token in tokens) if text else None
+        ),
+        "transcript_second_person_cue": (
+            bool(token_set & second_person_terms) if text else None
+        ),
+        "transcript_call_to_action_cue": bool(token_set & cta_terms) if text else None,
+    }
 
 
 def _mean_confidence(analysis: dict[str, Any]) -> float | None:
@@ -252,7 +339,16 @@ def _empty_vlm_features() -> dict[str, Any]:
         "motion_intensity": None,
         "speech_present": None,
         "speech_start_seconds": None,
+        "transcript_available": False,
         "transcript_excerpt_word_count": None,
+        "transcript_character_count": None,
+        "transcript_unique_word_ratio": None,
+        "transcript_words_per_second": None,
+        "transcript_question_mark_count": None,
+        "transcript_exclamation_mark_count": None,
+        "transcript_number_token_count": None,
+        "transcript_second_person_cue": None,
+        "transcript_call_to_action_cue": None,
         "audio_language": None,
         "music_present": None,
         "sound_effect_count": None,
@@ -302,6 +398,12 @@ def _extract_vlm_features(result: dict[str, Any] | None) -> dict[str, Any]:
         sector_specific = {}
 
     source_path = result.get("_source_path")
+    transcript = nested(analysis, "audio", "transcript_excerpt")
+    transcript_features = _extract_transcript_features(
+        transcript,
+        speech_start_seconds=nested(analysis, "audio", "speech_start_seconds"),
+        interval_end_seconds=nested(result, "provenance", "clip", "end_seconds"),
+    )
     features.update(
         {
             "vlm_available": True,
@@ -316,7 +418,9 @@ def _extract_vlm_features(result: dict[str, Any] | None) -> dict[str, Any]:
             "people_count_estimate": optional_int(
                 nested(analysis, "visual", "people", "count_estimate")
             ),
-            "faces_visible": nested(analysis, "visual", "people", "faces_visible"),
+            "faces_visible": optional_bool(
+                nested(analysis, "visual", "people", "faces_visible")
+            ),
             "product_in_focus": nested(analysis, "visual", "product_or_object_in_focus", "present"),
             "brand_legible": bool(brand) if brand is not None else None,
             "on_screen_text_count": len(text_items),
@@ -328,9 +432,6 @@ def _extract_vlm_features(result: dict[str, Any] | None) -> dict[str, Any]:
             "speech_present": nested(analysis, "audio", "speech_present"),
             "speech_start_seconds": optional_float(
                 nested(analysis, "audio", "speech_start_seconds")
-            ),
-            "transcript_excerpt_word_count": _word_count(
-                nested(analysis, "audio", "transcript_excerpt")
             ),
             "audio_language": nested(analysis, "audio", "language"),
             "music_present": nested(analysis, "audio", "music_present"),
@@ -359,6 +460,7 @@ def _extract_vlm_features(result: dict[str, Any] | None) -> dict[str, Any]:
             "vlm_result_path": str(source_path) if source_path else None,
         }
     )
+    features.update(transcript_features)
     return features
 
 

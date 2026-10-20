@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import unicodedata
@@ -11,6 +12,15 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RUNS_DIR = PROJECT_ROOT / "data" / "youtube" / "runs"
 SCHEMA_VERSION = "0.1.0"
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Organiza uma coleta bruta do YouTube.")
+    parser.add_argument(
+        "--source-run-id",
+        help="Nome da coleta em data/youtube/runs; padrão: a mais recente.",
+    )
+    return parser.parse_args()
 
 
 def load_json(path: Path) -> dict:
@@ -47,10 +57,20 @@ def slugify(value: str) -> str:
 
 
 def main() -> int:
-    run_dirs = sorted(path for path in RUNS_DIR.iterdir() if path.is_dir())
+    args = parse_args()
+    run_dirs = [
+        path
+        for path in RUNS_DIR.iterdir()
+        if path.is_dir() and (path / "normalized_records.json").exists()
+    ]
     if not run_dirs:
         raise RuntimeError("Nenhuma coleta encontrada")
-    run_dir = run_dirs[-1]
+    if args.source_run_id:
+        run_dir = RUNS_DIR / args.source_run_id
+        if run_dir not in run_dirs:
+            raise FileNotFoundError(f"Coleta não encontrada: {run_dir}")
+    else:
+        run_dir = max(run_dirs, key=lambda path: path.stat().st_mtime_ns)
     normalized = load_json(run_dir / "normalized_records.json")["records"]
     metadata = load_json(run_dir / "run_metadata.json")
     curated_dir = run_dir / "curated"
@@ -70,6 +90,10 @@ def main() -> int:
         channel_folder = slugify(channel_title)
         duration_seconds = iso_duration_seconds(record.get("duration"))
         raw_base = f"raw/{channel_id}"
+        raw_files = sorted(
+            path.relative_to(run_dir).as_posix()
+            for path in (run_dir / raw_base).glob("*.json")
+        )
 
         video_document = {
             "schema_version": SCHEMA_VERSION,
@@ -121,11 +145,7 @@ def main() -> int:
                 "collected_at": record.get("collected_at"),
                 "raw_path_base": "source_run_directory",
                 "endpoints": ["channels.list", "playlistItems.list", "videos.list"],
-                "raw_files": {
-                    "channel": f"{raw_base}/channels.json",
-                    "playlist_items": f"{raw_base}/playlistItems.json",
-                    "video_details": f"{raw_base}/videos.json",
-                },
+                "raw_files": raw_files,
                 "selection_file": "config/selected_channels.json",
                 "selection_path_base": "project_root",
                 "playlist_position_at_collection": record.get("playlist_position"),
@@ -149,7 +169,7 @@ def main() -> int:
 
     manifest = {
         "schema_version": SCHEMA_VERSION,
-        "dataset": "galaxies-youtube-first-extraction",
+        "dataset": "galaxies-youtube-extraction",
         "source_run": run_dir.name,
         "collected_at": metadata.get("collected_at"),
         "selection_version": metadata.get("selection_version"),
@@ -162,14 +182,13 @@ def main() -> int:
         ),
         "missing_value_counts": dict(sorted(missing_counts.items())),
         "storage": {
-            "raw": "raw/<channel_id>/{channels,playlistItems,videos}.json",
+            "raw": "raw/<channel_id>/{channels,playlistItems-page-*,videos-batch-*}.json",
             "curated": "curated/videos/<sector>/<channel-name>/<video_id>.json",
         },
         "known_limitations": [
-            "A amostra contém os cinco uploads mais recentes de cada canal, não cinco Shorts confirmados.",
+            "A amostra contém uploads recentes; a Data API não confirma diretamente quais são Shorts.",
             "Métricas são snapshots no instante da coleta.",
             "Contagem de inscritos é atual na coleta, não histórica na publicação.",
-            "Camila Coelho Português e Thássia Naves apresentaram baixa atividade recente nesta rodada.",
         ],
     }
     save_json(curated_dir / "manifest.json", manifest)
