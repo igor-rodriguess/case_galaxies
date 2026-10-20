@@ -21,6 +21,7 @@ def test_mcp_lists_expected_tools_and_reports_not_ready() -> None:
                 "get_video_feature_map",
                 "predict_performance",
                 "rank_creatives",
+                "recent_mcp_calls",
             } <= names
             result = await client.call_tool("model_status", {"sector": "automotivo"})
             assert result.structured_content["ready"] is False
