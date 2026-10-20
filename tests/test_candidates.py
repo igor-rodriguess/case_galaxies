@@ -6,6 +6,8 @@ def test_requested_regression_candidates_are_registered() -> None:
         "linear_regression",
         "gradient_boosting",
         "random_forest",
+        "extra_trees",
+        "hist_gradient_boosting",
         "mlp",
     ]
     assert all(make_regressor(name, 42) is not None for name in names)

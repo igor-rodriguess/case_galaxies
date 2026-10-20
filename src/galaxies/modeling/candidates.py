@@ -6,8 +6,10 @@ from typing import Any
 
 from sklearn.dummy import DummyClassifier, DummyRegressor
 from sklearn.ensemble import (
+    ExtraTreesRegressor,
     GradientBoostingRegressor,
     HistGradientBoostingClassifier,
+    HistGradientBoostingRegressor,
     RandomForestClassifier,
     RandomForestRegressor,
 )
@@ -33,6 +35,20 @@ def make_regressor(name: str, random_state: int) -> Any:
             min_samples_leaf=3,
             max_features=0.8,
             n_jobs=-1,
+            random_state=random_state,
+        ),
+        "extra_trees": lambda: ExtraTreesRegressor(
+            n_estimators=400,
+            min_samples_leaf=3,
+            max_features=0.8,
+            n_jobs=-1,
+            random_state=random_state,
+        ),
+        "hist_gradient_boosting": lambda: HistGradientBoostingRegressor(
+            learning_rate=0.05,
+            max_iter=300,
+            max_leaf_nodes=15,
+            l2_regularization=1.0,
             random_state=random_state,
         ),
         "mlp": lambda: MLPRegressor(
