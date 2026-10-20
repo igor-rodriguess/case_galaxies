@@ -369,14 +369,17 @@ O front-end fica para depois. A interface obrigatória agora é a função Pytho
 
 ## Estado atual
 
-Em 13 de outubro de 2026, o projeto tem:
+Em 15 de outubro de 2026, o projeto tem:
 
-- 15 canais selecionados, cinco por setor;
-- 75 vídeos coletados pela YouTube Data API v3;
+- 30 canais selecionados, dez por setor;
+- 598 vídeos únicos coletados pela YouTube Data API v3: 200 de automotivo,
+  198 de moda e 200 de beleza;
 - registros brutos, normalizados e curados ligados por IDs;
-- oito resultados de abertura disponíveis localmente;
+- 306 vídeos da coleta atual com análise audiovisual da abertura: 101 de
+  automotivo, 105 de moda e 100 de beleza;
 - seis vídeos, dois por setor, conferidos manualmente e aprovados;
-- execução em lote retomável para continuar depois da renovação da cota;
+- execução em lote retomável, com reaproveitamento de resultados e registro
+  explícito de vídeos recusados pela fonte;
 - seleção diária balanceada e pausa automática para cota ou indisponibilidade;
 - gerador de mapa de features ligado aos JSONs por `video_id`;
 - auditoria automática de prontidão por setor;
@@ -385,8 +388,15 @@ Em 13 de outubro de 2026, o projeto tem:
 - lint, formatação e testes automatizados;
 - função de predição e servidor MCP preparados, ainda sem modelo promovido.
 
-Ainda faltam a transcrição completa, os embeddings, a coleta em escala, o alvo em
-horizonte fixo e o treinamento válido dos três modelos. A estrutura existe, mas
+A meta exploratória de pelo menos 100 aberturas analisadas por setor foi atingida.
+Isso representa cobertura VLM de 50,5% em automotivo, 53,0% em moda e 50,0% em
+beleza sobre toda a coleta. O gate conservador de treinamento final continua em
+80%, portanto essa amostra serve para análise exploratória e desenvolvimento, não
+para promover um modelo final.
+
+Ainda faltam a transcrição completa, os embeddings e, principalmente, um alvo em
+horizonte fixo. O histórico de canal calculado a partir de um único snapshot
+também não é temporalmente válido para os vídeos antigos. A estrutura existe, mas
 nenhum resultado preditivo será tratado como válido antes de esses dados passarem
 pelos gates declarados.
 
@@ -409,3 +419,28 @@ Os artigos usados como base estão em `references/papers/`, incluindo os trabalh
 identificados por `2309.15379`, `2503.04446`, `2507.00950` e `2512.21402`. Eles são
 referências para decisões de extração, representação e avaliação; nenhuma escolha
 do pipeline deve ser atribuída a um paper sem conferir diretamente sua fonte.
+
+## Agente de hipóteses
+
+`scripts/run_hypothesis_agent.py` roda um agente (LangGraph + Gemini) que
+propõe experimentos, executa cada um com um protocolo congelado e só promove
+um modelo quando ele vence o campeão com evidência. O código fica em
+`src/galaxies/agent/`.
+
+- **Alvo:** viral = top 10% do próprio canal, com ajuste de idade dentro do
+  canal, só vídeos com 30+ dias.
+- **Métrica:** AUC intra-canal em leave-one-channel-out, com IC95% reamostrando
+  canais; checagem num corte temporal. Meta: 0,85.
+- **Proteções:** catálogo fechado de alavancas (o LLM não escolhe colunas),
+  features pós-publicação proibidas, um canal por setor trancado no cofre e
+  bloqueio de modelos cuja nota acompanha a idade do vídeo (`rho idade`).
+- **Saídas:** histórico cumulativo em `data/agent/ledger.jsonl` e relatório em
+  `data/agent/runs/<run_id>/report.md`. Execuções seguintes não repetem
+  configurações já testadas na mesma base.
+
+```bash
+pip install -e ".[agent]"
+python scripts/run_hypothesis_agent.py --rounds 3 --per-round 4   # Gemini
+python scripts/run_hypothesis_agent.py --offline                  # sem LLM
+python scripts/run_hypothesis_agent.py --open-vault               # confere no cofre
+```
