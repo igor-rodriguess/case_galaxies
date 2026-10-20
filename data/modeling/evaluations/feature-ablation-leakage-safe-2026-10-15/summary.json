@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1.0",
+  "run_id": "feature-ablation-leakage-safe-2026-10-15",
+  "dataset": "data\\modeling\\runs\\exploratory-eval-2026-10-15\\feature_map.jsonl",
+  "sectors": {
+    "automotivo": {
+      "rows": 101,
+      "best_temporal": "metadata",
+      "best_channel_holdout": "audiovisual",
+      "best_temporal_unrestricted": "metadata_channel",
+      "best_channel_holdout_unrestricted": "channel_history"
+    },
+    "moda": {
+      "rows": 105,
+      "best_temporal": "metadata",
+      "best_channel_holdout": "audiovisual",
+      "best_temporal_unrestricted": "combined",
+      "best_channel_holdout_unrestricted": "channel_history"
+    },
+    "beleza": {
+      "rows": 100,
+      "best_temporal": "metadata",
+      "best_channel_holdout": "audiovisual",
+      "best_temporal_unrestricted": "combined",
+      "best_channel_holdout_unrestricted": "metadata_channel"
+    }
+  }
+}

@@ -1,0 +1,1548 @@
+{
+  "schema_version": "0.1.0",
+  "observed_date": "2026-10-19",
+  "target_ages_days": [
+    1,
+    3,
+    7,
+    14,
+    30
+  ],
+  "tolerance_hours": 18.0,
+  "records_source": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json",
+  "items": [
+    {
+      "video_id": "gIiuFaSOJ1Q",
+      "channel_id": "UCGBIIPnw0AYM3BFsmTsjeAw",
+      "sector": "automotivo",
+      "published_at": "2026-10-15T21:00:34+00:00",
+      "target_age_day": 3,
+      "observed_at": "2026-10-19T13:04:16.159631Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "1914",
+        "likeCount": "57",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "w0op6Vxq9KU",
+      "channel_id": "UCGBIIPnw0AYM3BFsmTsjeAw",
+      "sector": "automotivo",
+      "published_at": "2026-10-15T21:00:17+00:00",
+      "target_age_day": 3,
+      "observed_at": "2026-10-19T13:04:16.159631Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "6355",
+        "likeCount": "135",
+        "favoriteCount": "0",
+        "commentCount": "3"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "MYjhdOZ9bqY",
+      "channel_id": "UCGBIIPnw0AYM3BFsmTsjeAw",
+      "sector": "automotivo",
+      "published_at": "2026-10-12T21:00:10+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.159631Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "423326",
+        "likeCount": "10096",
+        "favoriteCount": "0",
+        "commentCount": "596"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "mQGGRPhH1CE",
+      "channel_id": "UCGBIIPnw0AYM3BFsmTsjeAw",
+      "sector": "automotivo",
+      "published_at": "2026-10-12T21:00:09+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.159631Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "5013",
+        "likeCount": "187",
+        "favoriteCount": "0",
+        "commentCount": "5"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "gmi2iRLj1Q4",
+      "channel_id": "UCGBIIPnw0AYM3BFsmTsjeAw",
+      "sector": "automotivo",
+      "published_at": "2026-10-11T20:06:33+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.159631Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "12655",
+        "likeCount": "556",
+        "favoriteCount": "0",
+        "commentCount": "36"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "aGFe9SOojis",
+      "channel_id": "UCGBIIPnw0AYM3BFsmTsjeAw",
+      "sector": "automotivo",
+      "published_at": "2026-10-05T17:47:43+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.159631Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "20242",
+        "likeCount": "490",
+        "favoriteCount": "0",
+        "commentCount": "12"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "mGKwB9_Yfzo",
+      "channel_id": "UCGBIIPnw0AYM3BFsmTsjeAw",
+      "sector": "automotivo",
+      "published_at": "2026-10-05T17:43:16+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.159631Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "11233",
+        "likeCount": "477",
+        "favoriteCount": "0",
+        "commentCount": "5"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "QKqq9E7Oobg",
+      "channel_id": "UCGBIIPnw0AYM3BFsmTsjeAw",
+      "sector": "automotivo",
+      "published_at": "2026-10-05T14:29:07+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.159631Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "4385",
+        "likeCount": "76",
+        "favoriteCount": "0",
+        "commentCount": "2"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "4HK-WxJT34A",
+      "channel_id": "UCGBIIPnw0AYM3BFsmTsjeAw",
+      "sector": "automotivo",
+      "published_at": "2026-09-19T20:13:55+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.159631Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "24168",
+        "likeCount": "572",
+        "favoriteCount": "0",
+        "commentCount": "13"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "wzcUHSoclc4",
+      "channel_id": "UCGBIIPnw0AYM3BFsmTsjeAw",
+      "sector": "automotivo",
+      "published_at": "2026-09-19T16:43:45+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.159631Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "15662",
+        "likeCount": "224",
+        "favoriteCount": "0",
+        "commentCount": "1"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "YgONyDL18WY",
+      "channel_id": "UCGBIIPnw0AYM3BFsmTsjeAw",
+      "sector": "automotivo",
+      "published_at": "2026-09-19T15:00:08+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.159631Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "36424",
+        "likeCount": "653",
+        "favoriteCount": "0",
+        "commentCount": "23"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "feO3Ogv48hQ",
+      "channel_id": "UCc0cU92Tf7rvd2gr-CpVO4Q",
+      "sector": "automotivo",
+      "published_at": "2026-10-16T02:18:08+00:00",
+      "target_age_day": 3,
+      "observed_at": "2026-10-19T13:04:16.159631Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "20645",
+        "likeCount": "649",
+        "favoriteCount": "0",
+        "commentCount": "16"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "6HTIKF9z0XQ",
+      "channel_id": "UCc0cU92Tf7rvd2gr-CpVO4Q",
+      "sector": "automotivo",
+      "published_at": "2026-10-15T23:00:27+00:00",
+      "target_age_day": 3,
+      "observed_at": "2026-10-19T13:04:16.159631Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "39390",
+        "likeCount": "1405",
+        "favoriteCount": "0",
+        "commentCount": "48"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "CAJZky3pQB4",
+      "channel_id": "UCc0cU92Tf7rvd2gr-CpVO4Q",
+      "sector": "automotivo",
+      "published_at": "2026-10-12T20:00:28+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.159631Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "62422",
+        "likeCount": "1868",
+        "favoriteCount": "0",
+        "commentCount": "105"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "0ECC-rtMAoQ",
+      "channel_id": "UCc0cU92Tf7rvd2gr-CpVO4Q",
+      "sector": "automotivo",
+      "published_at": "2026-10-12T15:00:10+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.159631Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "19098",
+        "likeCount": "998",
+        "favoriteCount": "0",
+        "commentCount": "112"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "j5Avk3YkEbw",
+      "channel_id": "UCc0cU92Tf7rvd2gr-CpVO4Q",
+      "sector": "automotivo",
+      "published_at": "2026-10-11T21:18:08+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.166556Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "10207",
+        "likeCount": "601",
+        "favoriteCount": "0",
+        "commentCount": "7"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "sbM-kOCaxZI",
+      "channel_id": "UCc0cU92Tf7rvd2gr-CpVO4Q",
+      "sector": "automotivo",
+      "published_at": "2026-10-05T22:15:19+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.166556Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "88359",
+        "likeCount": "2680",
+        "favoriteCount": "0",
+        "commentCount": "123"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "JVUi_qH2MlI",
+      "channel_id": "UCc0cU92Tf7rvd2gr-CpVO4Q",
+      "sector": "automotivo",
+      "published_at": "2026-10-05T16:52:21+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.166556Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "8905",
+        "likeCount": "356",
+        "favoriteCount": "0",
+        "commentCount": "8"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "t0fJ6uDVKQM",
+      "channel_id": "UCc0cU92Tf7rvd2gr-CpVO4Q",
+      "sector": "automotivo",
+      "published_at": "2026-10-04T23:19:04+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.166556Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "17170",
+        "likeCount": "952",
+        "favoriteCount": "0",
+        "commentCount": "16"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "c1wE6A6V-uE",
+      "channel_id": "UCc0cU92Tf7rvd2gr-CpVO4Q",
+      "sector": "automotivo",
+      "published_at": "2026-09-19T21:33:17+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.166556Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "44980",
+        "likeCount": "1643",
+        "favoriteCount": "0",
+        "commentCount": "44"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "n7N0pIuS8c0",
+      "channel_id": "UCc0cU92Tf7rvd2gr-CpVO4Q",
+      "sector": "automotivo",
+      "published_at": "2026-09-19T16:41:25+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.166556Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "13450",
+        "likeCount": "639",
+        "favoriteCount": "0",
+        "commentCount": "27"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "jNJANcE2BBw",
+      "channel_id": "UCc0cU92Tf7rvd2gr-CpVO4Q",
+      "sector": "automotivo",
+      "published_at": "2026-09-18T22:00:09+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.166556Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "126025",
+        "likeCount": "3274",
+        "favoriteCount": "0",
+        "commentCount": "462"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "JK5IgecyiGA",
+      "channel_id": "UCz2Bb7YdduN4x7qN9oFrJjQ",
+      "sector": "automotivo",
+      "published_at": "2026-10-15T21:30:39+00:00",
+      "target_age_day": 3,
+      "observed_at": "2026-10-19T13:04:16.166556Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "934",
+        "likeCount": "59",
+        "favoriteCount": "0",
+        "commentCount": "4"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "BD3g0AUggB8",
+      "channel_id": "UCz2Bb7YdduN4x7qN9oFrJjQ",
+      "sector": "automotivo",
+      "published_at": "2026-10-12T12:00:13+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.166556Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "2153",
+        "likeCount": "46",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "vRYTqGE3fgs",
+      "channel_id": "UCz2Bb7YdduN4x7qN9oFrJjQ",
+      "sector": "automotivo",
+      "published_at": "2026-10-05T20:43:27+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.166556Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "1434",
+        "likeCount": "60",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "SuuvijCX5eo",
+      "channel_id": "UCz2Bb7YdduN4x7qN9oFrJjQ",
+      "sector": "automotivo",
+      "published_at": "2026-10-05T12:00:21+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.170085Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "1489",
+        "likeCount": "47",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "X6gwmuUNKUM",
+      "channel_id": "UCz2Bb7YdduN4x7qN9oFrJjQ",
+      "sector": "automotivo",
+      "published_at": "2026-10-05T12:00:07+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.170085Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "2021",
+        "likeCount": "24",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "1mJIz_GhdU4",
+      "channel_id": "UCIvQJmPaDR2lMDDNhb4--bA",
+      "sector": "automotivo",
+      "published_at": "2026-10-13T00:48:08+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.170085Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "109247",
+        "likeCount": "3336",
+        "favoriteCount": "0",
+        "commentCount": "328"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "O_bwesLwF-A",
+      "channel_id": "UCIvQJmPaDR2lMDDNhb4--bA",
+      "sector": "automotivo",
+      "published_at": "2026-10-12T18:00:28+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.170085Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "70875",
+        "likeCount": "634",
+        "favoriteCount": "0",
+        "commentCount": "43"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "QTRfROcIEtE",
+      "channel_id": "UChUvS75BR7ziAr7WhrecVsA",
+      "sector": "automotivo",
+      "published_at": "2026-10-16T05:04:33+00:00",
+      "target_age_day": 3,
+      "observed_at": "2026-10-19T13:04:16.170085Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "8239",
+        "likeCount": "363",
+        "favoriteCount": "0",
+        "commentCount": "13"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "Tp6v-56fyvw",
+      "channel_id": "UChUvS75BR7ziAr7WhrecVsA",
+      "sector": "automotivo",
+      "published_at": "2026-10-15T20:00:52+00:00",
+      "target_age_day": 3,
+      "observed_at": "2026-10-19T13:04:16.170085Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "9524",
+        "likeCount": "534",
+        "favoriteCount": "0",
+        "commentCount": "10"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "yBzWgbY7Pac",
+      "channel_id": "UChUvS75BR7ziAr7WhrecVsA",
+      "sector": "automotivo",
+      "published_at": "2026-10-12T22:00:06+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.170085Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "8294",
+        "likeCount": "235",
+        "favoriteCount": "0",
+        "commentCount": "9"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "3-IkdGKO860",
+      "channel_id": "UChUvS75BR7ziAr7WhrecVsA",
+      "sector": "automotivo",
+      "published_at": "2026-10-12T21:00:27+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.170085Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "21179",
+        "likeCount": "288",
+        "favoriteCount": "0",
+        "commentCount": "5"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "ZSqoq9D8Lt4",
+      "channel_id": "UChUvS75BR7ziAr7WhrecVsA",
+      "sector": "automotivo",
+      "published_at": "2026-10-12T10:00:23+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.170085Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "6253",
+        "likeCount": "215",
+        "favoriteCount": "0",
+        "commentCount": "12"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "0bqsrnM9I0U",
+      "channel_id": "UChUvS75BR7ziAr7WhrecVsA",
+      "sector": "automotivo",
+      "published_at": "2026-10-11T20:00:37+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.170085Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "83859",
+        "likeCount": "1713",
+        "favoriteCount": "0",
+        "commentCount": "54"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "WHapkCEYMLM",
+      "channel_id": "UChUvS75BR7ziAr7WhrecVsA",
+      "sector": "automotivo",
+      "published_at": "2026-10-05T22:00:09+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.170085Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "18538",
+        "likeCount": "271",
+        "favoriteCount": "0",
+        "commentCount": "12"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "2HbJ135Sl7g",
+      "channel_id": "UChUvS75BR7ziAr7WhrecVsA",
+      "sector": "automotivo",
+      "published_at": "2026-10-05T15:13:53+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.172102Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "13309",
+        "likeCount": "648",
+        "favoriteCount": "0",
+        "commentCount": "22"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "vbHjmEEiOE4",
+      "channel_id": "UChUvS75BR7ziAr7WhrecVsA",
+      "sector": "automotivo",
+      "published_at": "2026-09-19T15:00:49+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.172102Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "1052296",
+        "likeCount": "38011",
+        "favoriteCount": "0",
+        "commentCount": "682"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "f_n9qh8XgQA",
+      "channel_id": "UChUvS75BR7ziAr7WhrecVsA",
+      "sector": "automotivo",
+      "published_at": "2026-09-18T20:00:25+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.172102Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "5726",
+        "likeCount": "340",
+        "favoriteCount": "0",
+        "commentCount": "27"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "AGKoNmflRfM",
+      "channel_id": "UChU6qQR8Af0Xd3LSbQHN2sA",
+      "sector": "automotivo",
+      "published_at": "2026-10-12T20:43:20+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.172102Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "9724",
+        "likeCount": "391",
+        "favoriteCount": "0",
+        "commentCount": "13"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "cBbzkS8qqSM",
+      "channel_id": "UChU6qQR8Af0Xd3LSbQHN2sA",
+      "sector": "automotivo",
+      "published_at": "2026-10-12T13:30:02+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.172102Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "19513",
+        "likeCount": "1529",
+        "favoriteCount": "0",
+        "commentCount": "92"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "6YZYB39pMSI",
+      "channel_id": "UChU6qQR8Af0Xd3LSbQHN2sA",
+      "sector": "automotivo",
+      "published_at": "2026-10-11T22:30:31+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.172102Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "12278",
+        "likeCount": "456",
+        "favoriteCount": "0",
+        "commentCount": "13"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "j68SLw7BXUw",
+      "channel_id": "UChU6qQR8Af0Xd3LSbQHN2sA",
+      "sector": "automotivo",
+      "published_at": "2026-10-05T17:15:43+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.172102Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "9022",
+        "likeCount": "408",
+        "favoriteCount": "0",
+        "commentCount": "15"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "j34StgxLYvo",
+      "channel_id": "UChU6qQR8Af0Xd3LSbQHN2sA",
+      "sector": "automotivo",
+      "published_at": "2026-09-19T20:00:28+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.172102Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "14439",
+        "likeCount": "1026",
+        "favoriteCount": "0",
+        "commentCount": "39"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "30EiBzMSyOU",
+      "channel_id": "UC6Rk7BKVPWkFJ9FiBrts5Vg",
+      "sector": "automotivo",
+      "published_at": "2026-10-15T19:52:53+00:00",
+      "target_age_day": 3,
+      "observed_at": "2026-10-19T13:04:16.172102Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "55455",
+        "likeCount": "527",
+        "favoriteCount": "0",
+        "commentCount": "27"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "HjjGSzPFNYc",
+      "channel_id": "UC6Rk7BKVPWkFJ9FiBrts5Vg",
+      "sector": "automotivo",
+      "published_at": "2026-09-19T14:00:03+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.172102Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "25623",
+        "likeCount": "1285",
+        "favoriteCount": "0",
+        "commentCount": "18"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "BHdv-vU5kgs",
+      "channel_id": "UC7eUDymR_ThtyGV1IxUSpcw",
+      "sector": "moda",
+      "published_at": "2026-10-16T02:41:48+00:00",
+      "target_age_day": 3,
+      "observed_at": "2026-10-19T13:04:16.172102Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "502",
+        "likeCount": "14",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "NDmMc-W67Cg",
+      "channel_id": "UC7eUDymR_ThtyGV1IxUSpcw",
+      "sector": "moda",
+      "published_at": "2026-10-15T21:00:46+00:00",
+      "target_age_day": 3,
+      "observed_at": "2026-10-19T13:04:16.174124Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "679",
+        "likeCount": "17",
+        "favoriteCount": "0",
+        "commentCount": "2"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "hbS-ZP3tU7Q",
+      "channel_id": "UC7eUDymR_ThtyGV1IxUSpcw",
+      "sector": "moda",
+      "published_at": "2026-09-18T20:00:31+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.174124Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "1867",
+        "likeCount": "50",
+        "favoriteCount": "0",
+        "commentCount": "12"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "aS06c1EpyIk",
+      "channel_id": "UCnZZpT_goFtRY8H8XpfYxAg",
+      "sector": "moda",
+      "published_at": "2026-10-11T22:36:08+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.174124Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0001.json",
+      "metrics": {
+        "viewCount": "5210",
+        "likeCount": "205",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "a3dWyDiY6Bw",
+      "channel_id": "UCEhkEygfrxwWPSHlSK6aM1w",
+      "sector": "moda",
+      "published_at": "2026-09-18T20:37:38+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.653073Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "84039",
+        "likeCount": "1084",
+        "favoriteCount": "0",
+        "commentCount": "8"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "dPrRoOZH7jo",
+      "channel_id": "UCr8ADghob5MQ6OUIv5UlmlQ",
+      "sector": "moda",
+      "published_at": "2026-10-12T13:00:40+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.653073Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "111",
+        "likeCount": "2",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "ax0LrwlM9x8",
+      "channel_id": "UCr8ADghob5MQ6OUIv5UlmlQ",
+      "sector": "moda",
+      "published_at": "2026-09-19T13:00:32+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.653073Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "316",
+        "likeCount": "8",
+        "favoriteCount": "0",
+        "commentCount": "1"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "1XqH-wfCPws",
+      "channel_id": "UCwNEKrZtt7RMNJYgc4g7kXw",
+      "sector": "moda",
+      "published_at": "2026-10-12T18:14:03+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.655091Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "721",
+        "likeCount": "10",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "-EDIoXyH4nc",
+      "channel_id": "UCwNEKrZtt7RMNJYgc4g7kXw",
+      "sector": "moda",
+      "published_at": "2026-10-11T20:00:15+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.655091Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "879",
+        "likeCount": "4",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "X5us1rx3hVQ",
+      "channel_id": "UCYcClChNM-0rjqCGobSfJ4A",
+      "sector": "beleza",
+      "published_at": "2026-10-15T20:00:06+00:00",
+      "target_age_day": 3,
+      "observed_at": "2026-10-19T13:04:16.655091Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "14224",
+        "likeCount": "1017",
+        "favoriteCount": "0",
+        "commentCount": "10"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "B-7546dUv4I",
+      "channel_id": "UCYcClChNM-0rjqCGobSfJ4A",
+      "sector": "beleza",
+      "published_at": "2026-10-12T20:00:28+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.656661Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "65708",
+        "likeCount": "3553",
+        "favoriteCount": "0",
+        "commentCount": "36"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "nhhXvPH6ur8",
+      "channel_id": "UCYcClChNM-0rjqCGobSfJ4A",
+      "sector": "beleza",
+      "published_at": "2026-10-11T20:00:24+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.657183Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "8184",
+        "likeCount": "528",
+        "favoriteCount": "0",
+        "commentCount": "3"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "UoOqS-MkMhA",
+      "channel_id": "UCYcClChNM-0rjqCGobSfJ4A",
+      "sector": "beleza",
+      "published_at": "2026-10-05T20:00:36+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.657183Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "11161",
+        "likeCount": "957",
+        "favoriteCount": "0",
+        "commentCount": "35"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "fBA-k6-VSwg",
+      "channel_id": "UCYcClChNM-0rjqCGobSfJ4A",
+      "sector": "beleza",
+      "published_at": "2026-10-04T20:00:28+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.657183Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "180316",
+        "likeCount": "3852",
+        "favoriteCount": "0",
+        "commentCount": "153"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "VC5dS9Rfj3I",
+      "channel_id": "UCYcClChNM-0rjqCGobSfJ4A",
+      "sector": "beleza",
+      "published_at": "2026-10-04T20:00:21+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.657183Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "18218",
+        "likeCount": "1054",
+        "favoriteCount": "0",
+        "commentCount": "5"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "hK4cw7N_4SQ",
+      "channel_id": "UCcHR0RvLYk33ppkjBw3UaEA",
+      "sector": "beleza",
+      "published_at": "2026-10-05T23:56:46+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.657183Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "1523234",
+        "likeCount": "63084",
+        "favoriteCount": "0",
+        "commentCount": "374"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "avBeqxvNMv8",
+      "channel_id": "UCcHR0RvLYk33ppkjBw3UaEA",
+      "sector": "beleza",
+      "published_at": "2026-10-05T23:53:35+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.657183Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "1115331",
+        "likeCount": "32579",
+        "favoriteCount": "0",
+        "commentCount": "83"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "cW4lKW-uw9Q",
+      "channel_id": "UCcHR0RvLYk33ppkjBw3UaEA",
+      "sector": "beleza",
+      "published_at": "2026-09-19T22:00:49+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.657183Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "301556",
+        "likeCount": "12134",
+        "favoriteCount": "0",
+        "commentCount": "69"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "CgCg_MoCFj0",
+      "channel_id": "UCK0oFT3Lk0kVB9rnjU4nTYg",
+      "sector": "beleza",
+      "published_at": "2026-10-05T01:14:54+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.657183Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "36680",
+        "likeCount": "2118",
+        "favoriteCount": "0",
+        "commentCount": "119"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "mJIx0chBaEU",
+      "channel_id": "UCK0oFT3Lk0kVB9rnjU4nTYg",
+      "sector": "beleza",
+      "published_at": "2026-09-20T00:48:22+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.657183Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "38812",
+        "likeCount": "2393",
+        "favoriteCount": "0",
+        "commentCount": "163"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "B0d5Mc1AFJQ",
+      "channel_id": "UCobi8wbJKxiiooqYG0oMFkQ",
+      "sector": "beleza",
+      "published_at": "2026-10-15T23:38:55+00:00",
+      "target_age_day": 3,
+      "observed_at": "2026-10-19T13:04:16.657183Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "4044",
+        "likeCount": "246",
+        "favoriteCount": "0",
+        "commentCount": "12"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "CIS2veHQWTk",
+      "channel_id": "UCobi8wbJKxiiooqYG0oMFkQ",
+      "sector": "beleza",
+      "published_at": "2026-10-06T00:43:04+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.657183Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "20138",
+        "likeCount": "1210",
+        "favoriteCount": "0",
+        "commentCount": "39"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "Gn8J5XuZR8Q",
+      "channel_id": "UCoTM-vvs2hnv2mCvzNJ5uXA",
+      "sector": "beleza",
+      "published_at": "2026-10-12T23:41:36+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.657183Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "626420",
+        "likeCount": "52128",
+        "favoriteCount": "0",
+        "commentCount": "300"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "Db2gYVki2KM",
+      "channel_id": "UCoTM-vvs2hnv2mCvzNJ5uXA",
+      "sector": "beleza",
+      "published_at": "2026-09-18T23:59:44+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.657183Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "1027572",
+        "likeCount": "66182",
+        "favoriteCount": "0",
+        "commentCount": "929"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "45o21QAEURg",
+      "channel_id": "UCO-9Uf_aIFZ2mJF4ws8wOgQ",
+      "sector": "beleza",
+      "published_at": "2026-10-12T14:30:07+00:00",
+      "target_age_day": 7,
+      "observed_at": "2026-10-19T13:04:16.657183Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "70160",
+        "likeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "Tu-5d9i1gaQ",
+      "channel_id": "UCO-9Uf_aIFZ2mJF4ws8wOgQ",
+      "sector": "beleza",
+      "published_at": "2026-10-05T14:30:25+00:00",
+      "target_age_day": 14,
+      "observed_at": "2026-10-19T13:04:16.657183Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "66968",
+        "likeCount": "2935",
+        "favoriteCount": "0",
+        "commentCount": "64"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    },
+    {
+      "video_id": "UwaSSUrEp4s",
+      "channel_id": "UCO-9Uf_aIFZ2mJF4ws8wOgQ",
+      "sector": "beleza",
+      "published_at": "2026-09-19T14:30:02+00:00",
+      "target_age_day": 30,
+      "observed_at": "2026-10-19T13:04:16.657183Z",
+      "status": "ok",
+      "raw_response": "raw\\videos-0002.json",
+      "metrics": {
+        "viewCount": "4670",
+        "likeCount": "301",
+        "favoriteCount": "0",
+        "commentCount": "13"
+      },
+      "source": {
+        "api": "YouTube Data API v3",
+        "endpoint": "videos.list",
+        "records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json"
+      }
+    }
+  ]
+}

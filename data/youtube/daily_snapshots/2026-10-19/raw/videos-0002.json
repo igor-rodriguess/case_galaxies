@@ -1,0 +1,1885 @@
+{
+  "kind": "youtube#videoListResponse",
+  "etag": "0j6rwXLE06I-uEPbu1mDICRObTg",
+  "items": [
+    {
+      "kind": "youtube#video",
+      "etag": "JPYNg6uA_KMfbfSmAyY37rANRCA",
+      "id": "a3dWyDiY6Bw",
+      "snippet": {
+        "publishedAt": "2026-09-18T20:37:38Z",
+        "channelId": "UCEhkEygfrxwWPSHlSK6aM1w",
+        "title": "Fátima Bernardes fala sobre suas mudanças de visual no quadro #SegredosdeBeleza",
+        "description": "A jornalista e apresentadora Fátima Bernardes completou mais um ano de vida nesta quinta-feira (17.09) e não tem como não relembrarmos de sua participação no nosso quadro #SegredosdeBeleza, do YouTube da Vogue Brasil. Neste trecho, a apresentadora fala sobre suas mudanças de visual e o dia em que virou notícia nacional ao fazer um alisamento nos fios depois da Copa do Mundo no Japão em 2002.\n\nInscreva-se no canal Vogue Brasil: http://bit.ly/VoguenoYT\r\n\r\nBAIXE O APP DA GLOBO MAIS: http://app.globomais.globo.com.br",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/a3dWyDiY6Bw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/a3dWyDiY6Bw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/a3dWyDiY6Bw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/a3dWyDiY6Bw/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/a3dWyDiY6Bw/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Vogue Brasil",
+        "tags": [
+          "Vogue",
+          "Vogue Brasil",
+          "TV Vogue"
+        ],
+        "categoryId": "26",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-PT",
+        "localized": {
+          "title": "Fátima Bernardes fala sobre suas mudanças de visual no quadro #SegredosdeBeleza",
+          "description": "A jornalista e apresentadora Fátima Bernardes completou mais um ano de vida nesta quinta-feira (17.09) e não tem como não relembrarmos de sua participação no nosso quadro #SegredosdeBeleza, do YouTube da Vogue Brasil. Neste trecho, a apresentadora fala sobre suas mudanças de visual e o dia em que virou notícia nacional ao fazer um alisamento nos fios depois da Copa do Mundo no Japão em 2002.\n\nInscreva-se no canal Vogue Brasil: http://bit.ly/VoguenoYT\r\n\r\nBAIXE O APP DA GLOBO MAIS: http://app.globomais.globo.com.br"
+        },
+        "defaultAudioLanguage": "pt"
+      },
+      "contentDetails": {
+        "duration": "PT46S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "84039",
+        "likeCount": "1084",
+        "favoriteCount": "0",
+        "commentCount": "8"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "j43dUkPoWe7vNvbkVsvB0p_zMr0",
+      "id": "dPrRoOZH7jo",
+      "snippet": {
+        "publishedAt": "2026-10-12T13:00:40Z",
+        "channelId": "UCr8ADghob5MQ6OUIv5UlmlQ",
+        "title": "A C&A deseja um Feliz Dia das Crianças",
+        "description": "Mood de hoje? Um look confortável pra brincar, criar e se divertir sem hora pra acabar!",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/dPrRoOZH7jo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/dPrRoOZH7jo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/dPrRoOZH7jo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/dPrRoOZH7jo/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/dPrRoOZH7jo/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "cea",
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-PT",
+        "localized": {
+          "title": "A C&A deseja um Feliz Dia das Crianças",
+          "description": "Mood de hoje? Um look confortável pra brincar, criar e se divertir sem hora pra acabar!"
+        },
+        "defaultAudioLanguage": "pt"
+      },
+      "contentDetails": {
+        "duration": "PT19S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": false,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "111",
+        "likeCount": "2",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "cscsQFTNe8QfntO8k3-AjX4-HOk",
+      "id": "ax0LrwlM9x8",
+      "snippet": {
+        "publishedAt": "2026-09-19T13:00:32Z",
+        "channelId": "UCr8ADghob5MQ6OUIv5UlmlQ",
+        "title": "Backstage da collab com Gustavo Silvestre",
+        "description": "Vem ver o styling icônico do estilista ganhar forma com os jeans da nossa coleção!",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ax0LrwlM9x8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ax0LrwlM9x8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ax0LrwlM9x8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/ax0LrwlM9x8/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/ax0LrwlM9x8/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "cea",
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-PT",
+        "localized": {
+          "title": "Backstage da collab com Gustavo Silvestre",
+          "description": "Vem ver o styling icônico do estilista ganhar forma com os jeans da nossa coleção!"
+        },
+        "defaultAudioLanguage": "pt"
+      },
+      "contentDetails": {
+        "duration": "PT23S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": false,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "316",
+        "likeCount": "8",
+        "favoriteCount": "0",
+        "commentCount": "1"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "-nHhoLW-EiQ0Vg6Rh5zqNypApv8",
+      "id": "1XqH-wfCPws",
+      "snippet": {
+        "publishedAt": "2026-10-12T18:14:03Z",
+        "channelId": "UCwNEKrZtt7RMNJYgc4g7kXw",
+        "title": "Roupa para brincar | Feliz Dia das Crianças",
+        "description": "Hoje celebramos a infância em grande estilo. Feliz dia das crianças pra quem traz alegria para os nossos dias e transforma qualquer momento em pura diversão ❤️\n\n#DiaDasCrianças #PresenteDiaDasCrianças #ModaInfantil",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/1XqH-wfCPws/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/1XqH-wfCPws/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/1XqH-wfCPws/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/1XqH-wfCPws/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/1XqH-wfCPws/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "EstiloRenner",
+        "categoryId": "26",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-PT",
+        "localized": {
+          "title": "Roupa para brincar | Feliz Dia das Crianças",
+          "description": "Hoje celebramos a infância em grande estilo. Feliz dia das crianças pra quem traz alegria para os nossos dias e transforma qualquer momento em pura diversão ❤️\n\n#DiaDasCrianças #PresenteDiaDasCrianças #ModaInfantil"
+        },
+        "defaultAudioLanguage": "pt"
+      },
+      "contentDetails": {
+        "duration": "PT17S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": true
+      },
+      "statistics": {
+        "viewCount": "721",
+        "likeCount": "10",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "JxdePQibDH6vyaT0E0DrinkSX9A",
+      "id": "-EDIoXyH4nc",
+      "snippet": {
+        "publishedAt": "2026-10-11T20:00:15Z",
+        "channelId": "UCwNEKrZtt7RMNJYgc4g7kXw",
+        "title": "Spoiler da nova collab da Renner",
+        "description": "O que vem por aí? No dia 15/10 a gente te conta.\n\nEnquanto isso… pegaram as refs? 👀\n\nQueremos saber quais são as teorias de vocês. Conta pra gente! \n\n#OuseSerVocê",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/-EDIoXyH4nc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/-EDIoXyH4nc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/-EDIoXyH4nc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/-EDIoXyH4nc/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/-EDIoXyH4nc/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "EstiloRenner",
+        "categoryId": "26",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-PT",
+        "localized": {
+          "title": "Spoiler da nova collab da Renner",
+          "description": "O que vem por aí? No dia 15/10 a gente te conta.\n\nEnquanto isso… pegaram as refs? 👀\n\nQueremos saber quais são as teorias de vocês. Conta pra gente! \n\n#OuseSerVocê"
+        },
+        "defaultAudioLanguage": "pt"
+      },
+      "contentDetails": {
+        "duration": "PT12S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "879",
+        "likeCount": "4",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "lN-qDtGdk8NwDRo8ZXmAouOq4z0",
+      "id": "X5us1rx3hVQ",
+      "snippet": {
+        "publishedAt": "2026-10-15T20:00:06Z",
+        "channelId": "UCYcClChNM-0rjqCGobSfJ4A",
+        "title": "AS PALETAS MAIS LINDAS SÃO DELES! - Karen Bachini",
+        "description": "🎁  Seja membro deste canal e ganhe benefícios:\nhttps://www.youtube.com/channel/UCYcClChNM-0rjqCGobSfJ4A/join\n\n📸 INSTAGRAM: http://bit.ly/44DuWwq\n🎬 TIKTOK : https://bit.ly/407GCWQ\n💜 Siga Karen Bachini Beauty no Instagram: https://bit.ly/46tO5Dp\n👸🏻 MAIS LINKS: https://linktr.ee/kahbak\n\n💄 PRODUTOS MENCIONADOS\n\nFLOWER KNOWS Shell's Jewel 6-Color Makeup Palette - cor 03 Deep Sea - U$35 | \nhttps://flowerknows.co/products/shells-jewel-6-color-makeup-palette-us\n\n💌 PROPOSTAS COMERCIAIS: comercial@karenbachini.com\n📬 PRESS & ENVIE MIMOS: Karen Bachini Caixa Postal 76504 | CEP 01220-970 | SP\n\n👛 ONDE COMPRO MAKES\nSephora USA https://rstyle.me/n/c8as4c4g6n\nMaquiagens Coreanas Noguchi: https://bit.ly/3GEG7ga\nImports MDM (encomenda/pronta entrega sem risco de taxa): https://bit.ly/4linwpi\nPincéis Sigma: https://glnk.io/73w1x/karen2 código KAREN 10% desconto\nRosa lima SHOP(encomenda/pronta entrega sem risco de taxa): https://bit.ly/40Axp9C \nFlorenza(make nacional): https://bit.ly/3GA1zTy\n\nCAM 1: sony a7sIII - https://karen.pub/sonya7sIII\nCAM 2: sony alpha 6600 - https://karen.pub/sony-6600\nMIC: rode videomic ntg - https://karen.pub/RODE-VIDEOMIC-NTG\nGRAVADOR: Sony ICD-UX570 https://karen.pub/gravador\n\nEdição: Thayná Rodrigues Brasil\nthaynabrasildecarvalho@gmail.com",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/X5us1rx3hVQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/X5us1rx3hVQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/X5us1rx3hVQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/X5us1rx3hVQ/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/X5us1rx3hVQ/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Karen Bachini",
+        "tags": [
+          "blogueira",
+          "como fazer",
+          "maquiagem",
+          "karen bachini",
+          "kah",
+          "make up",
+          "kahbak",
+          "tutorial",
+          "passo a passo",
+          "vlog",
+          "fada sem defeitos",
+          "divertido",
+          "engraçado",
+          "cuidados com a pele",
+          "cabelo",
+          "makeup",
+          "maquiagem profissional",
+          "fotos",
+          "desafio",
+          "cabelo",
+          "cosméticos",
+          "make",
+          "dia a dia",
+          "basiquinha",
+          "reboco",
+          "festa",
+          "padaria",
+          "oremos para que não caguemos",
+          "escola"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-BR",
+        "localized": {
+          "title": "AS PALETAS MAIS LINDAS SÃO DELES! - Karen Bachini",
+          "description": "🎁  Seja membro deste canal e ganhe benefícios:\nhttps://www.youtube.com/channel/UCYcClChNM-0rjqCGobSfJ4A/join\n\n📸 INSTAGRAM: http://bit.ly/44DuWwq\n🎬 TIKTOK : https://bit.ly/407GCWQ\n💜 Siga Karen Bachini Beauty no Instagram: https://bit.ly/46tO5Dp\n👸🏻 MAIS LINKS: https://linktr.ee/kahbak\n\n💄 PRODUTOS MENCIONADOS\n\nFLOWER KNOWS Shell's Jewel 6-Color Makeup Palette - cor 03 Deep Sea - U$35 | \nhttps://flowerknows.co/products/shells-jewel-6-color-makeup-palette-us\n\n💌 PROPOSTAS COMERCIAIS: comercial@karenbachini.com\n📬 PRESS & ENVIE MIMOS: Karen Bachini Caixa Postal 76504 | CEP 01220-970 | SP\n\n👛 ONDE COMPRO MAKES\nSephora USA https://rstyle.me/n/c8as4c4g6n\nMaquiagens Coreanas Noguchi: https://bit.ly/3GEG7ga\nImports MDM (encomenda/pronta entrega sem risco de taxa): https://bit.ly/4linwpi\nPincéis Sigma: https://glnk.io/73w1x/karen2 código KAREN 10% desconto\nRosa lima SHOP(encomenda/pronta entrega sem risco de taxa): https://bit.ly/40Axp9C \nFlorenza(make nacional): https://bit.ly/3GA1zTy\n\nCAM 1: sony a7sIII - https://karen.pub/sonya7sIII\nCAM 2: sony alpha 6600 - https://karen.pub/sony-6600\nMIC: rode videomic ntg - https://karen.pub/RODE-VIDEOMIC-NTG\nGRAVADOR: Sony ICD-UX570 https://karen.pub/gravador\n\nEdição: Thayná Rodrigues Brasil\nthaynabrasildecarvalho@gmail.com"
+        },
+        "defaultAudioLanguage": "pt-BR"
+      },
+      "contentDetails": {
+        "duration": "PT1M28S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "14224",
+        "likeCount": "1017",
+        "favoriteCount": "0",
+        "commentCount": "10"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "AkqlN0zm64t8dYEzVrb04efNmZg",
+      "id": "B-7546dUv4I",
+      "snippet": {
+        "publishedAt": "2026-10-12T20:00:28Z",
+        "channelId": "UCYcClChNM-0rjqCGobSfJ4A",
+        "title": "CORRETIVO EM CUSHION DA JUDYDOLL - Karen Bachini",
+        "description": "🎁  Seja membro deste canal e ganhe benefícios:\nhttps://www.youtube.com/channel/UCYcClChNM-0rjqCGobSfJ4A/join\n\n📸 INSTAGRAM: http://bit.ly/44DuWwq\n🎬 TIKTOK : https://bit.ly/407GCWQ\n💜 Siga Karen Bachini Beauty no Instagram: https://bit.ly/46tO5Dp\n👸🏻 MAIS LINKS: https://linktr.ee/kahbak\n\n💄 PRODUTOS MENCIONADOS\n\nJUDYDOLL Small Pearl Air Cushion Brightening Concealer - R$59 | https://pt.aliexpress.com/item/1005011938097584.html?channel=twinner\n\n\n💌 PROPOSTAS COMERCIAIS: comercial@karenbachini.com\n📬 PRESS & ENVIE MIMOS: Karen Bachini Caixa Postal 76504 | CEP 01220-970 | SP\n\n👛 ONDE COMPRO MAKES\nSephora USA https://rstyle.me/n/c8as4c4g6n\nMaquiagens Coreanas Noguchi: https://bit.ly/3GEG7ga\nImports MDM (encomenda/pronta entrega sem risco de taxa): https://bit.ly/4linwpi\nPincéis Sigma: https://glnk.io/73w1x/karen2 código KAREN 10% desconto\nRosa lima SHOP(encomenda/pronta entrega sem risco de taxa): https://bit.ly/40Axp9C \nFlorenza(make nacional): https://bit.ly/3GA1zTy\n\nCAM 1: sony a7sIII - https://karen.pub/sonya7sIII\nCAM 2: sony alpha 6600 - https://karen.pub/sony-6600\nMIC: rode videomic ntg - https://karen.pub/RODE-VIDEOMIC-NTG\nGRAVADOR: Sony ICD-UX570 https://karen.pub/gravador\n\nEdição: Thayná Rodrigues Brasil\nthaynabrasildecarvalho@gmail.com",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/B-7546dUv4I/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/B-7546dUv4I/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/B-7546dUv4I/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/B-7546dUv4I/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/B-7546dUv4I/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Karen Bachini",
+        "tags": [
+          "blogueira",
+          "como fazer",
+          "maquiagem",
+          "karen bachini",
+          "kah",
+          "make up",
+          "kahbak",
+          "tutorial",
+          "passo a passo",
+          "vlog",
+          "fada sem defeitos",
+          "divertido",
+          "engraçado",
+          "cuidados com a pele",
+          "cabelo",
+          "makeup",
+          "maquiagem profissional",
+          "fotos",
+          "desafio",
+          "cabelo",
+          "cosméticos",
+          "make",
+          "dia a dia",
+          "basiquinha",
+          "reboco",
+          "festa",
+          "padaria",
+          "oremos para que não caguemos",
+          "escola"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-BR",
+        "localized": {
+          "title": "CORRETIVO EM CUSHION DA JUDYDOLL - Karen Bachini",
+          "description": "🎁  Seja membro deste canal e ganhe benefícios:\nhttps://www.youtube.com/channel/UCYcClChNM-0rjqCGobSfJ4A/join\n\n📸 INSTAGRAM: http://bit.ly/44DuWwq\n🎬 TIKTOK : https://bit.ly/407GCWQ\n💜 Siga Karen Bachini Beauty no Instagram: https://bit.ly/46tO5Dp\n👸🏻 MAIS LINKS: https://linktr.ee/kahbak\n\n💄 PRODUTOS MENCIONADOS\n\nJUDYDOLL Small Pearl Air Cushion Brightening Concealer - R$59 | https://pt.aliexpress.com/item/1005011938097584.html?channel=twinner\n\n\n💌 PROPOSTAS COMERCIAIS: comercial@karenbachini.com\n📬 PRESS & ENVIE MIMOS: Karen Bachini Caixa Postal 76504 | CEP 01220-970 | SP\n\n👛 ONDE COMPRO MAKES\nSephora USA https://rstyle.me/n/c8as4c4g6n\nMaquiagens Coreanas Noguchi: https://bit.ly/3GEG7ga\nImports MDM (encomenda/pronta entrega sem risco de taxa): https://bit.ly/4linwpi\nPincéis Sigma: https://glnk.io/73w1x/karen2 código KAREN 10% desconto\nRosa lima SHOP(encomenda/pronta entrega sem risco de taxa): https://bit.ly/40Axp9C \nFlorenza(make nacional): https://bit.ly/3GA1zTy\n\nCAM 1: sony a7sIII - https://karen.pub/sonya7sIII\nCAM 2: sony alpha 6600 - https://karen.pub/sony-6600\nMIC: rode videomic ntg - https://karen.pub/RODE-VIDEOMIC-NTG\nGRAVADOR: Sony ICD-UX570 https://karen.pub/gravador\n\nEdição: Thayná Rodrigues Brasil\nthaynabrasildecarvalho@gmail.com"
+        },
+        "defaultAudioLanguage": "pt-BR"
+      },
+      "contentDetails": {
+        "duration": "PT1M22S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "65708",
+        "likeCount": "3553",
+        "favoriteCount": "0",
+        "commentCount": "36"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "i_fv3mFFquKM73YLwk-oJxYW1q0",
+      "id": "nhhXvPH6ur8",
+      "snippet": {
+        "publishedAt": "2026-10-11T20:00:24Z",
+        "channelId": "UCYcClChNM-0rjqCGobSfJ4A",
+        "title": "GLOW COM CARA DE PELE HIDRATADA - Karen Bachini",
+        "description": "💄 PRODUTOS MENCIONADOS\n\nTOO FACED Iluminador Líquido Super Glow - R$319 | https://on.ltk.com/+731X9O6HodVICKgQATD4gQ\n\n\n💌 PROPOSTAS COMERCIAIS: comercial@karenbachini.com\n📬 PRESS & ENVIE MIMOS: Karen Bachini Caixa Postal 76504 | CEP 01220-970 | SP\n\n👛 ONDE COMPRO MAKES\nSephora USA https://rstyle.me/n/c8as4c4g6n\nMaquiagens Coreanas Noguchi: https://bit.ly/3GEG7ga\nImports MDM (encomenda/pronta entrega sem risco de taxa): https://bit.ly/4linwpi\nPincéis Sigma: https://glnk.io/73w1x/karen2 código KAREN 10% desconto\nRosa lima SHOP(encomenda/pronta entrega sem risco de taxa): https://bit.ly/40Axp9C \nFlorenza(make nacional): https://bit.ly/3GA1zTy\n\nCAM 1: sony a7sIII - https://karen.pub/sonya7sIII\nCAM 2: sony alpha 6600 - https://karen.pub/sony-6600\nMIC: rode videomic ntg - https://karen.pub/RODE-VIDEOMIC-NTG\nGRAVADOR: Sony ICD-UX570 https://karen.pub/gravador\n\nEdição: Thayná Rodrigues Brasil\nthaynabrasildecarvalho@gmail.com",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/nhhXvPH6ur8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/nhhXvPH6ur8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/nhhXvPH6ur8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/nhhXvPH6ur8/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/nhhXvPH6ur8/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Karen Bachini",
+        "tags": [
+          "blogueira",
+          "como fazer",
+          "maquiagem",
+          "karen bachini",
+          "kah",
+          "make up",
+          "kahbak",
+          "tutorial",
+          "passo a passo",
+          "vlog",
+          "fada sem defeitos",
+          "divertido",
+          "engraçado",
+          "cuidados com a pele",
+          "cabelo",
+          "makeup",
+          "maquiagem profissional",
+          "fotos",
+          "desafio",
+          "cabelo",
+          "cosméticos",
+          "make",
+          "dia a dia",
+          "basiquinha",
+          "reboco",
+          "festa",
+          "padaria",
+          "oremos para que não caguemos",
+          "escola"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-BR",
+        "localized": {
+          "title": "GLOW COM CARA DE PELE HIDRATADA - Karen Bachini",
+          "description": "💄 PRODUTOS MENCIONADOS\n\nTOO FACED Iluminador Líquido Super Glow - R$319 | https://on.ltk.com/+731X9O6HodVICKgQATD4gQ\n\n\n💌 PROPOSTAS COMERCIAIS: comercial@karenbachini.com\n📬 PRESS & ENVIE MIMOS: Karen Bachini Caixa Postal 76504 | CEP 01220-970 | SP\n\n👛 ONDE COMPRO MAKES\nSephora USA https://rstyle.me/n/c8as4c4g6n\nMaquiagens Coreanas Noguchi: https://bit.ly/3GEG7ga\nImports MDM (encomenda/pronta entrega sem risco de taxa): https://bit.ly/4linwpi\nPincéis Sigma: https://glnk.io/73w1x/karen2 código KAREN 10% desconto\nRosa lima SHOP(encomenda/pronta entrega sem risco de taxa): https://bit.ly/40Axp9C \nFlorenza(make nacional): https://bit.ly/3GA1zTy\n\nCAM 1: sony a7sIII - https://karen.pub/sonya7sIII\nCAM 2: sony alpha 6600 - https://karen.pub/sony-6600\nMIC: rode videomic ntg - https://karen.pub/RODE-VIDEOMIC-NTG\nGRAVADOR: Sony ICD-UX570 https://karen.pub/gravador\n\nEdição: Thayná Rodrigues Brasil\nthaynabrasildecarvalho@gmail.com"
+        },
+        "defaultAudioLanguage": "pt-BR"
+      },
+      "contentDetails": {
+        "duration": "PT44S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "8184",
+        "likeCount": "528",
+        "favoriteCount": "0",
+        "commentCount": "3"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "zjo-GR7xtUXS02pH2c6NFlgrqNE",
+      "id": "UoOqS-MkMhA",
+      "snippet": {
+        "publishedAt": "2026-10-05T20:00:36Z",
+        "channelId": "UCYcClChNM-0rjqCGobSfJ4A",
+        "title": "MÁSCARA E LÁPIS VERDE DA BENEFIT - Karen Bachini",
+        "description": "🎁  Seja membro deste canal e ganhe benefícios:\nhttps://www.youtube.com/channel/UCYcClChNM-0rjqCGobSfJ4A/join\n\n📸 INSTAGRAM: http://bit.ly/44DuWwq\n🎬 TIKTOK : https://bit.ly/407GCWQ\n💜 Siga Karen Bachini Beauty no Instagram: https://bit.ly/46tO5Dp\n👸🏻 MAIS LINKS: https://linktr.ee/kahbak\n\n💄 PRODUTOS MENCIONADOS\n\nBENEFIT COSMETICS Máscara de Cílios Badgal Bounce Volumizing - cor Teal - R$237 | https://on.ltk.com/+s88H_Umk2ax3g6TiFSZXJw\n\nBENEFIT COSMETICS Lápis Delineador Badgal Hypeliner - cor Rowdy Teal - R$204 | https://on.ltk.com/+a96SU4PaeAwZWBuwMru32g\n\n\n💌 PROPOSTAS COMERCIAIS: comercial@karenbachini.com\n📬 PRESS & ENVIE MIMOS: Karen Bachini Caixa Postal 76504 | CEP 01220-970 | SP\n\n👛 ONDE COMPRO MAKES\nSephora USA https://rstyle.me/n/c8as4c4g6n\nMaquiagens Coreanas Noguchi: https://bit.ly/3GEG7ga\nImports MDM (encomenda/pronta entrega sem risco de taxa): https://bit.ly/4linwpi\nPincéis Sigma: https://glnk.io/73w1x/karen2 código KAREN 10% desconto\nRosa lima SHOP(encomenda/pronta entrega sem risco de taxa): https://bit.ly/40Axp9C \nFlorenza(make nacional): https://bit.ly/3GA1zTy\n\nCAM 1: sony a7sIII - https://karen.pub/sonya7sIII\nCAM 2: sony alpha 6600 - https://karen.pub/sony-6600\nMIC: rode videomic ntg - https://karen.pub/RODE-VIDEOMIC-NTG\nGRAVADOR: Sony ICD-UX570 https://karen.pub/gravador\n\nEdição: Thayná Rodrigues Brasil\nthaynabrasildecarvalho@gmail.com",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/UoOqS-MkMhA/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/UoOqS-MkMhA/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/UoOqS-MkMhA/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/UoOqS-MkMhA/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/UoOqS-MkMhA/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Karen Bachini",
+        "tags": [
+          "blogueira",
+          "como fazer",
+          "maquiagem",
+          "karen bachini",
+          "kah",
+          "make up",
+          "kahbak",
+          "tutorial",
+          "passo a passo",
+          "vlog",
+          "fada sem defeitos",
+          "divertido",
+          "engraçado",
+          "cuidados com a pele",
+          "cabelo",
+          "makeup",
+          "maquiagem profissional",
+          "fotos",
+          "desafio",
+          "cabelo",
+          "cosméticos",
+          "make",
+          "dia a dia",
+          "basiquinha",
+          "reboco",
+          "festa",
+          "padaria",
+          "oremos para que não caguemos",
+          "escola"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-BR",
+        "localized": {
+          "title": "MÁSCARA E LÁPIS VERDE DA BENEFIT - Karen Bachini",
+          "description": "🎁  Seja membro deste canal e ganhe benefícios:\nhttps://www.youtube.com/channel/UCYcClChNM-0rjqCGobSfJ4A/join\n\n📸 INSTAGRAM: http://bit.ly/44DuWwq\n🎬 TIKTOK : https://bit.ly/407GCWQ\n💜 Siga Karen Bachini Beauty no Instagram: https://bit.ly/46tO5Dp\n👸🏻 MAIS LINKS: https://linktr.ee/kahbak\n\n💄 PRODUTOS MENCIONADOS\n\nBENEFIT COSMETICS Máscara de Cílios Badgal Bounce Volumizing - cor Teal - R$237 | https://on.ltk.com/+s88H_Umk2ax3g6TiFSZXJw\n\nBENEFIT COSMETICS Lápis Delineador Badgal Hypeliner - cor Rowdy Teal - R$204 | https://on.ltk.com/+a96SU4PaeAwZWBuwMru32g\n\n\n💌 PROPOSTAS COMERCIAIS: comercial@karenbachini.com\n📬 PRESS & ENVIE MIMOS: Karen Bachini Caixa Postal 76504 | CEP 01220-970 | SP\n\n👛 ONDE COMPRO MAKES\nSephora USA https://rstyle.me/n/c8as4c4g6n\nMaquiagens Coreanas Noguchi: https://bit.ly/3GEG7ga\nImports MDM (encomenda/pronta entrega sem risco de taxa): https://bit.ly/4linwpi\nPincéis Sigma: https://glnk.io/73w1x/karen2 código KAREN 10% desconto\nRosa lima SHOP(encomenda/pronta entrega sem risco de taxa): https://bit.ly/40Axp9C \nFlorenza(make nacional): https://bit.ly/3GA1zTy\n\nCAM 1: sony a7sIII - https://karen.pub/sonya7sIII\nCAM 2: sony alpha 6600 - https://karen.pub/sony-6600\nMIC: rode videomic ntg - https://karen.pub/RODE-VIDEOMIC-NTG\nGRAVADOR: Sony ICD-UX570 https://karen.pub/gravador\n\nEdição: Thayná Rodrigues Brasil\nthaynabrasildecarvalho@gmail.com"
+        },
+        "defaultAudioLanguage": "pt-BR"
+      },
+      "contentDetails": {
+        "duration": "PT2M15S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "11161",
+        "likeCount": "957",
+        "favoriteCount": "0",
+        "commentCount": "35"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "tXnqUWciisjsUM1NcLKCoTcm5k8",
+      "id": "fBA-k6-VSwg",
+      "snippet": {
+        "publishedAt": "2026-10-04T20:00:28Z",
+        "channelId": "UCYcClChNM-0rjqCGobSfJ4A",
+        "title": "TESTANDO MAQUIAGENS DA BUSCA BUSCA - Karen Bachini",
+        "description": "🎁  Seja membro deste canal e ganhe benefícios:\nhttps://www.youtube.com/channel/UCYcClChNM-0rjqCGobSfJ4A/join\n\n📸 INSTAGRAM: http://bit.ly/44DuWwq\n🎬 TIKTOK : https://bit.ly/407GCWQ\n💜 Siga Karen Bachini Beauty no Instagram: https://bit.ly/46tO5Dp\n👸🏻 MAIS LINKS: https://linktr.ee/kahbak\n\n💄 PRODUTOS MENCIONADOS\n00:00 OLÁAAAAA\n00:53 BOBBI RARA Protetor Solar em Bastão FPS 50 - R$22 | https://shopee.com.br/lojavitabene/58267103456\n\n02:50 MAX LOVE Primer HD - R$10 | https://shopee.com.br/product/649942390/58253785323\n\n04:20 SUPER PODERES Lip Oil Coelhinho - R$13 | https://shopee.com.br/product/429551908/22299182923\n\n05:26 SPCOLORS Base Cushion - R$27 | https://shopee.com.br/product/1079030158/58214454926\n\n08:41 LUA & NEVE Corretivo Super Stay - R$20 | https://s.shopee.com.br/2LYeo7mmsk\n\n11:30 YOYO MAQUIAMOR Contorno em Bastão Grooming Stick\n\n13:17 PINK 21 Blush e Lipstick em Creme - R$16 | https://s.shopee.com.br/6q14BWYB4F\n\n15:06 DAPOP Pó Facial Translúcido Matte Sorvete de Morango - R$14 | https://s.shopee.com.br/3g42Po8HAi\n\n16:43 CITY GIRLS Sombra Gummy Jelly - R$14 | https://s.shopee.com.br/5fp6yvMAu9\n\n24:46 BENEFIT COSMETICS Lápis Delineador Badgal Hypeliner - cor Rowdy Teal - R$204 | https://on.ltk.com/+ggmqD4HVQZnRiEVyk9ytRw\n\n25:20 LOVÉ RAIN Delineador Sleek Black OMG! - R$13 | https://s.shopee.com.br/5LCGpLpjuI\n\n27:31 VIVAI Máscara de Cílios Lashes - R$15 | https://s.shopee.com.br/6q14cUaGW0\n\n29:10 CITY GIRLS Mermaid Dreams - R$28 | https://s.shopee.com.br/50ZQRKOvpD\n\n30:48 CITY GIRLS Momentos - R$22 | https://s.shopee.com.br/9AOzPGt00I\n\n31:53 FEBELLA Lipgloss Magic - R$12 | https://s.shopee.com.br/7ptbp2AHji\n\n32:46 VIVAI Soap Brow Modelador de Sobrancelhas - R$12 | https://s.shopee.com.br/8fSiogZ5Df\n\n34:55 Lipgloss Chaveiro Liporeo - R$14 | https://s.shopee.com.br/6VONNhABs0\n36:18 O QUE ACHARAMM?\n\n\n💌 PROPOSTAS COMERCIAIS: comercial@karenbachini.com\n📬 PRESS & ENVIE MIMOS: Karen Bachini Caixa Postal 76504 | CEP 01220-970 | SP\n\n👛 ONDE COMPRO MAKES\nSephora USA https://rstyle.me/n/c8as4c4g6n\nMaquiagens Coreanas Noguchi: https://bit.ly/3GEG7ga\nImports MDM (encomenda/pronta entrega sem risco de taxa): https://bit.ly/4linwpi\nPincéis Sigma: https://glnk.io/73w1x/karen2 código KAREN 10% desconto\nRosa lima SHOP(encomenda/pronta entrega sem risco de taxa): https://bit.ly/40Axp9C \nFlorenza(make nacional): https://bit.ly/3GA1zTy\n\nCAM 1: sony a7sIII - https://karen.pub/sonya7sIII\nCAM 2: sony alpha 6600 - https://karen.pub/sony-6600\nMIC: rode videomic ntg - https://karen.pub/RODE-VIDEOMIC-NTG\nGRAVADOR: Sony ICD-UX570 https://karen.pub/gravador\n\nEdição: Thayná Rodrigues Brasil\nthaynabrasildecarvalho@gmail.com",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/fBA-k6-VSwg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/fBA-k6-VSwg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/fBA-k6-VSwg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/fBA-k6-VSwg/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/fBA-k6-VSwg/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          },
+          "fhd": {
+            "url": "https://i.ytimg.com/vi/fBA-k6-VSwg/fhddefault.jpg",
+            "width": 1920,
+            "height": 1080
+          }
+        },
+        "channelTitle": "Karen Bachini",
+        "tags": [
+          "blogueira",
+          "como fazer",
+          "maquiagem",
+          "karen bachini",
+          "kah",
+          "make up",
+          "kahbak",
+          "tutorial",
+          "passo a passo",
+          "vlog",
+          "fada sem defeitos",
+          "divertido",
+          "engraçado",
+          "cuidados com a pele",
+          "cabelo",
+          "makeup",
+          "maquiagem profissional",
+          "fotos",
+          "desafio",
+          "cabelo",
+          "cosméticos",
+          "make",
+          "dia a dia",
+          "basiquinha",
+          "reboco",
+          "festa",
+          "padaria",
+          "oremos para que não caguemos",
+          "escola"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-BR",
+        "localized": {
+          "title": "TESTANDO MAQUIAGENS DA BUSCA BUSCA - Karen Bachini",
+          "description": "🎁  Seja membro deste canal e ganhe benefícios:\nhttps://www.youtube.com/channel/UCYcClChNM-0rjqCGobSfJ4A/join\n\n📸 INSTAGRAM: http://bit.ly/44DuWwq\n🎬 TIKTOK : https://bit.ly/407GCWQ\n💜 Siga Karen Bachini Beauty no Instagram: https://bit.ly/46tO5Dp\n👸🏻 MAIS LINKS: https://linktr.ee/kahbak\n\n💄 PRODUTOS MENCIONADOS\n00:00 OLÁAAAAA\n00:53 BOBBI RARA Protetor Solar em Bastão FPS 50 - R$22 | https://shopee.com.br/lojavitabene/58267103456\n\n02:50 MAX LOVE Primer HD - R$10 | https://shopee.com.br/product/649942390/58253785323\n\n04:20 SUPER PODERES Lip Oil Coelhinho - R$13 | https://shopee.com.br/product/429551908/22299182923\n\n05:26 SPCOLORS Base Cushion - R$27 | https://shopee.com.br/product/1079030158/58214454926\n\n08:41 LUA & NEVE Corretivo Super Stay - R$20 | https://s.shopee.com.br/2LYeo7mmsk\n\n11:30 YOYO MAQUIAMOR Contorno em Bastão Grooming Stick\n\n13:17 PINK 21 Blush e Lipstick em Creme - R$16 | https://s.shopee.com.br/6q14BWYB4F\n\n15:06 DAPOP Pó Facial Translúcido Matte Sorvete de Morango - R$14 | https://s.shopee.com.br/3g42Po8HAi\n\n16:43 CITY GIRLS Sombra Gummy Jelly - R$14 | https://s.shopee.com.br/5fp6yvMAu9\n\n24:46 BENEFIT COSMETICS Lápis Delineador Badgal Hypeliner - cor Rowdy Teal - R$204 | https://on.ltk.com/+ggmqD4HVQZnRiEVyk9ytRw\n\n25:20 LOVÉ RAIN Delineador Sleek Black OMG! - R$13 | https://s.shopee.com.br/5LCGpLpjuI\n\n27:31 VIVAI Máscara de Cílios Lashes - R$15 | https://s.shopee.com.br/6q14cUaGW0\n\n29:10 CITY GIRLS Mermaid Dreams - R$28 | https://s.shopee.com.br/50ZQRKOvpD\n\n30:48 CITY GIRLS Momentos - R$22 | https://s.shopee.com.br/9AOzPGt00I\n\n31:53 FEBELLA Lipgloss Magic - R$12 | https://s.shopee.com.br/7ptbp2AHji\n\n32:46 VIVAI Soap Brow Modelador de Sobrancelhas - R$12 | https://s.shopee.com.br/8fSiogZ5Df\n\n34:55 Lipgloss Chaveiro Liporeo - R$14 | https://s.shopee.com.br/6VONNhABs0\n36:18 O QUE ACHARAMM?\n\n\n💌 PROPOSTAS COMERCIAIS: comercial@karenbachini.com\n📬 PRESS & ENVIE MIMOS: Karen Bachini Caixa Postal 76504 | CEP 01220-970 | SP\n\n👛 ONDE COMPRO MAKES\nSephora USA https://rstyle.me/n/c8as4c4g6n\nMaquiagens Coreanas Noguchi: https://bit.ly/3GEG7ga\nImports MDM (encomenda/pronta entrega sem risco de taxa): https://bit.ly/4linwpi\nPincéis Sigma: https://glnk.io/73w1x/karen2 código KAREN 10% desconto\nRosa lima SHOP(encomenda/pronta entrega sem risco de taxa): https://bit.ly/40Axp9C \nFlorenza(make nacional): https://bit.ly/3GA1zTy\n\nCAM 1: sony a7sIII - https://karen.pub/sonya7sIII\nCAM 2: sony alpha 6600 - https://karen.pub/sony-6600\nMIC: rode videomic ntg - https://karen.pub/RODE-VIDEOMIC-NTG\nGRAVADOR: Sony ICD-UX570 https://karen.pub/gravador\n\nEdição: Thayná Rodrigues Brasil\nthaynabrasildecarvalho@gmail.com"
+        },
+        "defaultAudioLanguage": "pt-BR"
+      },
+      "contentDetails": {
+        "duration": "PT37M27S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "180316",
+        "likeCount": "3852",
+        "favoriteCount": "0",
+        "commentCount": "153"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "Xn6HoYhWV8FzVZ9A7kHxjUJhtY8",
+      "id": "VC5dS9Rfj3I",
+      "snippet": {
+        "publishedAt": "2026-10-04T20:00:21Z",
+        "channelId": "UCYcClChNM-0rjqCGobSfJ4A",
+        "title": "A DONA HUDA NÃO BRINCA - Karen Bachini",
+        "description": "💄 PRODUTOS MENCIONADOS\n\nHUDA BEAUTY Liquid Matte Mousse - cor Pinky Brown - U$25 | https://www.sephora.com/product/liquid-matte-mousse-soft-blur-lip-cream-P525244\n\nHUDA BEAUTY Lip Contour Pencil - cor Pinky Brown - U$23 | https://www.sephora.com/product/huda-beauty-lip-contour-pencil-2-0-P471243\n\n\n💌 PROPOSTAS COMERCIAIS: comercial@karenbachini.com\n📬 PRESS & ENVIE MIMOS: Karen Bachini Caixa Postal 76504 | CEP 01220-970 | SP\n\n👛 ONDE COMPRO MAKES\nSephora USA https://rstyle.me/n/c8as4c4g6n\nMaquiagens Coreanas Noguchi: https://bit.ly/3GEG7ga\nImports MDM (encomenda/pronta entrega sem risco de taxa): https://bit.ly/4linwpi\nPincéis Sigma: https://glnk.io/73w1x/karen2 código KAREN 10% desconto\nRosa lima SHOP(encomenda/pronta entrega sem risco de taxa): https://bit.ly/40Axp9C \nFlorenza(make nacional): https://bit.ly/3GA1zTy\n\nCAM 1: sony a7sIII - https://karen.pub/sonya7sIII\nCAM 2: sony alpha 6600 - https://karen.pub/sony-6600\nMIC: rode videomic ntg - https://karen.pub/RODE-VIDEOMIC-NTG\nGRAVADOR: Sony ICD-UX570 https://karen.pub/gravador\n\nEdição: Thayná Rodrigues Brasil\nthaynabrasildecarvalho@gmail.com",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/VC5dS9Rfj3I/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/VC5dS9Rfj3I/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/VC5dS9Rfj3I/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/VC5dS9Rfj3I/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/VC5dS9Rfj3I/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Karen Bachini",
+        "tags": [
+          "blogueira",
+          "como fazer",
+          "maquiagem",
+          "karen bachini",
+          "kah",
+          "make up",
+          "kahbak",
+          "tutorial",
+          "passo a passo",
+          "vlog",
+          "fada sem defeitos",
+          "divertido",
+          "engraçado",
+          "cuidados com a pele",
+          "cabelo",
+          "makeup",
+          "maquiagem profissional",
+          "fotos",
+          "desafio",
+          "cabelo",
+          "cosméticos",
+          "make",
+          "dia a dia",
+          "basiquinha",
+          "reboco",
+          "festa",
+          "padaria",
+          "oremos para que não caguemos",
+          "escola"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-BR",
+        "localized": {
+          "title": "A DONA HUDA NÃO BRINCA - Karen Bachini",
+          "description": "💄 PRODUTOS MENCIONADOS\n\nHUDA BEAUTY Liquid Matte Mousse - cor Pinky Brown - U$25 | https://www.sephora.com/product/liquid-matte-mousse-soft-blur-lip-cream-P525244\n\nHUDA BEAUTY Lip Contour Pencil - cor Pinky Brown - U$23 | https://www.sephora.com/product/huda-beauty-lip-contour-pencil-2-0-P471243\n\n\n💌 PROPOSTAS COMERCIAIS: comercial@karenbachini.com\n📬 PRESS & ENVIE MIMOS: Karen Bachini Caixa Postal 76504 | CEP 01220-970 | SP\n\n👛 ONDE COMPRO MAKES\nSephora USA https://rstyle.me/n/c8as4c4g6n\nMaquiagens Coreanas Noguchi: https://bit.ly/3GEG7ga\nImports MDM (encomenda/pronta entrega sem risco de taxa): https://bit.ly/4linwpi\nPincéis Sigma: https://glnk.io/73w1x/karen2 código KAREN 10% desconto\nRosa lima SHOP(encomenda/pronta entrega sem risco de taxa): https://bit.ly/40Axp9C \nFlorenza(make nacional): https://bit.ly/3GA1zTy\n\nCAM 1: sony a7sIII - https://karen.pub/sonya7sIII\nCAM 2: sony alpha 6600 - https://karen.pub/sony-6600\nMIC: rode videomic ntg - https://karen.pub/RODE-VIDEOMIC-NTG\nGRAVADOR: Sony ICD-UX570 https://karen.pub/gravador\n\nEdição: Thayná Rodrigues Brasil\nthaynabrasildecarvalho@gmail.com"
+        },
+        "defaultAudioLanguage": "pt-BR"
+      },
+      "contentDetails": {
+        "duration": "PT55S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "18218",
+        "likeCount": "1054",
+        "favoriteCount": "0",
+        "commentCount": "5"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "N8so4cpK0V3awVUyrRYrinXYIMU",
+      "id": "hK4cw7N_4SQ",
+      "snippet": {
+        "publishedAt": "2026-10-05T23:56:46Z",
+        "channelId": "UCcHR0RvLYk33ppkjBw3UaEA",
+        "title": "Coisas que a Tória queria tirar do armário da Mari 😅",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/hK4cw7N_4SQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/hK4cw7N_4SQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/hK4cw7N_4SQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/hK4cw7N_4SQ/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/hK4cw7N_4SQ/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Mari Maria",
+        "categoryId": "24",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt",
+        "localized": {
+          "title": "Coisas que a Tória queria tirar do armário da Mari 😅",
+          "description": ""
+        }
+      },
+      "contentDetails": {
+        "duration": "PT2M21S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "1523234",
+        "likeCount": "63084",
+        "favoriteCount": "0",
+        "commentCount": "374"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "-Es1H74xhYyjWYSw1iDwOjUgPFA",
+      "id": "avBeqxvNMv8",
+      "snippet": {
+        "publishedAt": "2026-10-05T23:53:35Z",
+        "channelId": "UCcHR0RvLYk33ppkjBw3UaEA",
+        "title": "Testando coisas novas por aqui 👀",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/avBeqxvNMv8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/avBeqxvNMv8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/avBeqxvNMv8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/avBeqxvNMv8/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/avBeqxvNMv8/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Mari Maria",
+        "categoryId": "24",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt",
+        "localized": {
+          "title": "Testando coisas novas por aqui 👀",
+          "description": ""
+        }
+      },
+      "contentDetails": {
+        "duration": "PT25S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "regionRestriction": {
+          "blocked": [
+            "BY",
+            "RU"
+          ]
+        },
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "1115331",
+        "likeCount": "32579",
+        "favoriteCount": "0",
+        "commentCount": "83"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "FsWX91KnX_LXQGNYNlcDg-wCs1E",
+      "id": "cW4lKW-uw9Q",
+      "snippet": {
+        "publishedAt": "2026-09-19T22:00:49Z",
+        "channelId": "UCcHR0RvLYk33ppkjBw3UaEA",
+        "title": "Seguiriam a tendência ANTI-BLUSH?",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/cW4lKW-uw9Q/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/cW4lKW-uw9Q/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/cW4lKW-uw9Q/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/cW4lKW-uw9Q/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/cW4lKW-uw9Q/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Mari Maria",
+        "categoryId": "24",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt",
+        "localized": {
+          "title": "Seguiriam a tendência ANTI-BLUSH?",
+          "description": ""
+        }
+      },
+      "contentDetails": {
+        "duration": "PT28S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "301556",
+        "likeCount": "12134",
+        "favoriteCount": "0",
+        "commentCount": "69"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "sl6Vtl0vl8BOuC9CIPrC5oApCac",
+      "id": "CgCg_MoCFj0",
+      "snippet": {
+        "publishedAt": "2026-10-05T01:14:54Z",
+        "channelId": "UCK0oFT3Lk0kVB9rnjU4nTYg",
+        "title": "Testados, Achadinhos Da Promo e Comprinhas Riachuelo",
+        "description": "Produtos mencionados:\n\nLeite de limpeza Niina Secrets Eudora \n\nProtetor com cor coverage isdin cor 2.0: https://link.amazon/B0cctyQ9i\n\nLapis para sobrancelha cor brown mari maria : https://minhacea.cea.com.br/?lcea=ODU5NzFfZjM3Yjdm\n\nEsponja Mari Maria : https://minhacea.cea.com.br/?lcea=ODU5NzFfMTg3Y2Y1\n\nPincel duo Mascavo 01 R$79,04 https://tidd.ly/44r8YNr\n\nPincel Mascavo 07 R$39,09 https://tidd.ly/4ytAK92\n\nPincel de po Niina Secrets : https://link.amazon/B0gkcuhkf\n\nPaleta luminous Niina cor 01 : https://link.amazon/B0eXxWI1p\n\nPaleta BT Bridgerton R$105,39 https://tidd.ly/4dhB3eL\n\nBlush líquido Bridgerton R$50,14 https://tidd.ly/4gotiWC\n\nMascara super shock Avon: https://link.amazon/B03sq1ryR\n\nLapiseira retrátil Mari Maria mocha R$28,89 https://tidd.ly/4xWnFoS\n\nHidra choco boca rosa: https://link.amazon/B08CyIqwd\n\nBolsa Riachuelo: https://tidd.ly/4AxlNVb\n\nTabua retangular Acacia : https://tidd.ly/4dQwc4C\n\nTravessa de video 12cm: https://tidd.ly/4i0s1Wm\n\nCaneca de ceramica: https://tidd.ly/4hsANwf\n\nLip oil Niina Secrets : https://link.amazon/B0aLkxloj\n\nOculos de sol: https://tidd.ly/4y7Vpir\n\nCupom Ritinha ativando 10% nas compras acima de R$99. Fica a dica! ❤️\n\nCUPONS e LINKS PARA QUEM QUISER DESCONTO ;)\n✅ RIACHUELO: 10% OFF usando o Cupom: (Ritinha) nas compras acima de R$99,90 Através do link https://tidd.ly/46UVMmx \n\n✅ C&A: 20%OFF através do meu link , pegando também em beleza, sem valor mínimo: https://minhacea.cea.com.br/?lcea=ODU5NzFfNGFjNzg5\n(Desconto aparece quando os itens entram na sacola)\n\n🔗Seleçao de achados shopee : https://collshp.com/tourdabeleza?view=storefront\n\n🔗Seleção de achados Amazon :https://amzn.to/4vPGwB5\n\n✅ SHEIN: Cupom de 50% OFF  apenas para novos usuários 🌟 Pesquise 6H2ZF no aplicativo SHEIN ou 🌟 Clique no link para começar!\n https://onelink.shein.com/2/5m0ug3ndd7hz\nEncontre Minha lista com os itens selecionados: LQ4JG\n\n❤️ Canal 2 : https://www.youtube.com/@tourdabelezavlog\n\n🔍Faça parte do meu Grupo de achados da Promo : \n💫Grupo telegram: https://t.me/achadinhosdatour\n💫Grupo Whatsapp : https://chat.whatsapp.com/Htet0KELNa3DMSMFPvWnID?mode=gi_t\n\n❤️ Me encontre aqui também: \n➜Instagram :@tourdabeleza\n➜Facebook  : tourdabeleza\n➜Blog: http://tourdabeleza.com.br\n➜Email : contato@tourdabeleza.com.br\n➜CAIXA POSTAL: 37708 / CEP: 22640-970 / RIO DE JANEIRO-RJ\n\n❤️ Vídeos que você pode curtir ❤️\nSe Maquie Comigo BEAUTY FAIR 2025 | Um DIA ESPECIAL\nhttps://www.youtube.com/watch?v=Ybiy1CkNKsk\nComprinhas C&A , Riachuelo e Mercado livre | achadinhos Básicos e Versáteis\nhttps://www.youtube.com/watch?v=3JkMtLYcFME\nNovidade De Farmácia, Comprinhas C&A, Renner e Beleza\nhttps://www.youtube.com/watch?v=IYsoTph65AM&t=9s\nCOMPRINHAS C&A e RECEBIDOS | OCEANE, HIDRATANTE PRINCIPIA , NINA MAKEUP e Mais\nhttps://www.youtube.com/watch?v=qHFO8kT65Jk&t=1402s\nCOMPRINHAS C&A , NIINA SECRETS , RENNER : ACHADINHOS CORINGAS DE JULHO\nhttps://www.youtube.com/watch?v=Umd5CH8QKIA&t=3s\n\n* Esse vídeo NÃO é patrocinado . Alguns links acima são links de afiliados. Eu ganho uma pequena comissão,  caso você compre através deles. Facilita vocês de encontrarem os mencionados e coopera com o canal. ❤️\n---------------------------------------------------------------------------------------------------------------------\n\n#testandomakes #novidade #comprinhas",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/CgCg_MoCFj0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/CgCg_MoCFj0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/CgCg_MoCFj0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/CgCg_MoCFj0/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/CgCg_MoCFj0/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Tour da Beleza",
+        "tags": [
+          "skincare",
+          "baratinhos",
+          "comprinhas",
+          "farmácia",
+          "testando",
+          "sera que vale a pena",
+          "tour da beleza",
+          "testando makes",
+          "novidades",
+          "lançamentos",
+          "automake",
+          "make pra quem nao sabe maquiar"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-BR",
+        "localized": {
+          "title": "Testados, Achadinhos Da Promo e Comprinhas Riachuelo",
+          "description": "Produtos mencionados:\n\nLeite de limpeza Niina Secrets Eudora \n\nProtetor com cor coverage isdin cor 2.0: https://link.amazon/B0cctyQ9i\n\nLapis para sobrancelha cor brown mari maria : https://minhacea.cea.com.br/?lcea=ODU5NzFfZjM3Yjdm\n\nEsponja Mari Maria : https://minhacea.cea.com.br/?lcea=ODU5NzFfMTg3Y2Y1\n\nPincel duo Mascavo 01 R$79,04 https://tidd.ly/44r8YNr\n\nPincel Mascavo 07 R$39,09 https://tidd.ly/4ytAK92\n\nPincel de po Niina Secrets : https://link.amazon/B0gkcuhkf\n\nPaleta luminous Niina cor 01 : https://link.amazon/B0eXxWI1p\n\nPaleta BT Bridgerton R$105,39 https://tidd.ly/4dhB3eL\n\nBlush líquido Bridgerton R$50,14 https://tidd.ly/4gotiWC\n\nMascara super shock Avon: https://link.amazon/B03sq1ryR\n\nLapiseira retrátil Mari Maria mocha R$28,89 https://tidd.ly/4xWnFoS\n\nHidra choco boca rosa: https://link.amazon/B08CyIqwd\n\nBolsa Riachuelo: https://tidd.ly/4AxlNVb\n\nTabua retangular Acacia : https://tidd.ly/4dQwc4C\n\nTravessa de video 12cm: https://tidd.ly/4i0s1Wm\n\nCaneca de ceramica: https://tidd.ly/4hsANwf\n\nLip oil Niina Secrets : https://link.amazon/B0aLkxloj\n\nOculos de sol: https://tidd.ly/4y7Vpir\n\nCupom Ritinha ativando 10% nas compras acima de R$99. Fica a dica! ❤️\n\nCUPONS e LINKS PARA QUEM QUISER DESCONTO ;)\n✅ RIACHUELO: 10% OFF usando o Cupom: (Ritinha) nas compras acima de R$99,90 Através do link https://tidd.ly/46UVMmx \n\n✅ C&A: 20%OFF através do meu link , pegando também em beleza, sem valor mínimo: https://minhacea.cea.com.br/?lcea=ODU5NzFfNGFjNzg5\n(Desconto aparece quando os itens entram na sacola)\n\n🔗Seleçao de achados shopee : https://collshp.com/tourdabeleza?view=storefront\n\n🔗Seleção de achados Amazon :https://amzn.to/4vPGwB5\n\n✅ SHEIN: Cupom de 50% OFF  apenas para novos usuários 🌟 Pesquise 6H2ZF no aplicativo SHEIN ou 🌟 Clique no link para começar!\n https://onelink.shein.com/2/5m0ug3ndd7hz\nEncontre Minha lista com os itens selecionados: LQ4JG\n\n❤️ Canal 2 : https://www.youtube.com/@tourdabelezavlog\n\n🔍Faça parte do meu Grupo de achados da Promo : \n💫Grupo telegram: https://t.me/achadinhosdatour\n💫Grupo Whatsapp : https://chat.whatsapp.com/Htet0KELNa3DMSMFPvWnID?mode=gi_t\n\n❤️ Me encontre aqui também: \n➜Instagram :@tourdabeleza\n➜Facebook  : tourdabeleza\n➜Blog: http://tourdabeleza.com.br\n➜Email : contato@tourdabeleza.com.br\n➜CAIXA POSTAL: 37708 / CEP: 22640-970 / RIO DE JANEIRO-RJ\n\n❤️ Vídeos que você pode curtir ❤️\nSe Maquie Comigo BEAUTY FAIR 2025 | Um DIA ESPECIAL\nhttps://www.youtube.com/watch?v=Ybiy1CkNKsk\nComprinhas C&A , Riachuelo e Mercado livre | achadinhos Básicos e Versáteis\nhttps://www.youtube.com/watch?v=3JkMtLYcFME\nNovidade De Farmácia, Comprinhas C&A, Renner e Beleza\nhttps://www.youtube.com/watch?v=IYsoTph65AM&t=9s\nCOMPRINHAS C&A e RECEBIDOS | OCEANE, HIDRATANTE PRINCIPIA , NINA MAKEUP e Mais\nhttps://www.youtube.com/watch?v=qHFO8kT65Jk&t=1402s\nCOMPRINHAS C&A , NIINA SECRETS , RENNER : ACHADINHOS CORINGAS DE JULHO\nhttps://www.youtube.com/watch?v=Umd5CH8QKIA&t=3s\n\n* Esse vídeo NÃO é patrocinado . Alguns links acima são links de afiliados. Eu ganho uma pequena comissão,  caso você compre através deles. Facilita vocês de encontrarem os mencionados e coopera com o canal. ❤️\n---------------------------------------------------------------------------------------------------------------------\n\n#testandomakes #novidade #comprinhas"
+        },
+        "defaultAudioLanguage": "pt-BR"
+      },
+      "contentDetails": {
+        "duration": "PT24M33S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "36680",
+        "likeCount": "2118",
+        "favoriteCount": "0",
+        "commentCount": "119"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "_4jBoC1ITABp5PZPMFPmNho0LHA",
+      "id": "mJIx0chBaEU",
+      "snippet": {
+        "publishedAt": "2026-09-20T00:48:22Z",
+        "channelId": "UCK0oFT3Lk0kVB9rnjU4nTYg",
+        "title": "Testando Novidades Avon , Blush Kollos , Corretivo Went N Wild e Pinceis Shein",
+        "description": "Testando Novidade Avon , Kollos , Corretivo Went n Wild e Pinceis Shein\n\nProdutos mencionados:\nMultiprotetor em Bastão FPS70 media clara 2.0\n\nMega Last Incognito All-Day Full Coverage Concealer - Medium Neutral: https://link.amazon/B05V0pw1Z\n\nCorretivo na C&A: https://minhacea.cea.com.br/?lcea=ODU5NzFfYzM2NmQz\n\nEsponja oceane : https://minhacea.cea.com.br/?lcea=ODU5NzFfNDhhMWJk\n\nBlush stick kollos : https://meli.la/2ZX1hpB\n\nBlush stick cor spice: https://meli.la/1LN81hZ\n\nPincel Duo Make B: https://meli.la/2kubtVF\n\nMAANGE Conjunto de pincéis de maquiagem com 3 peças, pincel Kabuki de ponta dupla: https://onelink.shein.com/53/62k60xj3brvt?ismg_ol=8bfrGbE58F4_01_KOC-C\n\nMascara big bang explosao de volume QDB?\n\n❤️ Canal 2 : https://www.youtube.com/@tourdabelezavlog\n\nCUPONS e LINKS PARA QUEM QUISER DESCONTO ;)\n✅ RIACHUELO: 20% OFF usando o Cupom: (Ritinha) nas compras acima de R$299,90 Através do link https://tidd.ly/46UVMmx \n\n✅ C&A: 20%OFF através do meu link , pegando também em beleza, sem valor mínimo: https://minhacea.cea.com.br/?lcea=ODU5NzFfNGFjNzg5\n(Desconto aparece quando os itens entram na sacola)\n\n🔗Seleçao de achados shopee : https://collshp.com/tourdabeleza?view=storefront\n\n🔗Seleção de achados Amazon :https://amzn.to/4vPGwB5\n\n✅ SHEIN: Cupom de 50% OFF  apenas para novos usuários 🌟 Pesquise 6H2ZF no aplicativo SHEIN ou 🌟 Clique no link para começar!\n https://onelink.shein.com/2/5m0ug3ndd7hz\nEncontre Minha lista com os itens selecionados: LQ4JG\n\n✅RENNER: 10% OFF Cupom : FAVORITOS em compras acima de R$199\nhttps://tidd.ly/45aoFdd\n\n❤️ Canal 2 : https://www.youtube.com/@tourdabelezavlog\n\nCUPONS e LINKS PARA QUEM QUISER DESCONTO ;)\n✅ RIACHUELO: 20% OFF usando o Cupom: (Ritinha) nas compras acima de R$299,90 Através do link https://tidd.ly/46UVMmx \n\n✅ C&A: 20%OFF através do meu link , pegando também em beleza, sem valor mínimo: https://minhacea.cea.com.br/?lcea=ODU5NzFfNGFjNzg5\n(Desconto aparece quando os itens entram na sacola)\n\n🔗Seleçao de achados shopee : https://collshp.com/tourdabeleza?view=storefront\n\n✅ SHEIN: Cupom de 50% OFF  apenas para novos usuários 🌟 Pesquise 6H2ZF no aplicativo SHEIN ou 🌟 Clique no link para começar!\n https://onelink.shein.com/2/5m0ug3ndd7hz\nEncontre Minha lista com os itens selecionados: LQ4JG\n\n✅RENNER: 10% OFF Cupom : FAVORITOS em compras acima de R$199\nhttps://tidd.ly/45aoFdd\n\n🔍Faça parte do meu Grupo de achados da Promo : \n💫Grupo telegram: https://t.me/achadinhosdatour\n💫Grupo Whatsapp : https://chat.whatsapp.com/Htet0KELNa3DMSMFPvWnID?mode=gi_t\n\n❤️ Me encontre aqui também: \n➜Instagram :@tourdabeleza\n➜Facebook  : tourdabeleza\n➜Blog: http://tourdabeleza.com.br\n➜Email : contato@tourdabeleza.com.br\n➜CAIXA POSTAL: 37708 / CEP: 22640-970 / RIO DE JANEIRO-RJ\n\n❤️ Vídeos que você pode curtir ❤️\nSe Maquie Comigo BEAUTY FAIR 2025 | Um DIA ESPECIAL\nhttps://www.youtube.com/watch?v=Ybiy1CkNKsk\nComprinhas C&A , Riachuelo e Mercado livre | achadinhos Básicos e Versáteis\nhttps://www.youtube.com/watch?v=3JkMtLYcFME\nNovidade De Farmácia, Comprinhas C&A, Renner e Beleza\nhttps://www.youtube.com/watch?v=IYsoTph65AM&t=9s\nCOMPRINHAS C&A e RECEBIDOS | OCEANE, HIDRATANTE PRINCIPIA , NINA MAKEUP e Mais\nhttps://www.youtube.com/watch?v=qHFO8kT65Jk&t=1402s\nCOMPRINHAS C&A , NIINA SECRETS , RENNER : ACHADINHOS CORINGAS DE JULHO\nhttps://www.youtube.com/watch?v=Umd5CH8QKIA&t=3s\n\n* Esse vídeo NÃO é patrocinado . Alguns links acima são links de afiliados. Eu ganho uma pequena comissão,  caso você compre através deles. Facilita vocês de encontrarem os mencionados e coopera com o canal. ❤️\n---------------------------------------------------------------------------------------------------------------------\n\n#testandomakes #novidade",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/mJIx0chBaEU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/mJIx0chBaEU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/mJIx0chBaEU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/mJIx0chBaEU/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/mJIx0chBaEU/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Tour da Beleza",
+        "tags": [
+          "skincare",
+          "baratinhos",
+          "comprinhas",
+          "farmácia",
+          "testando",
+          "sera que vale a pena",
+          "tour da beleza",
+          "testando makes",
+          "novidades",
+          "lançamentos",
+          "automake",
+          "make pra quem nao sabe maquiar",
+          "protetor stick avon",
+          "novidade avon",
+          "stick blush kollos"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-BR",
+        "localized": {
+          "title": "Testando Novidades Avon , Blush Kollos , Corretivo Went N Wild e Pinceis Shein",
+          "description": "Testando Novidade Avon , Kollos , Corretivo Went n Wild e Pinceis Shein\n\nProdutos mencionados:\nMultiprotetor em Bastão FPS70 media clara 2.0\n\nMega Last Incognito All-Day Full Coverage Concealer - Medium Neutral: https://link.amazon/B05V0pw1Z\n\nCorretivo na C&A: https://minhacea.cea.com.br/?lcea=ODU5NzFfYzM2NmQz\n\nEsponja oceane : https://minhacea.cea.com.br/?lcea=ODU5NzFfNDhhMWJk\n\nBlush stick kollos : https://meli.la/2ZX1hpB\n\nBlush stick cor spice: https://meli.la/1LN81hZ\n\nPincel Duo Make B: https://meli.la/2kubtVF\n\nMAANGE Conjunto de pincéis de maquiagem com 3 peças, pincel Kabuki de ponta dupla: https://onelink.shein.com/53/62k60xj3brvt?ismg_ol=8bfrGbE58F4_01_KOC-C\n\nMascara big bang explosao de volume QDB?\n\n❤️ Canal 2 : https://www.youtube.com/@tourdabelezavlog\n\nCUPONS e LINKS PARA QUEM QUISER DESCONTO ;)\n✅ RIACHUELO: 20% OFF usando o Cupom: (Ritinha) nas compras acima de R$299,90 Através do link https://tidd.ly/46UVMmx \n\n✅ C&A: 20%OFF através do meu link , pegando também em beleza, sem valor mínimo: https://minhacea.cea.com.br/?lcea=ODU5NzFfNGFjNzg5\n(Desconto aparece quando os itens entram na sacola)\n\n🔗Seleçao de achados shopee : https://collshp.com/tourdabeleza?view=storefront\n\n🔗Seleção de achados Amazon :https://amzn.to/4vPGwB5\n\n✅ SHEIN: Cupom de 50% OFF  apenas para novos usuários 🌟 Pesquise 6H2ZF no aplicativo SHEIN ou 🌟 Clique no link para começar!\n https://onelink.shein.com/2/5m0ug3ndd7hz\nEncontre Minha lista com os itens selecionados: LQ4JG\n\n✅RENNER: 10% OFF Cupom : FAVORITOS em compras acima de R$199\nhttps://tidd.ly/45aoFdd\n\n❤️ Canal 2 : https://www.youtube.com/@tourdabelezavlog\n\nCUPONS e LINKS PARA QUEM QUISER DESCONTO ;)\n✅ RIACHUELO: 20% OFF usando o Cupom: (Ritinha) nas compras acima de R$299,90 Através do link https://tidd.ly/46UVMmx \n\n✅ C&A: 20%OFF através do meu link , pegando também em beleza, sem valor mínimo: https://minhacea.cea.com.br/?lcea=ODU5NzFfNGFjNzg5\n(Desconto aparece quando os itens entram na sacola)\n\n🔗Seleçao de achados shopee : https://collshp.com/tourdabeleza?view=storefront\n\n✅ SHEIN: Cupom de 50% OFF  apenas para novos usuários 🌟 Pesquise 6H2ZF no aplicativo SHEIN ou 🌟 Clique no link para começar!\n https://onelink.shein.com/2/5m0ug3ndd7hz\nEncontre Minha lista com os itens selecionados: LQ4JG\n\n✅RENNER: 10% OFF Cupom : FAVORITOS em compras acima de R$199\nhttps://tidd.ly/45aoFdd\n\n🔍Faça parte do meu Grupo de achados da Promo : \n💫Grupo telegram: https://t.me/achadinhosdatour\n💫Grupo Whatsapp : https://chat.whatsapp.com/Htet0KELNa3DMSMFPvWnID?mode=gi_t\n\n❤️ Me encontre aqui também: \n➜Instagram :@tourdabeleza\n➜Facebook  : tourdabeleza\n➜Blog: http://tourdabeleza.com.br\n➜Email : contato@tourdabeleza.com.br\n➜CAIXA POSTAL: 37708 / CEP: 22640-970 / RIO DE JANEIRO-RJ\n\n❤️ Vídeos que você pode curtir ❤️\nSe Maquie Comigo BEAUTY FAIR 2025 | Um DIA ESPECIAL\nhttps://www.youtube.com/watch?v=Ybiy1CkNKsk\nComprinhas C&A , Riachuelo e Mercado livre | achadinhos Básicos e Versáteis\nhttps://www.youtube.com/watch?v=3JkMtLYcFME\nNovidade De Farmácia, Comprinhas C&A, Renner e Beleza\nhttps://www.youtube.com/watch?v=IYsoTph65AM&t=9s\nCOMPRINHAS C&A e RECEBIDOS | OCEANE, HIDRATANTE PRINCIPIA , NINA MAKEUP e Mais\nhttps://www.youtube.com/watch?v=qHFO8kT65Jk&t=1402s\nCOMPRINHAS C&A , NIINA SECRETS , RENNER : ACHADINHOS CORINGAS DE JULHO\nhttps://www.youtube.com/watch?v=Umd5CH8QKIA&t=3s\n\n* Esse vídeo NÃO é patrocinado . Alguns links acima são links de afiliados. Eu ganho uma pequena comissão,  caso você compre através deles. Facilita vocês de encontrarem os mencionados e coopera com o canal. ❤️\n---------------------------------------------------------------------------------------------------------------------\n\n#testandomakes #novidade"
+        },
+        "defaultAudioLanguage": "pt-BR"
+      },
+      "contentDetails": {
+        "duration": "PT25M25S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "38812",
+        "likeCount": "2393",
+        "favoriteCount": "0",
+        "commentCount": "163"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "uCU3z9xAsNGkitk1RyTb6FLQT5c",
+      "id": "B0d5Mc1AFJQ",
+      "snippet": {
+        "publishedAt": "2026-10-15T23:38:55Z",
+        "channelId": "UCobi8wbJKxiiooqYG0oMFkQ",
+        "title": "BT GLAZE Sabrina é o meu gloss favorito SIM! 💕 Já testou?",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/B0d5Mc1AFJQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/B0d5Mc1AFJQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/B0d5Mc1AFJQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/B0d5Mc1AFJQ/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/B0d5Mc1AFJQ/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Bruna Tavares",
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "en-US",
+        "localized": {
+          "title": "BT GLAZE Sabrina é o meu gloss favorito SIM! 💕 Já testou?",
+          "description": ""
+        },
+        "defaultAudioLanguage": "pt-PT"
+      },
+      "contentDetails": {
+        "duration": "PT19S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "4044",
+        "likeCount": "246",
+        "favoriteCount": "0",
+        "commentCount": "12"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "YBlSrjZPBvGRQP3GOZ-2J2hCMzs",
+      "id": "CIS2veHQWTk",
+      "snippet": {
+        "publishedAt": "2026-10-06T00:43:04Z",
+        "channelId": "UCobi8wbJKxiiooqYG0oMFkQ",
+        "title": "BT SHIMMER BLUSH Topázio: marrom apessegado com reflexos perolados dourados. ✨ O que acharam? 🧡",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/CIS2veHQWTk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/CIS2veHQWTk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/CIS2veHQWTk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/CIS2veHQWTk/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/CIS2veHQWTk/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Bruna Tavares",
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "en-US",
+        "localized": {
+          "title": "BT SHIMMER BLUSH Topázio: marrom apessegado com reflexos perolados dourados. ✨ O que acharam? 🧡",
+          "description": ""
+        }
+      },
+      "contentDetails": {
+        "duration": "PT35S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "regionRestriction": {
+          "blocked": [
+            "BY",
+            "RU"
+          ]
+        },
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "20138",
+        "likeCount": "1210",
+        "favoriteCount": "0",
+        "commentCount": "39"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "NtOvkCKcxFIPcLa3uypRrQEiiL8",
+      "id": "Gn8J5XuZR8Q",
+      "snippet": {
+        "publishedAt": "2026-10-12T23:41:36Z",
+        "channelId": "UCoTM-vvs2hnv2mCvzNJ5uXA",
+        "title": "MINHA FILHA VAI NASCER!!!",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Gn8J5XuZR8Q/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Gn8J5XuZR8Q/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Gn8J5XuZR8Q/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/Gn8J5XuZR8Q/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/Gn8J5XuZR8Q/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Franciny Ehlke",
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-PT",
+        "localized": {
+          "title": "MINHA FILHA VAI NASCER!!!",
+          "description": ""
+        },
+        "defaultAudioLanguage": "pt-BR"
+      },
+      "contentDetails": {
+        "duration": "PT1M22S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "626420",
+        "likeCount": "52128",
+        "favoriteCount": "0",
+        "commentCount": "300"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "_eo4CCCaKNTma_W8S34gw7j59g4",
+      "id": "Db2gYVki2KM",
+      "snippet": {
+        "publishedAt": "2026-09-18T23:59:44Z",
+        "channelId": "UCoTM-vvs2hnv2mCvzNJ5uXA",
+        "title": "ABRINDO MEU IPHONE NOVO 🆕📱 #iphone18",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Db2gYVki2KM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Db2gYVki2KM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Db2gYVki2KM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/Db2gYVki2KM/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/Db2gYVki2KM/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Franciny Ehlke",
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-PT",
+        "localized": {
+          "title": "ABRINDO MEU IPHONE NOVO 🆕📱 #iphone18",
+          "description": ""
+        },
+        "defaultAudioLanguage": "pt-BR"
+      },
+      "contentDetails": {
+        "duration": "PT1M14S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "1027572",
+        "likeCount": "66182",
+        "favoriteCount": "0",
+        "commentCount": "929"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "SZV7iwOH3S9pY4DGEwfZvaIcDuw",
+      "id": "45o21QAEURg",
+      "snippet": {
+        "publishedAt": "2026-10-12T14:30:07Z",
+        "channelId": "UCO-9Uf_aIFZ2mJF4ws8wOgQ",
+        "title": "MAQUIA E FALA: COMO ANDA A SOSO, AMAMENTAÇÃO, SONO DO BEBE ETC...",
+        "description": "Faz tempo que eu não faço um video focado em maternidade, né? Muuuita coisa mudou por aqui e achei que seria ótimo vir conversar com vocês um pouco mais sobre tudo que passamos nesses últimos meses com a Sosô 💛\n\n🎥 ASSISTA TAMBÉM: \n\n\nRESPONDENDO PERGUNTAS: GRAVIDEZ, TRABALHO, PRIMEIRO MÊS DA SOPHIA…: https://youtu.be/wOJ2mHJkBNM?si=8e-88RdrXyupB9lM\nACHEI QUE MINHA FILHA ESTAVA ME REJEITANDO: https://youtu.be/rD53vYHEf80?si=oSpbcL56Dw1ELfeW\n\n\n🎟️ CUPONS DE DESCONTO*: \n\nOX Cosmeticos: JANA15\nMAC Cosmetics: MAC-JANA ou MACSQUAD-JANA\nToo Faced: TF-JANA ou TOO-JANA\nClinique: CL-JANA\nQuem Disse Berenice: JANAQDB\nSimple Organic: JANA\n\n*não tenho nenhum ganho financeiro relacionado a esses cupons!! sou apenas parceira da marca\n\nInscreva-se no canal - https://goo.gl/qWRSDN \nNão esqueça de ativar o 'sininho' 🔔 assim você recebe todas as atualizações em primeira mão 😉\n\n🦄 VEM FICAR MAIS PERTINHO DE MIM 🦄\nInstagram: https://www.instagram.com/janataffarel/\nTiktok: https://www.tiktok.com/@janataffarel\nFacebook - https://www.facebook.com/JanaTaffarel/\nTwitter - https://twitter.com/JanaTaffarel",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/45o21QAEURg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/45o21QAEURg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/45o21QAEURg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/45o21QAEURg/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/45o21QAEURg/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          },
+          "fhd": {
+            "url": "https://i.ytimg.com/vi/45o21QAEURg/fhddefault.jpg",
+            "width": 1920,
+            "height": 1080
+          }
+        },
+        "channelTitle": "Jana Taffarel",
+        "categoryId": "26",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-PT",
+        "localized": {
+          "title": "MAQUIA E FALA: COMO ANDA A SOSO, AMAMENTAÇÃO, SONO DO BEBE ETC...",
+          "description": "Faz tempo que eu não faço um video focado em maternidade, né? Muuuita coisa mudou por aqui e achei que seria ótimo vir conversar com vocês um pouco mais sobre tudo que passamos nesses últimos meses com a Sosô 💛\n\n🎥 ASSISTA TAMBÉM: \n\n\nRESPONDENDO PERGUNTAS: GRAVIDEZ, TRABALHO, PRIMEIRO MÊS DA SOPHIA…: https://youtu.be/wOJ2mHJkBNM?si=8e-88RdrXyupB9lM\nACHEI QUE MINHA FILHA ESTAVA ME REJEITANDO: https://youtu.be/rD53vYHEf80?si=oSpbcL56Dw1ELfeW\n\n\n🎟️ CUPONS DE DESCONTO*: \n\nOX Cosmeticos: JANA15\nMAC Cosmetics: MAC-JANA ou MACSQUAD-JANA\nToo Faced: TF-JANA ou TOO-JANA\nClinique: CL-JANA\nQuem Disse Berenice: JANAQDB\nSimple Organic: JANA\n\n*não tenho nenhum ganho financeiro relacionado a esses cupons!! sou apenas parceira da marca\n\nInscreva-se no canal - https://goo.gl/qWRSDN \nNão esqueça de ativar o 'sininho' 🔔 assim você recebe todas as atualizações em primeira mão 😉\n\n🦄 VEM FICAR MAIS PERTINHO DE MIM 🦄\nInstagram: https://www.instagram.com/janataffarel/\nTiktok: https://www.tiktok.com/@janataffarel\nFacebook - https://www.facebook.com/JanaTaffarel/\nTwitter - https://twitter.com/JanaTaffarel"
+        },
+        "defaultAudioLanguage": "pt-BR"
+      },
+      "contentDetails": {
+        "duration": "PT39M32S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "70160",
+        "likeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "yusPCFjWsen4ZmQeVMvhqZEjszo",
+      "id": "Tu-5d9i1gaQ",
+      "snippet": {
+        "publishedAt": "2026-10-05T14:30:25Z",
+        "channelId": "UCO-9Uf_aIFZ2mJF4ws8wOgQ",
+        "title": "TESTANDO NOVIDADES DE MAKE: TOO FACED, ELF, ADAM MITCH COM EUDORA…",
+        "description": "O mercado de make, tanto nacional quanto internacional, ta bombando!! Por isso, acho importante dar minha opinião nos novos produtos para ajudar vocês a decidirem, de maneira mais fácil, o que vale a pena e o que não vale 🕵️‍♀️.\n\n🎥 ASSISTA TAMBÉM:\n\nELF NO BRASIL: https://youtube.com/shorts/LGGKFEMh1dY?si=sbiIsaEPsjn4HwER\n\n📝 LISTA DE PRODUTOS:\n\nSérum Iluminador Para Olhos All About Eyes™ Brightening Concentrate - Clinique \nDouble Serum - Clarins \nCharlotte’s Magic Cream - Charlotte Tilbury \nPrimer Peach Perfect - Too Faced \nTinted Blur Balm Cor 00 - Laura Mercier \nSecret Camouflage Complexion Perfector Cor 01 - Laura Mercier \nContorno Líquido Cosmetics Halo Glow Beauty Wand Cor Fair Light - ELF \nJoystick Buildable Cream Blush Stick Cor Shady Business - Marc Jacobs Beauty \nCorretivo The Porefessional Cor 5N - Benefit \nPó Solto Peach Perfect Cor Peachy Pink - Too Faced \nDuo de Blush Cor Rosa Boneca - Tata Beauty \nSpray Fixador Peach Perfect - Too Faced \nLápis de Sobrancelhas Quickliner ™ For Brows Cor Cool Grey - Clinique \nGel para Sobrancelhas Just Browsing Transparent - Clinique \nPaleta De Sombras Sweet Peach - Too Faced  \nMáscara de Cílios Peel-Off Panda Cor Marrom - Dailus \nIluminador Cor Quartzo Rosa - Tata Beauty \nLapiseira Multifuncional Kiss Me Canela Escuro - Adam Mitch e Eudora \nBatom Líquido Matte Supreme Canela - Adam Mitch e Eudora  \nGloss Labial Kiss Me Canela - Adam Mitch e Eudora  \nFinalizador Impermeável - Tata Beauty  \n\n\n\n\n🎟️ CUPONS DE DESCONTO*: \n\nOX Cosmeticos: JANA15\nMAC Cosmetics: MAC-JANA ou MACSQUAD-JANA\nToo Faced: TF-JANA ou TOO-JANA\nClinique: CL-JANA\nQuem Disse Berenice: JANAQDB\nSimple Organic: JANA\n\n*não tenho nenhum ganho financeiro relacionado a esses cupons!! sou apenas parceira da marca\n\nInscreva-se no canal - https://goo.gl/qWRSDN \nNão esqueça de ativar o 'sininho' 🔔 assim você recebe todas as atualizações em primeira mão 😉\n\n🦄 VEM FICAR MAIS PERTINHO DE MIM 🦄\nInstagram: https://www.instagram.com/janataffarel/\nTiktok: https://www.tiktok.com/@janataffarel\nFacebook - https://www.facebook.com/JanaTaffarel/\nTwitter - https://twitter.com/JanaTaffarel",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Tu-5d9i1gaQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Tu-5d9i1gaQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Tu-5d9i1gaQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/Tu-5d9i1gaQ/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/Tu-5d9i1gaQ/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          },
+          "fhd": {
+            "url": "https://i.ytimg.com/vi/Tu-5d9i1gaQ/fhddefault.jpg",
+            "width": 1920,
+            "height": 1080
+          }
+        },
+        "channelTitle": "Jana Taffarel",
+        "tags": [
+          "jana taffarel",
+          "sempre glamour",
+          "como se maquiar",
+          "como fazer",
+          "como fazer maquiagem",
+          "base",
+          "como passar base",
+          "maquiagem"
+        ],
+        "categoryId": "26",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-PT",
+        "localized": {
+          "title": "TESTANDO NOVIDADES DE MAKE: TOO FACED, ELF, ADAM MITCH COM EUDORA…",
+          "description": "O mercado de make, tanto nacional quanto internacional, ta bombando!! Por isso, acho importante dar minha opinião nos novos produtos para ajudar vocês a decidirem, de maneira mais fácil, o que vale a pena e o que não vale 🕵️‍♀️.\n\n🎥 ASSISTA TAMBÉM:\n\nELF NO BRASIL: https://youtube.com/shorts/LGGKFEMh1dY?si=sbiIsaEPsjn4HwER\n\n📝 LISTA DE PRODUTOS:\n\nSérum Iluminador Para Olhos All About Eyes™ Brightening Concentrate - Clinique \nDouble Serum - Clarins \nCharlotte’s Magic Cream - Charlotte Tilbury \nPrimer Peach Perfect - Too Faced \nTinted Blur Balm Cor 00 - Laura Mercier \nSecret Camouflage Complexion Perfector Cor 01 - Laura Mercier \nContorno Líquido Cosmetics Halo Glow Beauty Wand Cor Fair Light - ELF \nJoystick Buildable Cream Blush Stick Cor Shady Business - Marc Jacobs Beauty \nCorretivo The Porefessional Cor 5N - Benefit \nPó Solto Peach Perfect Cor Peachy Pink - Too Faced \nDuo de Blush Cor Rosa Boneca - Tata Beauty \nSpray Fixador Peach Perfect - Too Faced \nLápis de Sobrancelhas Quickliner ™ For Brows Cor Cool Grey - Clinique \nGel para Sobrancelhas Just Browsing Transparent - Clinique \nPaleta De Sombras Sweet Peach - Too Faced  \nMáscara de Cílios Peel-Off Panda Cor Marrom - Dailus \nIluminador Cor Quartzo Rosa - Tata Beauty \nLapiseira Multifuncional Kiss Me Canela Escuro - Adam Mitch e Eudora \nBatom Líquido Matte Supreme Canela - Adam Mitch e Eudora  \nGloss Labial Kiss Me Canela - Adam Mitch e Eudora  \nFinalizador Impermeável - Tata Beauty  \n\n\n\n\n🎟️ CUPONS DE DESCONTO*: \n\nOX Cosmeticos: JANA15\nMAC Cosmetics: MAC-JANA ou MACSQUAD-JANA\nToo Faced: TF-JANA ou TOO-JANA\nClinique: CL-JANA\nQuem Disse Berenice: JANAQDB\nSimple Organic: JANA\n\n*não tenho nenhum ganho financeiro relacionado a esses cupons!! sou apenas parceira da marca\n\nInscreva-se no canal - https://goo.gl/qWRSDN \nNão esqueça de ativar o 'sininho' 🔔 assim você recebe todas as atualizações em primeira mão 😉\n\n🦄 VEM FICAR MAIS PERTINHO DE MIM 🦄\nInstagram: https://www.instagram.com/janataffarel/\nTiktok: https://www.tiktok.com/@janataffarel\nFacebook - https://www.facebook.com/JanaTaffarel/\nTwitter - https://twitter.com/JanaTaffarel"
+        },
+        "defaultAudioLanguage": "pt-BR"
+      },
+      "contentDetails": {
+        "duration": "PT22M58S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "66968",
+        "likeCount": "2935",
+        "favoriteCount": "0",
+        "commentCount": "64"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "vjbKEUoJub_zUNcXgoesXv3s_yo",
+      "id": "UwaSSUrEp4s",
+      "snippet": {
+        "publishedAt": "2026-09-19T14:30:02Z",
+        "channelId": "UCO-9Uf_aIFZ2mJF4ws8wOgQ",
+        "title": "COLEÇÃO ALICE E AVON PARTE 3: GLOSS!",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/UwaSSUrEp4s/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/UwaSSUrEp4s/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/UwaSSUrEp4s/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/UwaSSUrEp4s/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/UwaSSUrEp4s/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Jana Taffarel",
+        "tags": [
+          "jana taffarel",
+          "sempre glamour",
+          "como se maquiar",
+          "como fazer",
+          "como fazer maquiagem",
+          "base",
+          "como passar base",
+          "maquiagem"
+        ],
+        "categoryId": "26",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "pt-PT",
+        "localized": {
+          "title": "COLEÇÃO ALICE E AVON PARTE 3: GLOSS!",
+          "description": ""
+        },
+        "defaultAudioLanguage": "pt-BR"
+      },
+      "contentDetails": {
+        "duration": "PT1M10S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "4670",
+        "likeCount": "301",
+        "favoriteCount": "0",
+        "commentCount": "13"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 23,
+    "resultsPerPage": 23
+  }
+}

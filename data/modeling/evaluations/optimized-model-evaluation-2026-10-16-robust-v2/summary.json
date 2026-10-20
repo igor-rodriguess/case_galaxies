@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.2.0",
+  "run_id": "optimized-model-evaluation-2026-10-16-robust-v2",
+  "exploratory": true,
+  "sectors": {
+    "automotivo": {
+      "criterion": "menor MAE log médio na validação temporal interna",
+      "best_inner_cv": "hist_gradient_boosting",
+      "best_temporal_observed": "mlp",
+      "best_channel_holdout_observed": "extra_trees",
+      "holdouts_used_for_tuning": false
+    },
+    "moda": {
+      "criterion": "menor MAE log médio na validação temporal interna",
+      "best_inner_cv": "ensemble_weighted",
+      "best_temporal_observed": "hist_gradient_boosting",
+      "best_channel_holdout_observed": "gradient_boosting",
+      "holdouts_used_for_tuning": false
+    },
+    "beleza": {
+      "criterion": "menor MAE log médio na validação temporal interna",
+      "best_inner_cv": "ensemble_weighted",
+      "best_temporal_observed": "random_forest",
+      "best_channel_holdout_observed": "ridge",
+      "holdouts_used_for_tuning": false
+    }
+  }
+}

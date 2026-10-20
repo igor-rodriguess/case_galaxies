@@ -1,0 +1,102 @@
+{
+  "run_id": "relative-performance-nested-665-2026-10-16",
+  "selection_policy": "O modelo é fixado pela validação interna; os holdouts servem somente para confirmação pós-seleção.",
+  "sectors": {
+    "automotivo": {
+      "winner": "gradient_boosting",
+      "splits": {
+        "temporal": {
+          "rows": 46,
+          "candidate_mae": 1.0056232863156476,
+          "baseline_mae": 1.3512475236928283,
+          "mae_difference": -0.3456242373771807,
+          "relative_improvement": 0.2557815879896107,
+          "ci95_lower": -0.5040711472218277,
+          "ci95_upper": -0.18146934010270357,
+          "probability_candidate_better": 1.0,
+          "statistically_better": true,
+          "r2": -0.1768335454515062,
+          "passed": false
+        },
+        "channel_holdout": {
+          "rows": 46,
+          "candidate_mae": 0.757835077657101,
+          "baseline_mae": 0.8490976399792559,
+          "mae_difference": -0.09126256232215492,
+          "relative_improvement": 0.1074818230850159,
+          "ci95_lower": -0.16889334427752184,
+          "ci95_upper": -0.01772556837931376,
+          "probability_candidate_better": 0.9918,
+          "statistically_better": true,
+          "r2": -0.1802528641513749,
+          "passed": false
+        }
+      },
+      "confirmed_for_both_holdouts": false
+    },
+    "moda": {
+      "winner": "extra_trees",
+      "splits": {
+        "temporal": {
+          "rows": 46,
+          "candidate_mae": 1.688203782736779,
+          "baseline_mae": 1.7863660282360345,
+          "mae_difference": -0.09816224549925638,
+          "relative_improvement": 0.054950801766078576,
+          "ci95_lower": -0.2246545498577843,
+          "ci95_upper": 0.034621398445356805,
+          "probability_candidate_better": 0.9314,
+          "statistically_better": false,
+          "r2": -0.7799669947453698,
+          "passed": false
+        },
+        "channel_holdout": {
+          "rows": 49,
+          "candidate_mae": 1.4342975839477485,
+          "baseline_mae": 1.5457239953546256,
+          "mae_difference": -0.11142641140687708,
+          "relative_improvement": 0.0720868743331588,
+          "ci95_lower": -0.2458055935631741,
+          "ci95_upper": 0.02445457267385187,
+          "probability_candidate_better": 0.9454,
+          "statistically_better": false,
+          "r2": -0.2682318576001237,
+          "passed": false
+        }
+      },
+      "confirmed_for_both_holdouts": false
+    },
+    "beleza": {
+      "winner": "ensemble_equal",
+      "splits": {
+        "temporal": {
+          "rows": 43,
+          "candidate_mae": 1.3598987397043543,
+          "baseline_mae": 1.4303947725696644,
+          "mae_difference": -0.07049603286531007,
+          "relative_improvement": 0.049284319418104405,
+          "ci95_lower": -0.13522620351233203,
+          "ci95_upper": -0.003199187866183621,
+          "probability_candidate_better": 0.9794,
+          "statistically_better": true,
+          "r2": -0.4213123257034377,
+          "passed": false
+        },
+        "channel_holdout": {
+          "rows": 47,
+          "candidate_mae": 1.0281074061007838,
+          "baseline_mae": 1.1542647211282417,
+          "mae_difference": -0.12615731502745767,
+          "relative_improvement": 0.10929669140727517,
+          "ci95_lower": -0.18298676750542706,
+          "ci95_upper": -0.06729869502573992,
+          "probability_candidate_better": 1.0,
+          "statistically_better": true,
+          "r2": 0.1221590802904859,
+          "passed": true
+        }
+      },
+      "confirmed_for_both_holdouts": false
+    }
+  }
+}

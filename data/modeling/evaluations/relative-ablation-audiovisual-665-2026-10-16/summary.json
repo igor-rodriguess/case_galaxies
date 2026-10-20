@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.2.0",
+  "run_id": "relative-ablation-audiovisual-665-2026-10-16",
+  "exploratory": true,
+  "sectors": {
+    "automotivo": {
+      "criterion": "menor MAE log médio na validação temporal interna",
+      "best_inner_cv": "random_forest",
+      "best_temporal_observed": "gradient_boosting",
+      "best_channel_holdout_observed": "ridge",
+      "holdouts_used_for_tuning": false
+    },
+    "moda": {
+      "criterion": "menor MAE log médio na validação temporal interna",
+      "best_inner_cv": "extra_trees",
+      "best_temporal_observed": "random_forest",
+      "best_channel_holdout_observed": "hist_gradient_boosting",
+      "holdouts_used_for_tuning": false
+    },
+    "beleza": {
+      "criterion": "menor MAE log médio na validação temporal interna",
+      "best_inner_cv": "ensemble_weighted",
+      "best_temporal_observed": "random_forest",
+      "best_channel_holdout_observed": "hist_gradient_boosting",
+      "holdouts_used_for_tuning": false
+    }
+  }
+}

@@ -1,0 +1,51 @@
+Inicializando dependências de embedding...
+Dependências carregadas; selecionando coleta consolidada...
+Coleta selecionada: C:\Users\Inteli\Documents\case_galaxies\data\youtube\runs\expansion-1000-per-sector-balanced-2026-10-16\normalized_records.json (3425 vídeos solicitados).
+Manifesto de execução registrado.
+Lendo checkpoint de thumbnails...
+Checkpoint lido: 6 thumbnails já vetorizadas.
+Thumbnails pendentes: 3419; baixando com 8 workers...
+  thumbnails: 100/3419
+  thumbnails: 200/3419
+  thumbnails: 300/3419
+  thumbnails: 400/3419
+  thumbnails: 500/3419
+  thumbnails: 600/3419
+  thumbnails: 700/3419
+  thumbnails: 800/3419
+  thumbnails: 900/3419
+  thumbnails: 1000/3419
+  thumbnails: 1100/3419
+  thumbnails: 1200/3419
+  thumbnails: 1300/3419
+  thumbnails: 1400/3419
+  thumbnails: 1500/3419
+  thumbnails: 1600/3419
+  thumbnails: 1700/3419
+  thumbnails: 1800/3419
+  thumbnails: 1900/3419
+  thumbnails: 2000/3419
+  thumbnails: 2100/3419
+  thumbnails: 2200/3419
+  thumbnails: 2300/3419
+  thumbnails: 2400/3419
+  thumbnails: 2500/3419
+  thumbnails: 2600/3419
+  thumbnails: 2700/3419
+  thumbnails: 2800/3419
+  thumbnails: 2900/3419
+  thumbnails: 3000/3419
+  thumbnails: 3100/3419
+  thumbnails: 3200/3419
+  thumbnails: 3300/3419
+  thumbnails: 3400/3419
+  thumbnails: 3419/3419
+Inicializando CLIP para 3419 thumbnails válidas...
+  vetores CLIP: 320/3419
+  vetores CLIP: 640/3419
+  vetores CLIP: 960/3419
+  vetores CLIP: 1280/3419
+  vetores CLIP: 1600/3419
+  vetores CLIP: 1920/3419
+  vetores CLIP: 2240/3419
+  vetores CLIP: 2560/3419
