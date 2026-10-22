@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1.0",
-  "started_at": "2026-10-22T01:46:10.663956Z",
+  "started_at": "2026-10-22T02:22:38.155452Z",
   "source_records": "C:\\Users\\Inteli\\AppData\\Local\\Temp\\claude\\C--Users-Inteli-Documents-Secreto-projeto-secreto\\4fe41305-2fea-491e-9c3d-641235174b4e\\scratchpad\\criadores_ids.jsonl",
   "records_requested": 15731,
   "models": {
@@ -8,5 +8,7 @@
     "text": "intfloat/multilingual-e5-base"
   },
   "device": "cpu",
-  "inputs": "Somente thumbnail, título e os primeiros 300 caracteres da descrição, disponíveis antes da publicação."
+  "inputs": "Somente thumbnail, título e os primeiros 300 caracteres da descrição, disponíveis antes da publicação.",
+  "completed_at": "2026-10-22T03:01:44.602767Z",
+  "status": "complete"
 }
