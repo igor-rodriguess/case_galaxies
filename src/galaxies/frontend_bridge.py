@@ -50,6 +50,7 @@ BATTLE_RUN = "baseline-freeze-calibrated-20261020"
 SHORTS_RUN = "shorts-ranking-final-14k"
 # Ranking na base v2 (rótulo de outlier por canal), promovido pela regra de IC.
 VIRAL_RUN = "viral-v2-ranking-20261021"
+VIRAL_REPORT = PROJECT_ROOT / "reports" / "final" / "dataset_v2" / "ranking_base_v2.json"
 FIGURE_RUNS = ("known-channel-rolling-fold-aware-20261021", SHORTS_RUN, VIRAL_RUN)
 RUNS_DIR = PROJECT_ROOT / "data" / "modeling" / "runs"
 FIGURES_DIR = PROJECT_ROOT / "reports" / "figures"
@@ -121,7 +122,7 @@ def load_artifacts(runs_dir: Path = RUNS_DIR) -> dict[str, Any]:
         },
         "viral_v2": {
             "run_id": VIRAL_RUN,
-            "report": _read_json(runs_dir / VIRAL_RUN / "report.json"),
+            "report": _read_json(VIRAL_REPORT),
             "figures": _figures(VIRAL_RUN),
         },
     }

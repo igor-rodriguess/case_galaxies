@@ -8,7 +8,6 @@ import { ViralHeadline, ViralSectors } from "@/components/ViralV2";
 import { IconArrow, IconBattle, IconChart, IconChat } from "@/components/icons";
 import { ErrorBox, Loading, Pill, Unavailable } from "@/components/ui";
 import { useData } from "@/lib/data";
-import { ci, num, pct } from "@/lib/format";
 import { useT } from "@/lib/i18n";
 import { promotionSummary } from "@/lib/metrics";
 
@@ -31,12 +30,9 @@ function Orbit() {
 }
 
 export default function Overview() {
-  const { t, locale } = useT();
+  const { t } = useT();
   const { statuses, artifacts, reload } = useData();
   const summary = statuses.state === "ok" ? promotionSummary(statuses.data) : null;
-  const shorts = artifacts.state === "ok" && artifacts.data.shorts_only.report.status === "ok" ? artifacts.data.shorts_only.report.data : null;
-  const battle = artifacts.state === "ok" && artifacts.data.battle_model.report.status === "ok" ? artifacts.data.battle_model.report.data : null;
-  const overall = shorts?.overall;
   const viral = artifacts.state === "ok" && artifacts.data.viral_v2?.report.status === "ok" ? artifacts.data.viral_v2.report : null;
 
   return (
@@ -92,54 +88,15 @@ export default function Overview() {
             <ViralHeadline report={viral.data} path={viral.path} />
             <p className="rounded-xl bg-ok-soft px-4 py-3 text-sm text-text-2">
               <strong className="text-ok">{t("Reading:")}</strong>{" "}
-              {t("With the cleaned dataset and the outlier label, the ranking beats the reference with a favorable CI. Automotive is strongest; fashion is still below chance.")}
+              {t("With the cleaned dataset and the outlier label, the ranking beats the reference with a favorable CI. Automotive is strongest; fashion's point estimate is below chance, but uncertain. This is retrospective evidence and still needs prospective validation.")}
             </p>
             <ViralSectors report={viral.data} />
           </div>
         )}
         {artifacts.state === "ok" && !viral && (
-          <>
-            <dl className="grid divide-y divide-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-              {[
-                {
-                  label: "AUC per channel · Shorts",
-                  value: num(overall?.auc_macro_channel, 3, locale),
-                  detail: overall ? `${t("95% CI")} ${ci(overall.ci?.auc_macro_channel, 3, locale)} · ${t("0.5 is chance")}` : t("unavailable"),
-                },
-                {
-                  label: "Lift@10 · Shorts",
-                  value: num(overall?.lift_top10, 2, locale),
-                  detail: overall ? `${t("95% CI")} ${ci(overall.ci?.lift_top10, 2, locale)} · ${t("1.0 is chance")}` : t("unavailable"),
-                },
-                {
-                  label: "Battle model · temporal AUC",
-                  value: num(battle?.evaluation?.temporal?.auc_intra, 3, locale),
-                  detail: battle?.evaluation?.temporal
-                    ? `${t("95% CI")} ${ci([battle.evaluation.temporal.auc_intra_ci_low, battle.evaluation.temporal.auc_intra_ci_high], 3, locale)}`
-                    : t("unavailable"),
-                },
-              ].map((item) => (
-                <div key={item.label} className="px-6 py-5">
-                  <dt className="label">{t(item.label)}</dt>
-                  <dd className="display mt-2 text-4xl tabular-nums text-warn">{item.value}</dd>
-                  <dd className="mono mt-2 text-xs text-muted">{item.detail}</dd>
-                </div>
-              ))}
-            </dl>
-            {overall ? (
-              <p className="border-t border-border bg-warn-soft px-6 py-4 text-sm text-text-2">
-                <strong className="text-warn">{t("Reading:")}</strong>{" "}
-                {t("with metadata and cadence alone, the order of Shorts within a channel is at chance level. Use the tools to compare scenarios and plan tests, not to promise results.")}{" "}
-                <span className="mono text-xs text-muted">
-                  {shorts?.population?.test_rows?.toLocaleString(locale)} Shorts · P@10 {pct(overall.precision_top10, 1, locale)}
-                </span>
-              </p>
-            ) : (
-              <div className="p-6">
-                <Unavailable detail="Shorts-only evaluation not found." />
-              </div>
-            )}
-          </>
+          <div className="p-6">
+            <Unavailable label="Current dataset v2 report unavailable." detail={artifacts.data.viral_v2?.report.path} />
+          </div>
         )}
       </section>
 

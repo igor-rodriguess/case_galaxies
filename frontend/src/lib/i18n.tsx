@@ -68,7 +68,7 @@ export const PT: Record<string, string> = {
   "Gain over reference": "Ganho sobre a referência",
   reference: "referência",
   "base rate": "taxa base",
-  "Promoted by the CI rule": "Promovido pela regra do IC",
+  "Offline CI rule passed": "Regra offline de IC passou",
   "Not promoted": "Não promovido",
   "Viral = 3× the channel median": "Viral = 3× a mediana do canal",
   "age shortcut": "atalho de idade",
@@ -76,8 +76,9 @@ export const PT: Record<string, string> = {
   "Gain [95% CI]": "Ganho [IC95%]",
   "Ranking on dataset v2": "Ranking na base v2",
   "Earlier evaluation (Phase 2, old label)": "Avaliação anterior (Fase 2, rótulo antigo)",
-  "With the cleaned dataset and the outlier label, the ranking beats the reference with a favorable CI. Automotive is strongest; fashion is still below chance.":
-    "Com a base limpa e o rótulo de outlier, o ranking vence a referência com IC favorável. Automotivo é o mais forte; moda ainda fica abaixo do acaso.",
+  "With the cleaned dataset and the outlier label, the ranking beats the reference with a favorable CI. Automotive is strongest; fashion's point estimate is below chance, but uncertain. This is retrospective evidence and still needs prospective validation.":
+    "Com a base limpa e o rótulo de outlier, o ranking supera a referência com IC favorável. Automotivo é o mais forte; a estimativa pontual de moda fica abaixo do acaso, mas é incerta. Esta é uma evidência retrospectiva e ainda precisa de validação prospectiva.",
+  "Current dataset v2 report unavailable.": "Relatório atual da base v2 indisponível.",
   "Lift@10": "Lift@10",
   "Precision@10": "Precision@10",
   "See all evidence": "Ver toda a evidência",

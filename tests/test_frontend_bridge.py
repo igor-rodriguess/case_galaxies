@@ -55,6 +55,10 @@ def test_missing_artifacts_are_unavailable(tmp_path: Path) -> None:
     assert run["report"]["status"] == "unavailable"
     assert "data" not in run["report"]
     assert artifacts["battle_model"]["report"]["status"] == "unavailable"
+    viral = artifacts["viral_v2"]["report"]
+    assert viral["status"] == "ok"
+    assert viral["data"]["overall"]["auc_macro_channel"] == pytest.approx(0.5883817653799384)
+    assert viral["data"]["sectors"][0]["auc_macro_channel"] == pytest.approx(0.6999555367444785)
 
 
 def _serve(gateway: McpGateway, tmp_path: Path) -> tuple[ThreadingHTTPServer, str]:

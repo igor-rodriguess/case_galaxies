@@ -1,6 +1,7 @@
 # Ranking de Shorts na base v2
 
 Run: `data/modeling/runs/viral-v2-ranking-20261021/` (gerado por `scripts/evaluate_viral_v2.py`).
+O snapshot [ranking_base_v2.json](./ranking_base_v2.json) contém as métricas usadas pela interface, para que o ranking atual não dependa de arquivos locais ignorados pelo Git.
 
 ## Protocolo
 

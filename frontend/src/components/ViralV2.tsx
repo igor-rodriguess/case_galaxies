@@ -24,7 +24,7 @@ export function ViralHeadline({ report, path }: { report: ViralReport; path?: st
   return (
     <div>
       <div className="flex flex-wrap items-center gap-2">
-        {report.promoted ? <Pill tone="ok">{t("Promoted by the CI rule")}</Pill> : <Pill tone="warn">{t("Not promoted")}</Pill>}
+        {report.promoted ? <Pill tone="ok">{t("Offline CI rule passed")}</Pill> : <Pill tone="warn">{t("Not promoted")}</Pill>}
         <Pill tone="brand">{t("Viral = 3× the channel median")}</Pill>
         <span className="mono text-xs text-muted">
           {t("age shortcut")} ρ {signed(overall?.age_rho, 3, locale)}

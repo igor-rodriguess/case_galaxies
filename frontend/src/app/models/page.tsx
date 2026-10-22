@@ -53,6 +53,12 @@ function ShortsTab({ artifacts }: { artifacts: Artifacts }) {
   const viral = artifacts.viral_v2?.report;
   return (
     <div className="space-y-6">
+      {viral?.status !== "ok" && (
+        <>
+          <Unavailable label="Current dataset v2 report unavailable." detail={viral?.path} />
+          <p className="eyebrow">{t("Earlier evaluation (Phase 2, old label)")}</p>
+        </>
+      )}
       {viral?.status === "ok" && (
         <>
           <div className="card border-ok/40 p-6">

@@ -1,0 +1,72 @@
+{
+  "protocol": "viral-v2-ranking-v1",
+  "chosen": "ensemble_rank_mean",
+  "promoted": true,
+  "promotion_rule": "Offline retrospective rule: paired 95% CI for delta above zero and absolute age correlation below 0.2. Prospective validation is still required.",
+  "population": {
+    "train_rows": 9856,
+    "test_rows": 3286,
+    "test_channels": 23,
+    "test_viral_rate": 0.13877054169202677
+  },
+  "overall": {
+    "auc_macro_channel": 0.5883817653799384,
+    "channels_with_pairs": 20,
+    "precision_top10": 0.24926686217008798,
+    "recall_top10": 0.18640350877192982,
+    "lift_top10": 1.7962519936204149,
+    "reference_auc": 0.48949261081210127,
+    "reference_lift_top10": 1.0988835725677832,
+    "age_rho": 0.005899594285104665,
+    "ci": {
+      "auc_macro_channel": [0.5199643833858578, 0.6599249349076732],
+      "delta_auc_macro": [0.04132934177575807, 0.15111940684418246],
+      "precision_top10": [0.1960224913168227, 0.2944344046107258],
+      "lift_top10": [1.46299658250011, 2.1549789670453077]
+    }
+  },
+  "sectors": [
+    {
+      "sector": "automotivo",
+      "auc_macro_channel": 0.6999555367444785,
+      "channels_with_pairs": 8,
+      "precision_top10": 0.26519337016574585,
+      "lift_top10": 2.171652621126868,
+      "reference_auc": 0.537374730650328,
+      "age_rho": -0.004197198646107417,
+      "ci": {
+        "auc_macro_channel": [0.6377370622918145, 0.7917993213203358],
+        "delta_auc_macro": [0.0999980719595594, 0.22223931154269966],
+        "lift_top10": [1.729345632851663, 2.4679824626512734]
+      }
+    },
+    {
+      "sector": "beleza",
+      "auc_macro_channel": 0.573815873955394,
+      "channels_with_pairs": 7,
+      "precision_top10": 0.2159090909090909,
+      "lift_top10": 1.4845980465815176,
+      "reference_auc": 0.5164075444903613,
+      "age_rho": 0.05806552991836076,
+      "ci": {
+        "auc_macro_channel": [0.5130948090053447, 0.6401143434638783],
+        "delta_auc_macro": [-0.02607304621702586, 0.15287946428571428],
+        "lift_top10": [0.8940540084457651, 2.531786691420754]
+      }
+    },
+    {
+      "sector": "moda",
+      "auc_macro_channel": 0.4302559791910364,
+      "channels_with_pairs": 5,
+      "precision_top10": 0.25,
+      "lift_top10": 1.434322033898305,
+      "reference_auc": 0.3752003119213744,
+      "age_rho": -0.050977846911514545,
+      "ci": {
+        "auc_macro_channel": [0.2894224422442244, 0.5710996329263494],
+        "delta_auc_macro": [-0.08958589000347406, 0.15958778064041215],
+        "lift_top10": [0.8451612903225807, 1.6440911730545875]
+      }
+    }
+  ]
+}
