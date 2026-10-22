@@ -95,8 +95,6 @@ export const PT: Record<string, string> = {
   "Shorts-only evaluation not found.": "Avaliação só de Shorts não encontrada.",
   "Battle model report not found.": "Relatório do modelo do Battle não encontrado.",
   "Reading:": "Leitura:",
-  "with metadata and cadence alone, the order of Shorts within a channel is at chance level. Use the tools to compare scenarios and plan tests, not to promise results.":
-    "só com metadados e cadência, a ordem dos Shorts dentro de um canal fica no nível do acaso. Use as ferramentas para comparar cenários e planejar testes, não para prometer resultado.",
   "How a comparison travels": "Como uma comparação percorre o sistema",
   "From the draft to the auditable trace": "Do rascunho ao trace auditável",
   "Pre-publication creative": "Criativo antes de publicar",
@@ -239,8 +237,6 @@ export const PT: Record<string, string> = {
     "Tudo nesta página vem dos relatórios JSON/CSV e das tools MCP. Valor ausente aparece como indisponível.",
   "Status per sector": "Status por setor",
   "Latest evaluation · Shorts only": "Avaliação mais recente · só Shorts",
-  "With metadata and cadence, the order of Shorts was at chance level":
-    "Com metadados e cadência, a ordem dos Shorts ficou no nível do acaso",
   "AUC per channel": "AUC por canal",
   "Test set": "Teste",
   Sector: "Setor",
