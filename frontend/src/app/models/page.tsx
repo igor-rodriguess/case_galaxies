@@ -55,13 +55,20 @@ function ShortsTab({ artifacts }: { artifacts: Artifacts }) {
       <div className="card border-ok/40 p-6">
         <p className="font-bold text-ok">{t("Ranking on dataset v2")}</p>
         <div className="mt-4">
-          <ViralHeadline report={viral.data} path={viral.path} />
+          <ViralHeadline
+            report={viral.data}
+            path={viral.path}
+            exploratory={Boolean(viral.data.exploratory_excluding_fashion)}
+          />
         </div>
       </div>
       <p className="rounded-xl bg-warn-soft px-4 py-3 text-sm text-text-2">
         {t("This is retrospective evidence; prospective validation is still required.")}
       </p>
-      <ViralSectors report={viral.data} />
+      <ViralSectors
+        report={viral.data}
+        excludedSectors={viral.data.exploratory_excluding_fashion?.excluded_sectors}
+      />
       {artifacts.viral_v2 && <Figures figures={artifacts.viral_v2.figures} />}
     </div>
   );

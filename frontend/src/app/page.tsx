@@ -34,6 +34,7 @@ export default function Overview() {
   const { statuses, artifacts, reload } = useData();
   const summary = statuses.state === "ok" ? promotionSummary(statuses.data) : null;
   const viral = artifacts.state === "ok" && artifacts.data.viral_v2?.report.status === "ok" ? artifacts.data.viral_v2.report : null;
+  const exploratory = viral?.data.exploratory_excluding_fashion;
 
   return (
     <div className="space-y-10">
@@ -85,12 +86,12 @@ export default function Overview() {
         )}
         {viral && viral.status === "ok" && (
           <div className="space-y-4 px-6 py-6">
-            <ViralHeadline report={viral.data} path={viral.path} />
+            <ViralHeadline report={viral.data} path={viral.path} exploratory={Boolean(exploratory)} />
             <p className="rounded-xl bg-ok-soft px-4 py-3 text-sm text-text-2">
               <strong className="text-ok">{t("Reading:")}</strong>{" "}
-              {t("With the cleaned dataset and the outlier label, the ranking beats the reference with a favorable CI. Automotive is strongest; fashion's point estimate is below chance, but uncertain. This is retrospective evidence and still needs prospective validation.")}
+              {t("The headline is an exploratory macro average excluding fashion after seeing its result; fashion remains visible in the sector table. Automotive is strongest, and the full result still needs prospective validation.")}
             </p>
-            <ViralSectors report={viral.data} />
+            <ViralSectors report={viral.data} excludedSectors={exploratory?.excluded_sectors} />
           </div>
         )}
         {artifacts.state === "ok" && !viral && (

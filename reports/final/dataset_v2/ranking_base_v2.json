@@ -25,6 +25,31 @@
       "lift_top10": [1.46299658250011, 2.1549789670453077]
     }
   },
+  "exploratory_excluding_fashion": {
+    "excluded_sectors": ["moda"],
+    "note": "Post-hoc exploratory display only; fashion remains in the report and sector table. This subset is not a new promotion or prospective validation.",
+    "population": {
+      "test_rows": 2609,
+      "test_channels": 17,
+      "test_viral_rate": 0.12955155231889612
+    },
+    "overall": {
+      "auc_macro_channel": 0.641090360776239,
+      "channels_with_pairs": 15,
+      "precision_top10": 0.24907063197026022,
+      "recall_top10": 0.19822485207100593,
+      "lift_top10": 1.9225599964804998,
+      "reference_auc": 0.527590043775677,
+      "reference_lift_top10": 1.147797012824179,
+      "age_rho": 0.024858741350644396,
+      "ci": {
+        "auc_macro_channel": [0.5870184289082083, 0.7085955522228411],
+        "delta_auc_macro": [0.05824482541246614, 0.17412858534113354],
+        "precision_top10": [0.18691225135459472, 0.29603039348163684],
+        "lift_top10": [1.4671115563643002, 2.3281903796791688]
+      }
+    }
+  },
   "sectors": [
     {
       "sector": "automotivo",

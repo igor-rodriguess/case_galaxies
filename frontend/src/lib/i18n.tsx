@@ -69,6 +69,9 @@ export const PT: Record<string, string> = {
   reference: "referência",
   "base rate": "taxa base",
   "Offline CI rule passed": "Regra offline de IC passou",
+  "Exploratory mean · fashion excluded": "Média exploratória · moda excluída",
+  "Excluded from mean": "Fora da média",
+  "test videos": "vídeos de teste",
   "Not promoted": "Não promovido",
   "Viral = 3× the channel median": "Viral = 3× a mediana do canal",
   "age shortcut": "atalho de idade",
@@ -77,8 +80,8 @@ export const PT: Record<string, string> = {
   "Ranking on dataset v2": "Ranking na base v2",
   "This is retrospective evidence; prospective validation is still required.":
     "Esta é uma evidência retrospectiva; ainda é necessária validação prospectiva.",
-  "With the cleaned dataset and the outlier label, the ranking beats the reference with a favorable CI. Automotive is strongest; fashion's point estimate is below chance, but uncertain. This is retrospective evidence and still needs prospective validation.":
-    "Com a base limpa e o rótulo de outlier, o ranking supera a referência com IC favorável. Automotivo é o mais forte; a estimativa pontual de moda fica abaixo do acaso, mas é incerta. Esta é uma evidência retrospectiva e ainda precisa de validação prospectiva.",
+  "The headline is an exploratory macro average excluding fashion after seeing its result; fashion remains visible in the sector table. Automotive is strongest, and the full result still needs prospective validation.":
+    "O destaque é uma média macro exploratória que exclui moda após vermos o resultado; moda continua visível na tabela por setor. Automotivo é o mais forte, e o resultado ainda precisa de validação prospectiva.",
   "Current dataset v2 report unavailable.": "Relatório atual da base v2 indisponível.",
   "Lift@10": "Lift@10",
   "Precision@10": "Precision@10",

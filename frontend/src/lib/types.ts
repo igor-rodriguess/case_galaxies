@@ -223,6 +223,12 @@ export interface ViralReport {
   promotion_rule?: string;
   population?: { train_rows?: number; test_rows?: number; test_channels?: number; test_viral_rate?: number };
   overall?: ViralMetrics;
+  exploratory_excluding_fashion?: {
+    excluded_sectors: Sector[];
+    note: string;
+    population: { test_rows?: number; test_channels?: number; test_viral_rate?: number };
+    overall: ViralMetrics;
+  };
   sectors?: (ViralMetrics & { sector: Sector })[];
 }
 

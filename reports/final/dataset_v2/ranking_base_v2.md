@@ -2,6 +2,7 @@
 
 Run: `data/modeling/runs/viral-v2-ranking-20261021/` (gerado por `scripts/evaluate_viral_v2.py`).
 O snapshot [ranking_base_v2.json](./ranking_base_v2.json) contém as métricas usadas pela interface, para que o ranking atual não dependa de arquivos locais ignorados pelo Git.
+Como leitura exploratória pós-hoc, a interface também apresenta a média macro de AUC só de automotivo e beleza, excluindo moda temporariamente. A linha de moda continua visível na tabela; essa exclusão não representa nova promoção nem validação prospectiva.
 
 ## Protocolo
 
@@ -21,11 +22,12 @@ O snapshot [ranking_base_v2.json](./ranking_base_v2.json) contém as métricas u
 | Recorte | AUC por canal (IC95%) | Referência | Δ AUC (IC95%) | Precision@10% | Lift@10 (IC95%) | ρ nota×idade |
 |---|---|---|---|---|---|---|
 | **Geral** | **0,588 [0,520; 0,660]** | 0,489 | **+0,099 [+0,041; +0,151]** | 24,9% | **1,80 [1,46; 2,15]** | +0,006 |
+| **Automotivo + beleza (exploratório; sem moda)** | **0,641 [0,587; 0,709]** | 0,528 | **+0,114 [+0,058; +0,174]** | 24,9% | **1,92 [1,47; 2,33]** | +0,025 |
 | Automotivo (8 canais) | 0,700 [0,638; 0,792] | 0,537 | +0,163 [+0,100; +0,222] | 26,5% | 2,17 [1,73; 2,47] | −0,004 |
 | Beleza (7) | 0,574 [0,513; 0,640] | 0,516 | +0,057 [−0,026; +0,153] | 21,6% | 1,48 [0,89; 2,53] | +0,058 |
 | Moda (5) | 0,430 [0,289; 0,571] | 0,375 | +0,055 [−0,090; +0,160] | 25,0% | 1,43 [0,85; 1,64] | −0,051 |
 
-**Decisão:** promovido pela regra (IC do Δ acima de zero e |ρ idade| < 0,20).
+**Decisão do relatório original:** promovido pela regra aplicada aos três setores. A linha sem moda é uma análise exploratória pós-hoc, não uma nova promoção; a validação prospectiva continua necessária.
 
 ## Leitura
 
