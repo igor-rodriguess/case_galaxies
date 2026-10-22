@@ -204,11 +204,34 @@ export interface ShortsReport {
   }[];
 }
 
+export interface ViralMetrics {
+  auc_macro_channel?: number;
+  reference_auc?: number;
+  lift_top10?: number;
+  reference_lift_top10?: number;
+  precision_top10?: number;
+  recall_top10?: number;
+  age_rho?: number;
+  channels_with_pairs?: number;
+  ci?: Record<string, [number, number]>;
+}
+
+/** Ranking na base v2: rótulo de outlier (3x a mediana dos Shorts anteriores do canal). */
+export interface ViralReport {
+  chosen?: string;
+  promoted?: boolean;
+  promotion_rule?: string;
+  population?: { train_rows?: number; test_rows?: number; test_channels?: number; test_viral_rate?: number };
+  overall?: ViralMetrics;
+  sectors?: (ViralMetrics & { sector: Sector })[];
+}
+
 export interface Artifacts {
   loaded_at: string;
   rolling: Record<string, { report: Loaded<RollingReport>; fold_metrics: LoadedCsv; figures: Figure[] }>;
   battle_model: { run_id: string; report: Loaded<BattleModelReport>; shap_global: LoadedCsv };
   shorts_only: { run_id: string; report: Loaded<ShortsReport>; figures: Figure[] };
+  viral_v2?: { run_id: string; report: Loaded<ViralReport>; figures: Figure[] };
 }
 
 export interface Channel {

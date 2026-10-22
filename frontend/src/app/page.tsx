@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { ViralHeadline, ViralSectors } from "@/components/ViralV2";
+
 import { IconArrow, IconBattle, IconChart, IconChat } from "@/components/icons";
 import { ErrorBox, Loading, Pill, Unavailable } from "@/components/ui";
 import { useData } from "@/lib/data";
@@ -35,6 +37,7 @@ export default function Overview() {
   const shorts = artifacts.state === "ok" && artifacts.data.shorts_only.report.status === "ok" ? artifacts.data.shorts_only.report.data : null;
   const battle = artifacts.state === "ok" && artifacts.data.battle_model.report.status === "ok" ? artifacts.data.battle_model.report.data : null;
   const overall = shorts?.overall;
+  const viral = artifacts.state === "ok" && artifacts.data.viral_v2?.report.status === "ok" ? artifacts.data.viral_v2.report : null;
 
   return (
     <div className="space-y-10">
@@ -84,7 +87,17 @@ export default function Overview() {
             <ErrorBox message={artifacts.message} onRetry={reload} />
           </div>
         )}
-        {artifacts.state === "ok" && (
+        {viral && viral.status === "ok" && (
+          <div className="space-y-4 px-6 py-6">
+            <ViralHeadline report={viral.data} path={viral.path} />
+            <p className="rounded-xl bg-ok-soft px-4 py-3 text-sm text-text-2">
+              <strong className="text-ok">{t("Reading:")}</strong>{" "}
+              {t("With the cleaned dataset and the outlier label, the ranking beats the reference with a favorable CI. Automotive is strongest; fashion is still below chance.")}
+            </p>
+            <ViralSectors report={viral.data} />
+          </div>
+        )}
+        {artifacts.state === "ok" && !viral && (
           <>
             <dl className="grid divide-y divide-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
               {[

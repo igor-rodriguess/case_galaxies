@@ -7,6 +7,7 @@ import { ForestPlot, HBars } from "@/components/charts";
 import { ErrorBox, Loading, PageHeader, Pill, TierPill, Unavailable } from "@/components/ui";
 import { useData } from "@/lib/data";
 import { ci, humanize, isNumber, num, pct, signed, signedCi } from "@/lib/format";
+import { ViralHeadline, ViralSectors } from "@/components/ViralV2";
 import { useT } from "@/lib/i18n";
 import { foldSeries, rollingRows, shapRows, TIER_TEXT, type Tier } from "@/lib/metrics";
 import type { Artifacts, Figure } from "@/lib/types";
@@ -49,8 +50,22 @@ function ShortsTab({ artifacts }: { artifacts: Artifacts }) {
   if (loaded.status !== "ok") return <Unavailable detail="Shorts-only evaluation not found." />;
   const report = loaded.data;
   const overall = report.overall;
+  const viral = artifacts.viral_v2?.report;
   return (
     <div className="space-y-6">
+      {viral?.status === "ok" && (
+        <>
+          <div className="card border-ok/40 p-6">
+            <p className="font-bold text-ok">{t("Ranking on dataset v2")}</p>
+            <div className="mt-4">
+              <ViralHeadline report={viral.data} path={viral.path} />
+            </div>
+          </div>
+          <ViralSectors report={viral.data} />
+          {artifacts.viral_v2 && <Figures figures={artifacts.viral_v2.figures} />}
+          <p className="eyebrow pt-4">{t("Earlier evaluation (Phase 2, old label)")}</p>
+        </>
+      )}
       <div className="card border-warn/40 p-6">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
