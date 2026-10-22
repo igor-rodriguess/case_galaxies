@@ -1,38 +1,389 @@
 {
-  "selection_version": "expanded-2026-10-14",
-  "selection_method": "Resultados oficiais da YouTube Data API v3 search.list, conferidos por título e descrição. A expansão preserva os 15 canais iniciais e adiciona cinco por setor para reduzir viés de canal.",
+  "selection_version": "creators-2026-10-21",
+  "selection_method": "Resultados oficiais da YouTube Data API v3 search.list, conferidos por título e descrição. A expansão preserva os 15 canais iniciais e adiciona cinco por setor para reduzir viés de canal. Em 21/10/2026 entraram criadores de moda e beleza que publicam Shorts, achados por scripts/discover_creator_channels.py (search.list da Data API; BR; inscritos e volume de Shorts mínimos) e conferidos à mão. channel_type (marca, mídia, criador) é classificação manual por título e descrição.",
   "channels": [
-    {"sector": "automotivo", "label": "Acelerados", "channel_id": "UCGBIIPnw0AYM3BFsmTsjeAw"},
-    {"sector": "automotivo", "label": "FlatOut Brasil", "channel_id": "UCi7NjYyIQk6hPRbZ4BVKHyw"},
-    {"sector": "automotivo", "label": "FullPowerTV", "channel_id": "UCfReg1ecXWG9Gscjba-dGgw"},
-    {"sector": "automotivo", "label": "Auto Super", "channel_id": "UC08IZDh4NSFHl8KYpYNdoVg"},
-    {"sector": "automotivo", "label": "Opinião Sincera", "channel_id": "UCc0cU92Tf7rvd2gr-CpVO4Q"},
-    {"sector": "automotivo", "label": "Webmotors", "channel_id": "UCz2Bb7YdduN4x7qN9oFrJjQ"},
-    {"sector": "automotivo", "label": "Quatro Rodas", "channel_id": "UCIvQJmPaDR2lMDDNhb4--bA"},
-    {"sector": "automotivo", "label": "AutoPapo", "channel_id": "UChUvS75BR7ziAr7WhrecVsA"},
-    {"sector": "automotivo", "label": "Carros com Camanzi", "channel_id": "UChU6qQR8Af0Xd3LSbQHN2sA"},
-    {"sector": "automotivo", "label": "Motor1 Brasil", "channel_id": "UC6Rk7BKVPWkFJ9FiBrts5Vg"},
-
-    {"sector": "moda", "label": "Steal The Look", "channel_id": "UC7eUDymR_ThtyGV1IxUSpcw"},
-    {"sector": "moda", "label": "Lela Brandão", "channel_id": "UCnZZpT_goFtRY8H8XpfYxAg"},
-    {"sector": "moda", "label": "Camila Coelho Português", "channel_id": "UCnmaW_YVh9iJAFVOsLR7W2w"},
-    {"sector": "moda", "label": "Thássia Naves", "channel_id": "UCbU4-Yr0DjIExjS4ki_1lSA"},
-    {"sector": "moda", "label": "Isabella Fiorentino", "channel_id": "UCF7x0GAB3T14UwahfMu-5_g"},
-    {"sector": "moda", "label": "Vogue Brasil", "channel_id": "UCEhkEygfrxwWPSHlSK6aM1w"},
-    {"sector": "moda", "label": "C&A Brasil", "channel_id": "UCr8ADghob5MQ6OUIv5UlmlQ"},
-    {"sector": "moda", "label": "Renner", "channel_id": "UCwNEKrZtt7RMNJYgc4g7kXw"},
-    {"sector": "moda", "label": "Riachuelo", "channel_id": "UC68lvr_ENRERr5dAgBvYP7w"},
-    {"sector": "moda", "label": "Camila Coutinho", "channel_id": "UCg-f8gfT9xt12aZxocaZDrw"},
-
-    {"sector": "beleza", "label": "Karen Bachini", "channel_id": "UCYcClChNM-0rjqCGobSfJ4A"},
-    {"sector": "beleza", "label": "Niina Secrets", "channel_id": "UCAkZ7bimIU9m7wT6Th0FcEw"},
-    {"sector": "beleza", "label": "Bianca Andrade", "channel_id": "UCgSvw7asvNq7wJWKMSW28Eg"},
-    {"sector": "beleza", "label": "Mari Maria", "channel_id": "UCcHR0RvLYk33ppkjBw3UaEA"},
-    {"sector": "beleza", "label": "Tour da Beleza", "channel_id": "UCK0oFT3Lk0kVB9rnjU4nTYg"},
-    {"sector": "beleza", "label": "Bruna Tavares", "channel_id": "UCobi8wbJKxiiooqYG0oMFkQ"},
-    {"sector": "beleza", "label": "Franciny Ehlke", "channel_id": "UCoTM-vvs2hnv2mCvzNJ5uXA"},
-    {"sector": "beleza", "label": "Jana Taffarel", "channel_id": "UCO-9Uf_aIFZ2mJF4ws8wOgQ"},
-    {"sector": "beleza", "label": "Vult", "channel_id": "UC0H2SgQ_8CSfLwwMJBYuAjg"},
-    {"sector": "beleza", "label": "Beleza na Web", "channel_id": "UCu4b-uoxVPh64U3NK-4vgpg"}
+    {
+      "sector": "automotivo",
+      "label": "Acelerados",
+      "channel_id": "UCGBIIPnw0AYM3BFsmTsjeAw",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "automotivo",
+      "label": "FlatOut Brasil",
+      "channel_id": "UCi7NjYyIQk6hPRbZ4BVKHyw",
+      "channel_type": "mídia"
+    },
+    {
+      "sector": "automotivo",
+      "label": "FullPowerTV",
+      "channel_id": "UCfReg1ecXWG9Gscjba-dGgw",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "automotivo",
+      "label": "Auto Super",
+      "channel_id": "UC08IZDh4NSFHl8KYpYNdoVg",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "automotivo",
+      "label": "Opinião Sincera",
+      "channel_id": "UCc0cU92Tf7rvd2gr-CpVO4Q",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "automotivo",
+      "label": "Webmotors",
+      "channel_id": "UCz2Bb7YdduN4x7qN9oFrJjQ",
+      "channel_type": "marca"
+    },
+    {
+      "sector": "automotivo",
+      "label": "Quatro Rodas",
+      "channel_id": "UCIvQJmPaDR2lMDDNhb4--bA",
+      "channel_type": "mídia"
+    },
+    {
+      "sector": "automotivo",
+      "label": "AutoPapo",
+      "channel_id": "UChUvS75BR7ziAr7WhrecVsA",
+      "channel_type": "mídia"
+    },
+    {
+      "sector": "automotivo",
+      "label": "Carros com Camanzi",
+      "channel_id": "UChU6qQR8Af0Xd3LSbQHN2sA",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "automotivo",
+      "label": "Motor1 Brasil",
+      "channel_id": "UC6Rk7BKVPWkFJ9FiBrts5Vg",
+      "channel_type": "mídia"
+    },
+    {
+      "sector": "moda",
+      "label": "Steal The Look",
+      "channel_id": "UC7eUDymR_ThtyGV1IxUSpcw",
+      "channel_type": "mídia"
+    },
+    {
+      "sector": "moda",
+      "label": "Lela Brandão",
+      "channel_id": "UCnZZpT_goFtRY8H8XpfYxAg",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "moda",
+      "label": "Camila Coelho Português",
+      "channel_id": "UCnmaW_YVh9iJAFVOsLR7W2w",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "moda",
+      "label": "Thássia Naves",
+      "channel_id": "UCbU4-Yr0DjIExjS4ki_1lSA",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "moda",
+      "label": "Isabella Fiorentino",
+      "channel_id": "UCF7x0GAB3T14UwahfMu-5_g",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "moda",
+      "label": "Vogue Brasil",
+      "channel_id": "UCEhkEygfrxwWPSHlSK6aM1w",
+      "channel_type": "mídia"
+    },
+    {
+      "sector": "moda",
+      "label": "C&A Brasil",
+      "channel_id": "UCr8ADghob5MQ6OUIv5UlmlQ",
+      "channel_type": "marca"
+    },
+    {
+      "sector": "moda",
+      "label": "Renner",
+      "channel_id": "UCwNEKrZtt7RMNJYgc4g7kXw",
+      "channel_type": "marca"
+    },
+    {
+      "sector": "moda",
+      "label": "Riachuelo",
+      "channel_id": "UC68lvr_ENRERr5dAgBvYP7w",
+      "channel_type": "marca"
+    },
+    {
+      "sector": "moda",
+      "label": "Camila Coutinho",
+      "channel_id": "UCg-f8gfT9xt12aZxocaZDrw",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "beleza",
+      "label": "Karen Bachini",
+      "channel_id": "UCYcClChNM-0rjqCGobSfJ4A",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "beleza",
+      "label": "Niina Secrets",
+      "channel_id": "UCAkZ7bimIU9m7wT6Th0FcEw",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "beleza",
+      "label": "Bianca Andrade",
+      "channel_id": "UCgSvw7asvNq7wJWKMSW28Eg",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "beleza",
+      "label": "Mari Maria",
+      "channel_id": "UCcHR0RvLYk33ppkjBw3UaEA",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "beleza",
+      "label": "Tour da Beleza",
+      "channel_id": "UCK0oFT3Lk0kVB9rnjU4nTYg",
+      "channel_type": "mídia"
+    },
+    {
+      "sector": "beleza",
+      "label": "Bruna Tavares",
+      "channel_id": "UCobi8wbJKxiiooqYG0oMFkQ",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "beleza",
+      "label": "Franciny Ehlke",
+      "channel_id": "UCoTM-vvs2hnv2mCvzNJ5uXA",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "beleza",
+      "label": "Jana Taffarel",
+      "channel_id": "UCO-9Uf_aIFZ2mJF4ws8wOgQ",
+      "channel_type": "criador"
+    },
+    {
+      "sector": "beleza",
+      "label": "Vult",
+      "channel_id": "UC0H2SgQ_8CSfLwwMJBYuAjg",
+      "channel_type": "marca"
+    },
+    {
+      "sector": "beleza",
+      "label": "Beleza na Web",
+      "channel_id": "UCu4b-uoxVPh64U3NK-4vgpg",
+      "channel_type": "marca"
+    },
+    {
+      "sector": "beleza",
+      "label": "Bella Dias Makeup",
+      "channel_id": "UCTDwtUacW1AKPj-yKfIXl-g",
+      "channel_type": "criador",
+      "added_in": "creators-2026-10-21"
+    },
+    {
+      "sector": "beleza",
+      "label": "Dourada",
+      "channel_id": "UCSTgXGMQUPBwYehaQVQwFZQ",
+      "channel_type": "criador",
+      "added_in": "creators-2026-10-21"
+    },
+    {
+      "sector": "beleza",
+      "label": "Alice Salazar",
+      "channel_id": "UCAQfsJwdaEy5L9ehl4q0QrQ",
+      "channel_type": "criador",
+      "added_in": "creators-2026-10-21"
+    },
+    {
+      "sector": "beleza",
+      "label": "Bruna Malheiros",
+      "channel_id": "UCzzW0SuOpQYVjSUWKiMu-lw",
+      "channel_type": "criador",
+      "added_in": "creators-2026-10-21"
+    },
+    {
+      "sector": "beleza",
+      "label": "Fernanda Petrizi",
+      "channel_id": "UCAqvXDijh2SGuRX1UB137SA",
+      "channel_type": "criador",
+      "added_in": "creators-2026-10-21"
+    },
+    {
+      "sector": "beleza",
+      "label": "Dra. Marina Hayashida",
+      "channel_id": "UCyXAk6wNyu_mqCau-J2yCCw",
+      "channel_type": "criador",
+      "added_in": "creators-2026-10-21"
+    },
+    {
+      "sector": "beleza",
+      "label": "Tainara Reis",
+      "channel_id": "UC07orE5xtDlnV8ik0y8agOg",
+      "channel_type": "criador",
+      "added_in": "creators-2026-10-21"
+    },
+    {
+      "sector": "beleza",
+      "label": "Adam Mitch",
+      "channel_id": "UCHNtZs7TUcYaqvgZpfx11cg",
+      "channel_type": "criador",
+      "added_in": "creators-2026-10-21"
+    },
+    {
+      "sector": "beleza",
+      "label": "Thassyane Miranda",
+      "channel_id": "UCiFHLlEj8Vr5GikrE8t42JA",
+      "channel_type": "criador",
+      "added_in": "creators-2026-10-21"
+    },
+    {
+      "sector": "beleza",
+      "label": "Melissa Samways BR",
+      "channel_id": "UCzIJVl_Jo7g5nISXmt2HBCg",
+      "channel_type": "criador",
+      "added_in": "creators-2026-10-21"
+    },
+    {
+      "sector": "beleza",
+      "label": "Luisa Navajas MakeUp",
+      "channel_id": "UCmuZmV4dFAMu_Drc9jgn95A",
+      "channel_type": "criador",
+      "added_in": "creators-2026-10-21"
+    },
+    {
+      "sector": "beleza",
+      "label": "Amanda Carneiro",
+      "channel_id": "UCQz9f1JU2jGbLdJ8otuaRWA",
+      "channel_type": "criador",
+      "added_in": "creators-2026-10-21"
+    },
+    {
+      "sector": "beleza",
+      "label": "Thais Braz",
+      "channel_id": "UCXnRa9FHrdet-dS3veX617A",
+      "channel_type": "criador",
+      "added_in": "creators-2026-10-21"
+    },
+    {
+      "sector": "beleza",
+      "label": "Maquiagem Inspiradora",
+      "channel_id": "UCJY3gr0oHBVJqS5mCddrIQQ",
+      "channel_type": "mídia",
+      "added_in": "creators-2026-10-21"
+    },
+    {
+      "sector": "beleza",
+      "label": "Dra. Hadra Banks ",
+      "channel_id": "UClA6_yGc8AwSvtaANMRRnGg",
+      "channel_type": "criador",
+      "added_in": "creators-2026-10-21"
+    },
+    {
+      "sector": "beleza",
+      "label": "Dr Ursinho Carinhoso",
+      "channel_id": "UCFuRkKcZXL6TEriPPQdB0Ag",
+      "channel_type": "criador",
+      "added_in": "creators-2026-10-21"
+    },
+    {
+      "sector": "moda",
+      "label": "Dicas & Cia Fashion",
+      "channel_id": "UCcwlzNsTzuPB5rncCizx53g",
+      "channel_type": "mídia",
+      "added_in": "creators-moda-2026-10-21"
+    },
+    {
+      "sector": "moda",
+      "label": "Fábio Souza Carvalho",
+      "channel_id": "UCHzOHtWW0sWVhyAQxvp-kBg",
+      "channel_type": "criador",
+      "added_in": "creators-moda-2026-10-21"
+    },
+    {
+      "sector": "moda",
+      "label": "Ser Chique Cabe no Seu Bolso",
+      "channel_id": "UCAhE2N9c53jZYU2tBcQuxhA",
+      "channel_type": "criador",
+      "added_in": "creators-moda-2026-10-21"
+    },
+    {
+      "sector": "moda",
+      "label": "Julia Loha - Moda Sem Firulas",
+      "channel_id": "UCNHa6B7rhxrt9td-SiMOKCA",
+      "channel_type": "criador",
+      "added_in": "creators-moda-2026-10-21"
+    },
+    {
+      "sector": "moda",
+      "label": "HYPNOTIQUE by Fabíola Kassin",
+      "channel_id": "UCPNh7RxOjKLp2EbDnnv3piw",
+      "channel_type": "criador",
+      "added_in": "creators-moda-2026-10-21"
+    },
+    {
+      "sector": "moda",
+      "label": "Thi Martins",
+      "channel_id": "UCu6Sd8YmtEtQiBLQr4VZdKA",
+      "channel_type": "criador",
+      "added_in": "creators-moda-2026-10-21"
+    },
+    {
+      "sector": "moda",
+      "label": "Lídia Cardoso",
+      "channel_id": "UCaI210QeRVjWXZvY8cvAlNA",
+      "channel_type": "criador",
+      "added_in": "creators-moda-2026-10-21"
+    },
+    {
+      "sector": "moda",
+      "label": "Dede Leme",
+      "channel_id": "UCvUvH9YUYR05yHhXgTocc6g",
+      "channel_type": "criador",
+      "added_in": "creators-moda-2026-10-21"
+    },
+    {
+      "sector": "moda",
+      "label": "Thaís Melo",
+      "channel_id": "UCQg7NEquBqs3BgnfPvzi7iQ",
+      "channel_type": "criador",
+      "added_in": "creators-moda-2026-10-21"
+    },
+    {
+      "sector": "moda",
+      "label": "Estilo Homem",
+      "channel_id": "UC7YeDTAqzfv9VAotB31obHg",
+      "channel_type": "criador",
+      "added_in": "creators-moda-2026-10-21"
+    },
+    {
+      "sector": "moda",
+      "label": "Michele Oliveira",
+      "channel_id": "UCbLn-2C6aEVEF_JAPuRZnzg",
+      "channel_type": "criador",
+      "added_in": "creators-moda-2026-10-21"
+    },
+    {
+      "sector": "moda",
+      "label": "Vivian Palacio",
+      "channel_id": "UCWm6PES37JI_lUud7KjP3LA",
+      "channel_type": "criador",
+      "added_in": "creators-moda-2026-10-21"
+    },
+    {
+      "sector": "moda",
+      "label": "Liane Marasca",
+      "channel_id": "UCrMjO2G44Kti4lYtycGpEdQ",
+      "channel_type": "criador",
+      "added_in": "creators-moda-2026-10-21"
+    }
   ]
 }

@@ -36,7 +36,9 @@ from galaxies.paths import MODELING_RUNS_DIR  # noqa: E402
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Avalia embeddings em LOCO por canal.")
     parser.add_argument("--feature-map", type=Path)
-    parser.add_argument("--embeddings-dir", type=Path, default=PROJECT_ROOT / "data/features/embeddings")
+    parser.add_argument(
+        "--embeddings-dir", type=Path, default=PROJECT_ROOT / "data/features/embeddings"
+    )
     parser.add_argument("--records", type=Path)
     parser.add_argument("--run-id")
     parser.add_argument("--bootstrap", type=int, default=1000)
@@ -48,6 +50,23 @@ def parse_args() -> argparse.Namespace:
             "Avalia somente uma configuração pré-registrada. Útil para retomar "
             "execuções longas; não executa a comparação pareada nem o diagnóstico."
         ),
+    )
+    parser.add_argument(
+        "--configs",
+        nargs="+",
+        choices=[config.name for config in PRE_REGISTERED_CONFIGS],
+        help="Subconjunto pré-registrado. Inclua a referência indicada em --reference-config.",
+    )
+    parser.add_argument(
+        "--reference-config",
+        default="reference",
+        choices=[config.name for config in PRE_REGISTERED_CONFIGS],
+        help="Configuração contra a qual as diferenças pareadas serão calculadas.",
+    )
+    parser.add_argument(
+        "--skip-paired-diagnostic",
+        action="store_true",
+        help="Não roda a logística de diferenças; útil para extensões que usam contraste limpo.",
     )
     return parser.parse_args()
 
@@ -61,7 +80,11 @@ def markdown_table(results: list[dict]) -> str:
         metrics = item["metrics"]
         paired = item.get("paired", {})
         auc = f"{metrics['auc_intra']:.3f} [{metrics['auc_intra_ci_low']:.3f}; {metrics['auc_intra_ci_high']:.3f}]"
-        delta = "—" if not paired else f"{paired['diff']:+.3f} [{paired['ci_low']:+.3f}; {paired['ci_high']:+.3f}]"
+        delta = (
+            "—"
+            if not paired
+            else f"{paired['diff']:+.3f} [{paired['ci_low']:+.3f}; {paired['ci_high']:+.3f}]"
+        )
         lines.append(
             "| {name} | {auc} | {extreme:.3f} | {recall:.3f} | {lift:.2f} | {rho:+.3f} | {delta} |".format(
                 name=item["name"],
@@ -88,11 +111,17 @@ def main() -> int:
     output_dir.mkdir(parents=True, exist_ok=False)
 
     frame, vault_channels = build_embedding_frame(feature_map, args.embeddings_dir, records)
-    configs = (
-        tuple(config for config in PRE_REGISTERED_CONFIGS if config.name == args.only)
-        if args.only
-        else PRE_REGISTERED_CONFIGS
-    )
+    if args.only and args.configs:
+        raise SystemExit("ERRO: use --only ou --configs, não os dois.")
+    if args.only:
+        configs = tuple(config for config in PRE_REGISTERED_CONFIGS if config.name == args.only)
+    elif args.configs:
+        requested = set(args.configs)
+        configs = tuple(config for config in PRE_REGISTERED_CONFIGS if config.name in requested)
+        if args.reference_config not in requested:
+            raise SystemExit("ERRO: a referência deve estar dentro de --configs.")
+    else:
+        configs = PRE_REGISTERED_CONFIGS
     results: list[dict] = []
     counts_by_name = {}
     for config in configs:
@@ -109,6 +138,10 @@ def main() -> int:
             "name": config.name,
             "embeddings": list(config.embeddings),
             "pca_components_requested": config.pca_components,
+            "cluster_embedding": config.cluster_embedding,
+            "cluster_count": config.cluster_count,
+            "estimator": config.estimator,
+            "train_label": config.train_label,
             "metrics": metrics,
         }
         results.append(item)
@@ -116,21 +149,26 @@ def main() -> int:
 
     paired_metrics = None
     if not args.only:
-        reference = counts_by_name["reference"]
+        reference = counts_by_name[args.reference_config]
         for item in results[1:]:
+            if item["name"] == args.reference_config:
+                continue
             item["paired"] = paired_comparison(
                 counts_by_name[item["name"]], reference, args.bootstrap, args.seed
             )
 
-        print("Avaliando diagnóstico pareado thumb+título...", flush=True)
-        paired_scores = paired_embedding_diagnostic(frame, seed=args.seed)
-        paired_metrics = summarize_scores(paired_scores, "score")
-        paired_counts = channel_pair_counts(paired_scores, "score")
-        paired_metrics["auc_intra_ci_low"], paired_metrics["auc_intra_ci_high"] = bootstrap_auc(
-            paired_counts, args.bootstrap, args.seed
-        )
-        paired_scores.to_parquet(output_dir / "predictions-paired-logistic.parquet", index=False)
-        paired_counts.to_parquet(output_dir / "pairs-paired-logistic.parquet")
+        if not args.skip_paired_diagnostic:
+            print("Avaliando diagnóstico pareado thumb+título...", flush=True)
+            paired_scores = paired_embedding_diagnostic(frame, seed=args.seed)
+            paired_metrics = summarize_scores(paired_scores, "score")
+            paired_counts = channel_pair_counts(paired_scores, "score")
+            paired_metrics["auc_intra_ci_low"], paired_metrics["auc_intra_ci_high"] = bootstrap_auc(
+                paired_counts, args.bootstrap, args.seed
+            )
+            paired_scores.to_parquet(
+                output_dir / "predictions-paired-logistic.parquet", index=False
+            )
+            paired_counts.to_parquet(output_dir / "pairs-paired-logistic.parquet")
 
     report = {
         "schema_version": "0.1.0",
@@ -145,6 +183,7 @@ def main() -> int:
             "vault_channels_excluded": list(vault_channels),
         },
         "evaluation": "LOCO por canal; treino por setor; PCA ajustado só no treino da dobra.",
+        "paired_reference_config": args.reference_config,
         "results": results,
         "paired_embedding_diagnostic": paired_metrics,
     }
@@ -162,7 +201,8 @@ def main() -> int:
             f"AUC {paired_metrics['auc_intra']:.3f} "
             f"[{paired_metrics['auc_intra_ci_low']:.3f}; {paired_metrics['auc_intra_ci_high']:.3f}].\n"
             if paired_metrics
-            else "\n\nExecução individual; comparação pareada pendente da execução completa.\n"
+            else "\n\nDiagnóstico logístico pareado não foi executado nesta extensão; "
+            "as comparações pareadas entre configurações estão na tabela.\n"
         ),
         encoding="utf-8",
     )

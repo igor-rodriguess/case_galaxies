@@ -166,7 +166,9 @@ def load_youtube_documents(run_dir: Path | None = None) -> list[dict[str, Any]]:
 
 def load_latest_vlm_results(
     runs_dir: Path = FEATURE_RUNS_DIR,
+    completed_before: datetime | None = None,
 ) -> dict[str, dict[str, Any]]:
+    """Último resultado VLM por vídeo; ``completed_before`` congela a base num instante."""
     latest: dict[str, dict[str, Any]] = {}
     if not runs_dir.exists():
         return latest
@@ -186,6 +188,10 @@ def load_latest_vlm_results(
             raise ValueError(f"Resultado VLM sem video_id: {path}")
         completed_at = nested(result, "provenance", "completed_at", default="")
         completed_timestamp = parse_datetime(completed_at)
+        if completed_before is not None and (
+            completed_timestamp is None or completed_timestamp > completed_before
+        ):
+            continue
         completed_key = (
             completed_timestamp or datetime.min.replace(tzinfo=UTC),
             str(path),
@@ -598,10 +604,11 @@ def _add_channel_history(rows: list[dict[str, Any]]) -> None:
 def build_feature_rows(
     youtube_run: Path | None = None,
     feature_runs_dir: Path = FEATURE_RUNS_DIR,
+    vlm_completed_before: datetime | None = None,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     selected_run = youtube_run or latest_youtube_run()
     documents = load_youtube_documents(selected_run)
-    vlm_results = load_latest_vlm_results(feature_runs_dir)
+    vlm_results = load_latest_vlm_results(feature_runs_dir, vlm_completed_before)
     rows = []
     for document in documents:
         video_id = nested(document, "identity", "video_id")
@@ -615,6 +622,9 @@ def build_feature_rows(
         "source": {
             "youtube_run": str(selected_run),
             "feature_runs_directory": str(feature_runs_dir),
+            "vlm_completed_before": (
+                vlm_completed_before.isoformat() if vlm_completed_before else None
+            ),
             "join_key": "video_id",
         },
         "record_count": len(rows),

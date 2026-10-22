@@ -66,6 +66,10 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> int:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    if hasattr(sys.stderr, "reconfigure"):
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
     args = parse_args()
     if args.rounds < 1 or args.per_round < 1:
         print("ERRO: --rounds e --per-round precisam ser >= 1.", file=sys.stderr)

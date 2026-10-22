@@ -16,6 +16,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from galaxies.prospective import exclude_prospective
+
 PROTOCOL_VERSION = "viral-intra-canal-v1"
 
 # Só vídeos com pelo menos 30 dias entram na avaliação: abaixo disso as views
@@ -122,10 +124,34 @@ AUDIOVISUAL_CATEGORICAL = [
     "automotive_interior_present",
 ]
 
+AUDIOVISUAL_DERIVED_NUMERIC = [
+    "early_speech_signal",
+    "scene_changes_per_second",
+    "screen_text_per_second",
+    "sound_effects_per_second",
+    "multimodal_signal_count",
+]
+
+TRANSCRIPT_NUMERIC = [
+    "transcript_character_count",
+    "transcript_unique_word_ratio",
+    "transcript_words_per_second",
+    "transcript_question_mark_count",
+    "transcript_exclamation_mark_count",
+    "transcript_number_token_count",
+]
+TRANSCRIPT_CATEGORICAL = [
+    "transcript_available",
+    "transcript_second_person_cue",
+    "transcript_call_to_action_cue",
+]
+
 FEATURE_GROUPS: dict[str, dict[str, list[str]]] = {
     "metadata": {"numeric": METADATA_NUMERIC, "categorical": METADATA_CATEGORICAL},
     "cadence": {"numeric": CADENCE_NUMERIC, "categorical": []},
     "audiovisual": {"numeric": AUDIOVISUAL_NUMERIC, "categorical": AUDIOVISUAL_CATEGORICAL},
+    "audiovisual_derived": {"numeric": AUDIOVISUAL_DERIVED_NUMERIC, "categorical": []},
+    "transcript_stats": {"numeric": TRANSCRIPT_NUMERIC, "categorical": TRANSCRIPT_CATEGORICAL},
 }
 
 
@@ -259,6 +285,107 @@ def age_adjusted_performance(frame: pd.DataFrame) -> pd.Series:
     return result
 
 
+def fit_age_adjustment(frame: pd.DataFrame) -> pd.DataFrame:
+    """Ajusta a normalização de idade usando apenas uma janela de treino.
+
+    ``age_adjusted_performance`` é adequado para congelar o rótulo de uma
+    população completa. Em um backtest temporal, porém, estimar suas médias e
+    inclinações com o período de teste faria o passado depender do futuro.
+    Esta função produz parâmetros por canal a partir de ``frame`` para que uma
+    janela seguinte seja pontuada sem acessar suas views durante o ajuste.
+    """
+    required = {"channel_id", "sector", "target_view_count", "target_age_days"}
+    missing = required - set(frame.columns)
+    if missing:
+        raise ValueError(f"Colunas ausentes para ajuste temporal: {sorted(missing)}")
+    rows = frame.copy()
+    rows["_log_views"] = np.log1p(pd.to_numeric(rows["target_view_count"], errors="coerce"))
+    rows["_log_age"] = np.log1p(pd.to_numeric(rows["target_age_days"], errors="coerce"))
+    rows = rows.dropna(subset=["channel_id", "sector", "_log_views", "_log_age"])
+    if rows.empty:
+        return pd.DataFrame(
+            columns=["channel_id", "sector", "mean_log_views", "mean_log_age", "age_slope"]
+        )
+
+    rows["_mean_log_views"] = rows.groupby("channel_id")["_log_views"].transform("mean")
+    rows["_mean_log_age"] = rows.groupby("channel_id")["_log_age"].transform("mean")
+    rows["_views_centered"] = rows["_log_views"] - rows["_mean_log_views"]
+    rows["_age_centered"] = rows["_log_age"] - rows["_mean_log_age"]
+    sector_slopes: dict[object, float] = {}
+    for sector, group in rows.groupby("sector", sort=False):
+        denominator = float((group["_age_centered"] ** 2).sum())
+        sector_slopes[sector] = (
+            float((group["_age_centered"] * group["_views_centered"]).sum() / denominator)
+            if denominator
+            else 0.0
+        )
+
+    parameters: list[dict[str, object]] = []
+    for (sector, channel), group in rows.groupby(["sector", "channel_id"], sort=False):
+        denominator = float((group["_age_centered"] ** 2).sum())
+        sector_slope = sector_slopes[sector]
+        channel_slope = (
+            float((group["_age_centered"] * group["_views_centered"]).sum() / denominator)
+            if denominator
+            else sector_slope
+        )
+        weight = len(group) / (len(group) + AGE_SLOPE_SHRINKAGE_ROWS)
+        parameters.append(
+            {
+                "channel_id": channel,
+                "sector": sector,
+                "mean_log_views": float(group["_log_views"].mean()),
+                "mean_log_age": float(group["_log_age"].mean()),
+                "age_slope": weight * channel_slope + (1 - weight) * sector_slope,
+            }
+        )
+    return pd.DataFrame(parameters)
+
+
+def apply_age_adjustment(frame: pd.DataFrame, parameters: pd.DataFrame) -> pd.Series:
+    """Aplica parâmetros de idade já ajustados, sem refit na janela alvo."""
+    values = frame[["channel_id", "sector", "target_view_count", "target_age_days"]].merge(
+        parameters,
+        on=["channel_id", "sector"],
+        how="left",
+        validate="many_to_one",
+    )
+    log_views = np.log1p(pd.to_numeric(values["target_view_count"], errors="coerce"))
+    log_age = np.log1p(pd.to_numeric(values["target_age_days"], errors="coerce"))
+    adjusted = (log_views - values["mean_log_views"]) - values["age_slope"] * (
+        log_age - values["mean_log_age"]
+    )
+    return pd.Series(adjusted.to_numpy(), index=frame.index, dtype=float)
+
+
+def temporal_as_of_labels(
+    train: pd.DataFrame,
+    test: pd.DataFrame,
+    *,
+    quantile: float = VIRAL_QUANTILE,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Cria rótulos temporais sem calibrar idade ou limiar com o futuro.
+
+    Os parâmetros de idade e o limiar por canal são estimados no treino. O
+    teste recebe o mesmo ajuste e o mesmo limiar. Isso representa a pergunta
+    operacional: com tudo que se conhecia até a data de corte, quais próximos
+    vídeos superariam o padrão histórico daquele canal?
+    """
+    parameters = fit_age_adjustment(train)
+    train_result = train.copy()
+    test_result = test.copy()
+    train_result["adjusted_performance"] = apply_age_adjustment(train_result, parameters)
+    test_result["adjusted_performance"] = apply_age_adjustment(test_result, parameters)
+    thresholds = train_result.groupby("channel_id")["adjusted_performance"].quantile(quantile)
+    train_result["viral"] = (
+        train_result["adjusted_performance"] >= train_result["channel_id"].map(thresholds)
+    ).astype(int)
+    test_result["viral"] = (
+        test_result["adjusted_performance"] >= test_result["channel_id"].map(thresholds)
+    ).astype(int)
+    return train_result, test_result
+
+
 def within_channel_age_correlation(frame: pd.DataFrame, score_column: str) -> float:
     """Spearman médio (ponderado por linhas) entre a nota e a idade, dentro do canal.
 
@@ -305,23 +432,80 @@ def prepare_frame(raw: pd.DataFrame) -> pd.DataFrame:
     frame.loc[frame["duration_seconds"].isna(), "is_short"] = np.nan
     frame["segment"] = np.where(frame["is_short"] == 1.0, "short", "long")
     frame["vlm_available"] = frame.get("vlm_available", False).fillna(False).astype(bool)
-    for column in METADATA_CATEGORICAL + AUDIOVISUAL_CATEGORICAL:
+
+    def numeric_column(column: str) -> pd.Series:
+        if column not in frame:
+            return pd.Series(np.nan, index=frame.index, dtype=float)
+        return pd.to_numeric(frame[column], errors="coerce")
+
+    interval = numeric_column("vlm_interval_end_seconds")
+    safe_interval = interval.where(interval > 0)
+    scene_changes = numeric_column("scene_change_count")
+    screen_text = numeric_column("on_screen_text_count")
+    sound_effects = numeric_column("sound_effect_count")
+    speech_start = numeric_column("speech_start_seconds")
+
+    def binary_signal(column: str) -> pd.Series:
+        if column not in frame:
+            return pd.Series(np.nan, index=frame.index, dtype=float)
+        normalized = frame[column].map(
+            lambda value: str(value).strip().lower() if pd.notna(value) else None
+        )
+        return normalized.map(
+            lambda value: (
+                1.0
+                if value in {"true", "1", "yes", "sim"}
+                else (0.0 if value in {"false", "0", "no", "não", "nao"} else np.nan)
+            )
+        )
+
+    frame["early_speech_signal"] = np.where(
+        binary_signal("speech_present").eq(1.0) & speech_start.le(1.0), 1.0, 0.0
+    )
+    frame.loc[~frame["vlm_available"], "early_speech_signal"] = np.nan
+    frame["scene_changes_per_second"] = scene_changes / safe_interval
+    frame["screen_text_per_second"] = screen_text / safe_interval
+    frame["sound_effects_per_second"] = sound_effects / safe_interval
+    signal_columns = [
+        "people_present",
+        "product_in_focus",
+        "speech_present",
+        "music_present",
+        "call_to_action_present",
+    ]
+    signals = pd.concat([binary_signal(column) for column in signal_columns], axis=1)
+    frame["multimodal_signal_count"] = signals.sum(axis=1, min_count=1)
+
+    for column in METADATA_CATEGORICAL + AUDIOVISUAL_CATEGORICAL + TRANSCRIPT_CATEGORICAL:
         if column in frame.columns:
             frame[column] = frame[column].map(
                 lambda value: value if value is None or pd.isna(value) else str(value)
             )
         else:
             frame[column] = None
-    for column in METADATA_NUMERIC + CADENCE_NUMERIC + AUDIOVISUAL_NUMERIC:
+    for column in (
+        METADATA_NUMERIC
+        + CADENCE_NUMERIC
+        + AUDIOVISUAL_NUMERIC
+        + AUDIOVISUAL_DERIVED_NUMERIC
+        + TRANSCRIPT_NUMERIC
+    ):
         if column not in frame.columns:
             frame[column] = np.nan
         frame[column] = pd.to_numeric(frame[column], errors="coerce")
     return frame
 
 
-def build_dataset(raw: pd.DataFrame, source_path: Path, fingerprint: str) -> AgentDataset:
+def build_dataset(
+    raw: pd.DataFrame,
+    source_path: Path,
+    fingerprint: str,
+    *,
+    min_eval_age_days: int = MIN_EVAL_AGE_DAYS,
+    vault_channels: tuple[str, ...] | None = None,
+) -> AgentDataset:
     frame = prepare_frame(raw)
-    population = (frame["target_age_days"] >= MIN_EVAL_AGE_DAYS) & frame[
+    population = (frame["target_age_days"] >= min_eval_age_days) & frame[
         "target_view_count"
     ].notna()
     frame["in_population"] = population
@@ -331,14 +515,14 @@ def build_dataset(raw: pd.DataFrame, source_path: Path, fingerprint: str) -> Age
     performance = age_adjusted_performance(labelled)
     frame.loc[labelled.index, "adjusted_performance"] = performance
     frame.loc[labelled.index, "viral"] = viral_label(labelled, performance)
-    vault = choose_vault_channels(frame[population])
+    vault = vault_channels or choose_vault_channels(frame[population])
     frame["in_vault"] = frame["channel_id"].isin(vault)
     labelled = frame[population]
     label_age_rho = within_channel_age_correlation(
         labelled.assign(_label=labelled["viral"].astype(float)), "_label"
     )
     notes = [
-        f"{int(population.sum())} de {len(frame)} vídeos têm {MIN_EVAL_AGE_DAYS}+ dias e entram na avaliação.",
+        f"{int(population.sum())} de {len(frame)} vídeos têm {min_eval_age_days}+ dias e entram na avaliação.",
         f"Rótulo: top {round((1 - VIRAL_QUANTILE) * 100)}% do canal após ajuste de idade dentro do canal.",
         f"Correlação do rótulo com a idade dentro do canal: {label_age_rho:+.3f} (esperado perto de 0).",
         f"Cofre: {len(vault)} canal(is) trancado(s), um por setor.",
@@ -347,7 +531,8 @@ def build_dataset(raw: pd.DataFrame, source_path: Path, fingerprint: str) -> Age
 
 
 def load_dataset(path: Path) -> AgentDataset:
-    raw = pd.read_json(path, lines=True)
+    # Vídeos do período prospectivo são a validação final e nunca entram aqui.
+    raw = exclude_prospective(pd.read_json(path, lines=True))
     return build_dataset(raw, path, file_fingerprint(path))
 
 

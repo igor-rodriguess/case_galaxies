@@ -17,10 +17,25 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 from .protocol import FEATURE_GROUPS, is_forbidden
 
 Track = Literal["full", "vlm"]
-FeatureGroup = Literal["metadata", "cadence", "audiovisual", "text_stats"]
+FeatureGroup = Literal[
+    "metadata",
+    "cadence",
+    "audiovisual",
+    "audiovisual_derived",
+    "transcript_stats",
+    "text_stats",
+]
 Pooling = Literal["per_sector", "pooled"]
 FormatStrategy = Literal["joint", "segmented"]
-ModelFamily = Literal["logistic", "hist_gb", "extra_trees", "random_forest"]
+ModelFamily = Literal[
+    "logistic",
+    "hist_gb",
+    "extra_trees",
+    "random_forest",
+    "catboost",
+    "catboost_ranker",
+    "mlp",
+]
 Complexity = Literal["low", "medium"]
 Taxonomy = Literal["raw", "normalized"]
 TrainLabel = Literal["top10", "clean20vs50"]
@@ -48,6 +63,8 @@ CATALOG_DESCRIPTION = {
         "metadata": "duração, Shorts (<=180s), tamanho de título/descrição, tags, hora, dia, categoria",
         "cadence": "dias desde o upload anterior e intervalo mediano entre uploads do canal",
         "audiovisual": "atributos dos 3s iniciais extraídos pelo VLM (só na trilha vlm)",
+        "audiovisual_derived": "ritmo, fala precoce e densidade multimodal derivados da janela VLM",
+        "transcript_stats": "estatísticas determinísticas do trecho transcrito, sem texto cru",
         "text_stats": "contagens determinísticas do título e descrição; elegível apenas na ablação de embeddings",
     },
     "pooling": {
@@ -63,6 +80,9 @@ CATALOG_DESCRIPTION = {
         "hist_gb": "HistGradientBoosting raso",
         "extra_trees": "Extra Trees",
         "random_forest": "Random Forest",
+        "catboost": "CatBoost raso e regularizado após o pré-processamento da dobra",
+        "catboost_ranker": "CatBoost com perda de ranking e grupos definidos por canal",
+        "mlp": "rede neural pequena, regularizada e com parada antecipada",
     },
     "complexity": {"low": "regularização forte", "medium": "regularização moderada"},
     "train_min_age_days": {
@@ -108,8 +128,9 @@ class ExperimentSpec(BaseModel):
     def check_rules(self) -> ExperimentSpec:
         groups = list(dict.fromkeys(self.feature_groups))
         self.feature_groups = sorted(groups)
-        if "audiovisual" in self.feature_groups and self.track != "vlm":
-            raise ValueError("O grupo 'audiovisual' só pode ser usado na trilha 'vlm'.")
+        vlm_groups = {"audiovisual", "audiovisual_derived", "transcript_stats"}
+        if vlm_groups.intersection(self.feature_groups) and self.track != "vlm":
+            raise ValueError("Grupos audiovisuais só podem ser usados na trilha 'vlm'.")
         if "audiovisual" not in self.feature_groups:
             # A taxonomia não muda nada sem features audiovisuais; fixa para
             # evitar duplicatas que diferem só nesse campo.

@@ -356,7 +356,12 @@ pode ser usado como resultado científico.
 
 O servidor MCP já expõe contratos tipados, o status dos modelos, a validação das
 features, a consulta do mapa materializado por `video_id`, a previsão e o ranking.
-Enquanto não houver um modelo promovido, ele responde `model_not_ready` em vez de
+Também expõe o **Creative Battle**: comparação A/B entre duas versões
+pré-publicação do mesmo canal e setor, com delta de score, probabilidade
+calibrada, confiança e trace sanitizada. O Battle compara cenários pelo modelo;
+não prova causalidade nem promete viralização. Veja o contrato em
+[`docs/creative_battle_mcp.md`](docs/creative_battle_mcp.md). Enquanto não houver
+um modelo promovido, as tools de previsão respondem `model_not_ready` em vez de
 inventar um número:
 
 ```powershell

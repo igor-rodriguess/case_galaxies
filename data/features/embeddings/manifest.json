@@ -1,10 +1,10 @@
 {
   "schema_version": "0.1.0",
-  "started_at": "2026-10-19T01:35:02.562384Z",
-  "source_records": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\youtube\\runs\\expansion-1000-per-sector-balanced-2026-10-16\\normalized_records.json",
-  "records_requested": 3425,
+  "started_at": "2026-10-22T01:46:10.663956Z",
+  "source_records": "C:\\Users\\Inteli\\AppData\\Local\\Temp\\claude\\C--Users-Inteli-Documents-Secreto-projeto-secreto\\4fe41305-2fea-491e-9c3d-641235174b4e\\scratchpad\\criadores_ids.jsonl",
+  "records_requested": 15731,
   "models": {
-    "thumbnail": "open_clip:ViT-B-32/laion2b_s34b_b79k",
+    "thumbnail": "torchvision:resnet18/IMAGENET1K_V1",
     "text": "intfloat/multilingual-e5-base"
   },
   "device": "cpu",

@@ -10,6 +10,8 @@ from pydantic import ValidationError
 
 from galaxies.agent.evaluation import (
     auc_intra_channel,
+    bootstrap_top_fraction,
+    channel_top_counts,
     fit_predict,
     paired_comparison,
     run_experiment,
@@ -202,6 +204,20 @@ def test_auc_intra_channel_counts_only_pairs_inside_each_channel() -> None:
     assert metrics["recall_top10"] == pytest.approx(0.5)
 
 
+def test_top_fraction_bootstrap_returns_bounded_intervals() -> None:
+    frame = pd.DataFrame(
+        {
+            "channel_id": ["a", "a", "a", "b", "b", "b"],
+            "viral": [1, 0, 0, 0, 1, 0],
+            "score": [0.9, 0.2, 0.1, 0.3, 0.8, 0.1],
+        }
+    )
+    intervals = bootstrap_top_fraction(channel_top_counts(frame, "score"), 100, 7)
+    assert 0 <= intervals["recall_ci_low"] <= intervals["recall_ci_high"] <= 1
+    assert 0 <= intervals["precision_ci_low"] <= intervals["precision_ci_high"] <= 1
+    assert intervals["lift_ci_low"] >= 0
+
+
 def test_paired_comparison_detects_a_clear_winner() -> None:
     index = pd.Index([f"c{i}" for i in range(20)], name="channel_id")
     better = pd.DataFrame({"pairs": 10, "correct": 8.0}, index=index)
@@ -299,8 +315,27 @@ def test_gemini_proposals_are_validated_and_fall_back_on_failure() -> None:
 
 
 def test_parse_specs_reports_reasons() -> None:
-    specs, invalid = parse_specs([{"hypothesis": "ok ok"}, {"hypothesis": "x", "model": "mlp"}])
+    specs, invalid = parse_specs(
+        [{"hypothesis": "ok ok"}, {"hypothesis": "x", "model": "transformer"}]
+    )
     assert len(specs) == 1 and len(invalid) == 1
+
+
+@pytest.mark.parametrize("model", ["catboost", "catboost_ranker", "mlp"])
+def test_new_model_families_fit_without_post_publication_features(dataset, model) -> None:
+    rows = dataset.evaluable("vlm")
+    spec = ExperimentSpec(
+        hypothesis=f"avaliar {model}",
+        track="vlm",
+        feature_groups=["metadata", "audiovisual"],
+        model=model,
+        pooling="pooled",
+    )
+    train = rows.iloc[: max(80, len(rows) // 2)]
+    test = rows.iloc[-20:]
+    scores = fit_predict(spec, train, test, seed=2026)
+    assert len(scores) == len(test)
+    assert np.isfinite(scores).all()
 
 
 def test_full_graph_run_offline_writes_ledger_and_report(dataset, tmp_path) -> None:

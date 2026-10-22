@@ -1,39 +1,44 @@
 {
-  "results_audited": 753,
-  "results_with_issues": 657,
+  "results_audited": 1001,
+  "results_with_issues": 659,
   "prompt_versions": {
     "galaxies-opening-qwen-compact-v0.1.0": 1,
     "galaxies-opening-v0.1.0": 714,
-    "galaxies-opening-v0.2.0-closed-taxonomy": 38
+    "galaxies-opening-v0.2.0-closed-taxonomy": 286
   },
   "issues_by_prompt_version": {
     "galaxies-opening-qwen-compact-v0.1.0": 0,
-    "galaxies-opening-v0.1.0": 852,
+    "galaxies-opening-v0.1.0": 863,
     "galaxies-opening-v0.2.0-closed-taxonomy": 0
   },
   "issues_by_kind": {
-    "taxonomy_drift": 852
+    "taxonomy_drift": 863
   },
   "issues": [
     {
       "video_id": "gmi2iRLj1Q4",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=wide_shot"
+      "detail": "visual.shot_and_camera.framing=wide shot"
     },
     {
       "video_id": "N3WyEav_T3c",
       "kind": "taxonomy_drift",
+      "detail": "visual.shot_and_camera.framing=medium_shot"
+    },
+    {
+      "video_id": "zWQIQgRpPMU",
+      "kind": "taxonomy_drift",
       "detail": "visual.shot_and_camera.framing=medium shot"
+    },
+    {
+      "video_id": "zWQIQgRpPMU",
+      "kind": "taxonomy_drift",
+      "detail": "visual.shot_and_camera.camera_movement=tilting/zooming out"
     },
     {
       "video_id": "avBeqxvNMv8",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium close-up"
-    },
-    {
-      "video_id": "3mGvitNMDLw",
-      "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=split screen com planos médios dos participantes sentados"
+      "detail": "visual.shot_and_camera.framing=medium shot"
     },
     {
       "video_id": "RVeUyd2jUFg",
@@ -43,17 +48,22 @@
     {
       "video_id": "8b7M44Q5fHg",
       "kind": "taxonomy_drift",
+      "detail": "visual.shot_and_camera.framing=split_screen"
+    },
+    {
+      "video_id": "8b7M44Q5fHg",
+      "kind": "taxonomy_drift",
+      "detail": "visual.shot_and_camera.camera_movement=static_shots"
+    },
+    {
+      "video_id": "qf1CJLgEdw8",
+      "kind": "taxonomy_drift",
       "detail": "visual.shot_and_camera.framing=medium_shot"
     },
     {
       "video_id": "qf1CJLgEdw8",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=montage"
-    },
-    {
-      "video_id": "qf1CJLgEdw8",
-      "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.camera_movement=mixed"
+      "detail": "visual.shot_and_camera.camera_movement=panning"
     },
     {
       "video_id": "CVKChLrOkxQ",
@@ -3278,7 +3288,7 @@
     {
       "video_id": "-130hVVbQSE",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium close-up"
+      "detail": "visual.shot_and_camera.framing=medium_shot"
     },
     {
       "video_id": "-pLInY5_NUQ",
@@ -3286,14 +3296,19 @@
       "detail": "visual.shot_and_camera.framing=medium close-up"
     },
     {
+      "video_id": "05UmMq_TlpA",
+      "kind": "taxonomy_drift",
+      "detail": "visual.shot_and_camera.framing=medium_shot"
+    },
+    {
       "video_id": "1PLfTcjANzs",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=split screen"
+      "detail": "visual.shot_and_camera.framing=medium shot"
     },
     {
       "video_id": "1Z7CuVEuEnA",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium shot"
+      "detail": "visual.shot_and_camera.framing=medium_shot"
     },
     {
       "video_id": "3f4tTiRGV3s",
@@ -3313,12 +3328,17 @@
     {
       "video_id": "71RL22QTS5I",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=close-up"
+      "detail": "visual.shot_and_camera.framing=medium_close"
     },
     {
       "video_id": "_N-elMAnBS4",
       "kind": "taxonomy_drift",
       "detail": "visual.shot_and_camera.framing=close-up"
+    },
+    {
+      "video_id": "_N-elMAnBS4",
+      "kind": "taxonomy_drift",
+      "detail": "visual.shot_and_camera.camera_movement=static with fast transitions later"
     },
     {
       "video_id": "Chjc0Rg7VsE",
@@ -3328,7 +3348,12 @@
     {
       "video_id": "cykKhVDzuiA",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.camera_movement=fixed"
+      "detail": "visual.shot_and_camera.framing=first_person_pov"
+    },
+    {
+      "video_id": "cykKhVDzuiA",
+      "kind": "taxonomy_drift",
+      "detail": "visual.shot_and_camera.camera_movement=panning"
     },
     {
       "video_id": "EUj0nYUpN4Y",
@@ -3343,12 +3368,17 @@
     {
       "video_id": "feO3Ogv48hQ",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium close-up"
+      "detail": "visual.shot_and_camera.framing=medium_shot"
     },
     {
       "video_id": "FIaI1GUHOvQ",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.camera_movement=pan"
+      "detail": "visual.shot_and_camera.framing=medium shot"
+    },
+    {
+      "video_id": "FIaI1GUHOvQ",
+      "kind": "taxonomy_drift",
+      "detail": "visual.shot_and_camera.camera_movement=panning"
     },
     {
       "video_id": "FpJZQExq8FQ",
@@ -3358,7 +3388,7 @@
     {
       "video_id": "GdC3AtEsvHo",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium_shot"
+      "detail": "visual.shot_and_camera.framing=medium shot"
     },
     {
       "video_id": "GtG0qBcbO4E",
@@ -3368,12 +3398,17 @@
     {
       "video_id": "gw03M0mUThY",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium_shot"
+      "detail": "visual.shot_and_camera.framing=medium shot"
     },
     {
       "video_id": "igJx9LxoEtA",
       "kind": "taxonomy_drift",
       "detail": "visual.shot_and_camera.framing=medium shot"
+    },
+    {
+      "video_id": "igJx9LxoEtA",
+      "kind": "taxonomy_drift",
+      "detail": "visual.shot_and_camera.camera_movement=cuts between multiple children posing or jumping"
     },
     {
       "video_id": "IIwv0BaKW74",
@@ -3383,7 +3418,7 @@
     {
       "video_id": "irXjWBYk7gs",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium_shot"
+      "detail": "visual.shot_and_camera.framing=medium shot"
     },
     {
       "video_id": "IuvBlfsPK9A",
@@ -3396,14 +3431,24 @@
       "detail": "visual.shot_and_camera.framing=medium shot"
     },
     {
+      "video_id": "IWkndIoMyEE",
+      "kind": "taxonomy_drift",
+      "detail": "visual.shot_and_camera.camera_movement=slight adjustment or handheld"
+    },
+    {
       "video_id": "JfcMx0AKWEs",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium_shot"
+      "detail": "visual.shot_and_camera.framing=medium shot"
     },
     {
       "video_id": "KAd9g9Oxr6o",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=close-up"
+      "detail": "visual.shot_and_camera.framing=medium close-up"
+    },
+    {
+      "video_id": "lCOcgYIXqTg",
+      "kind": "taxonomy_drift",
+      "detail": "visual.shot_and_camera.framing=medium close-up"
     },
     {
       "video_id": "LmWlQe-iAFk",
@@ -3416,14 +3461,24 @@
       "detail": "visual.shot_and_camera.framing=medium full shot"
     },
     {
+      "video_id": "NLPMSOdkTac",
+      "kind": "taxonomy_drift",
+      "detail": "visual.shot_and_camera.framing=medium shot"
+    },
+    {
       "video_id": "NrYobtkwUNs",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium close-up"
+      "detail": "visual.shot_and_camera.framing=medium shot"
     },
     {
       "video_id": "OrEOSBq2d8g",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=wide_shot"
+      "detail": "visual.shot_and_camera.framing=medium shot"
+    },
+    {
+      "video_id": "OrEOSBq2d8g",
+      "kind": "taxonomy_drift",
+      "detail": "visual.shot_and_camera.camera_movement=panning"
     },
     {
       "video_id": "oToYuUCUN0o",
@@ -3443,12 +3498,12 @@
     {
       "video_id": "qJ8q_E7JLoU",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.camera_movement=tracking"
+      "detail": "visual.shot_and_camera.camera_movement=panning"
     },
     {
       "video_id": "qtTA_krBHTU",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium shot"
+      "detail": "visual.shot_and_camera.framing=medium_shot"
     },
     {
       "video_id": "qy96u-eTyf0",
@@ -3458,7 +3513,7 @@
     {
       "video_id": "rcUK2jqwU8I",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium_shot"
+      "detail": "visual.shot_and_camera.framing=medium shot"
     },
     {
       "video_id": "rkyKWyEE1SA",
@@ -3468,32 +3523,27 @@
     {
       "video_id": "rQuRJjJS7J0",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=long_shot"
+      "detail": "visual.shot_and_camera.framing=medium_shot"
     },
     {
       "video_id": "SGf4WOqbGgo",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=extreme_wide_shot"
+      "detail": "visual.shot_and_camera.framing=aerial view"
     },
     {
       "video_id": "SGf4WOqbGgo",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.camera_movement=aerial_drift"
+      "detail": "visual.shot_and_camera.camera_movement=panning"
     },
     {
       "video_id": "SiPQVq1pLAs",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=close-up"
+      "detail": "visual.shot_and_camera.framing=medium_shot"
     },
     {
       "video_id": "SwhnuN8zaII",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium shot"
-    },
-    {
-      "video_id": "SwhnuN8zaII",
-      "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.camera_movement=pan"
+      "detail": "visual.shot_and_camera.framing=medium_shot"
     },
     {
       "video_id": "t4Lhl1olyxM",
@@ -3501,14 +3551,19 @@
       "detail": "visual.shot_and_camera.framing=wide shot"
     },
     {
-      "video_id": "u168yhvdcRg",
+      "video_id": "TzY21fiGE0U",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium full shot"
+      "detail": "visual.shot_and_camera.framing=medium shot"
     },
     {
-      "video_id": "V0xg693ze5k",
+      "video_id": "TzY21fiGE0U",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=montage"
+      "detail": "visual.shot_and_camera.camera_movement=dynamic pan"
+    },
+    {
+      "video_id": "u168yhvdcRg",
+      "kind": "taxonomy_drift",
+      "detail": "visual.shot_and_camera.framing=full shot"
     },
     {
       "video_id": "V0xg693ze5k",
@@ -3518,17 +3573,22 @@
     {
       "video_id": "VdWfwxBNPlg",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium_shot"
+      "detail": "visual.shot_and_camera.framing=medium shot"
     },
     {
       "video_id": "vRGd95EtDB4",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium shot"
+      "detail": "visual.shot_and_camera.framing=medium-wide"
     },
     {
       "video_id": "VxlAljlWdB8",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium close-up"
+      "detail": "visual.shot_and_camera.framing=selfie close-up"
+    },
+    {
+      "video_id": "VxlAljlWdB8",
+      "kind": "taxonomy_drift",
+      "detail": "visual.shot_and_camera.camera_movement=handheld shaky movement"
     },
     {
       "video_id": "WCRwQKf1E_E",
@@ -3538,7 +3598,12 @@
     {
       "video_id": "wQcZbaHkmAo",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.camera_movement=zoom_out"
+      "detail": "visual.shot_and_camera.framing=medium_shot"
+    },
+    {
+      "video_id": "wQcZbaHkmAo",
+      "kind": "taxonomy_drift",
+      "detail": "visual.shot_and_camera.camera_movement=panning"
     },
     {
       "video_id": "wxtA6D9eOhs",
@@ -3548,17 +3613,12 @@
     {
       "video_id": "wxtA6D9eOhs",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.camera_movement=tracking"
-    },
-    {
-      "video_id": "xnhOiba7vIU",
-      "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium shot"
+      "detail": "visual.shot_and_camera.camera_movement=panning"
     },
     {
       "video_id": "yBzWgbY7Pac",
       "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium shot"
+      "detail": "visual.shot_and_camera.framing=medium_shot"
     },
     {
       "video_id": "ZqEa-8F1_F8",
@@ -4261,11 +4321,6 @@
       "detail": "visual.shot_and_camera.camera_movement=handheld movement"
     },
     {
-      "video_id": "mFS_8kngB8I",
-      "kind": "taxonomy_drift",
-      "detail": "visual.shot_and_camera.framing=medium shot"
-    },
-    {
       "video_id": "w0op6Vxq9KU",
       "kind": "taxonomy_drift",
       "detail": "visual.shot_and_camera.camera_movement=pan"
@@ -4277,6 +4332,6 @@
     }
   ],
   "schema_version": "0.1.0",
-  "audited_at": "2026-10-20T00:33:17.638721Z",
+  "audited_at": "2026-10-20T05:56:09.479260Z",
   "policy": "Relatório somente leitura; não modifica nem completa análises."
 }

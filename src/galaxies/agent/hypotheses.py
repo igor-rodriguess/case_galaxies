@@ -145,7 +145,15 @@ def parse_specs(items: Sequence[dict[str, Any]]) -> tuple[list[ExperimentSpec], 
 def neighbours(spec: ExperimentSpec) -> list[ExperimentSpec]:
     """Specs que diferem do campeão em exatamente uma alavanca."""
     options: dict[str, list[Any]] = {
-        "model": ["logistic", "hist_gb", "extra_trees", "random_forest"],
+        "model": [
+            "logistic",
+            "hist_gb",
+            "extra_trees",
+            "random_forest",
+            "catboost",
+            "catboost_ranker",
+            "mlp",
+        ],
         "complexity": ["low", "medium"],
         "pooling": ["per_sector", "pooled"],
         "format_strategy": ["joint", "segmented"],
@@ -154,7 +162,12 @@ def neighbours(spec: ExperimentSpec) -> list[ExperimentSpec]:
     }
     groups_options = [["metadata"], ["cadence", "metadata"]]
     if spec.track == "vlm":
-        groups_options += [["audiovisual", "cadence", "metadata"], ["audiovisual", "metadata"]]
+        groups_options += [
+            ["audiovisual", "cadence", "metadata"],
+            ["audiovisual", "metadata"],
+            ["audiovisual", "audiovisual_derived", "cadence", "metadata"],
+            ["audiovisual", "cadence", "metadata", "transcript_stats"],
+        ]
         options["vlm_taxonomy"] = ["raw", "normalized"]
     result: list[ExperimentSpec] = []
     base = spec.config()
@@ -223,11 +236,30 @@ def response_schema() -> dict[str, Any]:
         "track": _string_enum(["full", "vlm"]),
         "feature_groups": {
             "type": "ARRAY",
-            "items": _string_enum(["metadata", "cadence", "audiovisual", "text_stats"]),
+            "items": _string_enum(
+                [
+                    "metadata",
+                    "cadence",
+                    "audiovisual",
+                    "audiovisual_derived",
+                    "transcript_stats",
+                    "text_stats",
+                ]
+            ),
         },
         "pooling": _string_enum(["per_sector", "pooled"]),
         "format_strategy": _string_enum(["joint", "segmented"]),
-        "model": _string_enum(["logistic", "hist_gb", "extra_trees", "random_forest"]),
+        "model": _string_enum(
+            [
+                "logistic",
+                "hist_gb",
+                "extra_trees",
+                "random_forest",
+                "catboost",
+                "catboost_ranker",
+                "mlp",
+            ]
+        ),
         "complexity": _string_enum(["low", "medium"]),
         "train_min_age_days": {"type": "INTEGER", "description": "Um de 30, 60 ou 90."},
         "train_label": _string_enum(["top10", "clean20vs50"]),

@@ -13,3 +13,13 @@ data/media/
 data/modeling/runs/
 models/*/artifacts/
 data/agent/
+data/youtube/shorts_history/
+data/youtube/prospective/raw/
+frontend/node_modules/
+frontend/.next/
+
+# Piloto de vídeo: clipes baixados e features locais
+data/video_pilot/
+# Base v2 derivada da coleta (fora do git, como a coleta)
+data/dataset_v2/
+data/dataset_v3/

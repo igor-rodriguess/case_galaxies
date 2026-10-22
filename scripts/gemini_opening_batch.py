@@ -12,14 +12,17 @@ Uso:
 from __future__ import annotations
 
 import argparse
+import contextlib
 import json
 import math
+import os
 import subprocess
 import sys
 import time
 from collections import Counter, defaultdict, deque
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
+from uuid import uuid4
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 YOUTUBE_RUNS_DIR = PROJECT_ROOT / "data" / "youtube" / "runs"
@@ -27,6 +30,9 @@ FEATURE_RUNS_DIR = PROJECT_ROOT / "data" / "features" / "runs"
 PILOT_SCRIPT = PROJECT_ROOT / "scripts" / "gemini_opening_pilot.py"
 DEFAULT_MODEL = "gemini-3.8-flash"
 SECTOR_ORDER = ("automotivo", "moda", "beleza")
+COLLECTOR_LOCK_PATH = FEATURE_RUNS_DIR / ".locks" / "gemini-opening-batch.lock.json"
+VIDEO_CLAIMS_DIR = FEATURE_RUNS_DIR / ".claims" / "gemini-opening"
+DEFAULT_LEASE_SECONDS = 45 * 60
 
 
 def utc_now() -> str:
@@ -41,6 +47,119 @@ def save_json(path: Path, data: object) -> None:
         encoding="utf-8",
     )
     temporary_path.replace(path)
+
+
+def _parse_utc(value: object) -> datetime | None:
+    if not isinstance(value, str) or not value:
+        return None
+    try:
+        return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(UTC)
+    except ValueError:
+        return None
+
+
+def _read_json(path: Path) -> dict | None:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    return data if isinstance(data, dict) else None
+
+
+def _acquire_lease(
+    path: Path,
+    *,
+    resource: str,
+    owner: str,
+    now: datetime | None = None,
+    ttl_seconds: int = DEFAULT_LEASE_SECONDS,
+) -> tuple[str | None, dict | None]:
+    """Cria uma reserva exclusiva e reaproveita somente reservas expiradas."""
+    current = now or datetime.now(UTC)
+    token = uuid4().hex
+    payload = {
+        "schema_version": "0.1.0",
+        "resource": resource,
+        "owner": owner,
+        "pid": os.getpid(),
+        "token": token,
+        "claimed_at": current.isoformat().replace("+00:00", "Z"),
+        "expires_at": (current + timedelta(seconds=ttl_seconds))
+        .isoformat()
+        .replace("+00:00", "Z"),
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    for _ in range(2):
+        try:
+            with path.open("x", encoding="utf-8") as handle:
+                json.dump(payload, handle, ensure_ascii=False, indent=2)
+            return token, payload
+        except FileExistsError:
+            existing = _read_json(path)
+            expires_at = _parse_utc(existing.get("expires_at")) if existing else None
+            if expires_at is None or expires_at > current:
+                return None, existing
+            try:
+                path.unlink()
+            except FileNotFoundError:
+                continue
+            except OSError:
+                return None, existing
+    return None, _read_json(path)
+
+
+def _release_lease(path: Path, token: str | None) -> None:
+    """Libera apenas a reserva criada pelo processo atual."""
+    if not token:
+        return
+    existing = _read_json(path)
+    if existing is None or existing.get("token") != token:
+        return
+    with contextlib.suppress(FileNotFoundError):
+        path.unlink()
+
+
+def acquire_execution_lock(
+    batch_id: str,
+    *,
+    now: datetime | None = None,
+    ttl_seconds: int = DEFAULT_LEASE_SECONDS,
+) -> tuple[str | None, dict | None]:
+    return _acquire_lease(
+        COLLECTOR_LOCK_PATH,
+        resource="gemini_opening_batch",
+        owner=batch_id,
+        now=now,
+        ttl_seconds=ttl_seconds,
+    )
+
+
+def release_execution_lock(token: str | None) -> None:
+    _release_lease(COLLECTOR_LOCK_PATH, token)
+
+
+def claim_video(
+    video_id: str,
+    batch_id: str,
+    *,
+    now: datetime | None = None,
+    ttl_seconds: int = DEFAULT_LEASE_SECONDS,
+) -> tuple[str | None, dict | None]:
+    allowed = "-_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    if not video_id or any(character not in allowed for character in video_id):
+        raise ValueError("video_id contém caracteres inválidos para a reserva.")
+    return _acquire_lease(
+        VIDEO_CLAIMS_DIR / f"{video_id}.json",
+        resource=f"gemini_opening_video:{video_id}",
+        owner=batch_id,
+        now=now,
+        ttl_seconds=ttl_seconds,
+    )
+
+
+def release_video_claim(video_id: str, token: str | None) -> None:
+    _release_lease(VIDEO_CLAIMS_DIR / f"{video_id}.json", token)
 
 
 def relative_path(path: Path) -> str:
@@ -532,6 +651,27 @@ def main() -> int:
         print("ERRO: run-id contém caracteres inválidos", file=sys.stderr)
         return 1
 
+    if args.dry_run:
+        return run_batch(args, batch_id)
+
+    lock_token, active_lock = acquire_execution_lock(batch_id)
+    if lock_token is None:
+        owner = active_lock.get("owner") if active_lock else "desconhecido"
+        expires_at = active_lock.get("expires_at") if active_lock else "desconhecido"
+        print(
+            "Coletor Gemini já está em execução "
+            f"(lote {owner}; reserva até {expires_at}). Nenhum vídeo foi enviado.",
+            flush=True,
+        )
+        return 73
+    try:
+        return run_batch(args, batch_id)
+    finally:
+        release_execution_lock(lock_token)
+
+
+def run_batch(args: argparse.Namespace, batch_id: str) -> int:
+
     source_run, records = latest_youtube_records()
     plan_path: Path | None = None
     if args.case_control_plan is not None:
@@ -621,6 +761,21 @@ def main() -> int:
         consecutive_provider_failures = 0
         for position, video in enumerate(pending, start=1):
             video_id = video["video_id"]
+            claim_token, active_claim = claim_video(video_id, batch_id)
+            if claim_token is None:
+                video["status"] = "pending"
+                video["deferred_reason"] = {
+                    "reason": "claimed_by_another_worker",
+                    "owner": active_claim.get("owner") if active_claim else None,
+                    "expires_at": active_claim.get("expires_at") if active_claim else None,
+                }
+                refresh_summary(manifest)
+                save_json(manifest_path, manifest)
+                print(
+                    f"[{position}/{len(pending)}] {video_id} reservado por outro worker; adiado.",
+                    flush=True,
+                )
+                continue
             video["status"] = "running"
             video["attempted_at"] = utc_now()
             refresh_summary(manifest)
@@ -648,16 +803,19 @@ def main() -> int:
                 "--max-attempts",
                 str(args.max_attempts_per_video),
             ]
-            completed = subprocess.run(
-                command,
-                cwd=PROJECT_ROOT,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                text=True,
-                encoding="utf-8",
-                errors="replace",
-                check=False,
-            )
+            try:
+                completed = subprocess.run(
+                    command,
+                    cwd=PROJECT_ROOT,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                    text=True,
+                    encoding="utf-8",
+                    errors="replace",
+                    check=False,
+                )
+            finally:
+                release_video_claim(video_id, claim_token)
             if completed.stdout:
                 print(completed.stdout.rstrip(), flush=True)
 

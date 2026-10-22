@@ -23,8 +23,10 @@ from sklearn.ensemble import (
 )
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_auc_score
+from sklearn.neural_network import MLPClassifier
+from sklearn.utils.class_weight import compute_sample_weight
 
-from galaxies.modeling.preprocessing import make_pipeline
+from galaxies.modeling.preprocessing import make_pipeline, make_preprocessor
 
 from .channel_history import known_channel_history_features
 from .protocol import (
@@ -58,6 +60,36 @@ def make_estimator(spec: ExperimentSpec, seed: int) -> Any:
             class_weight="balanced",
             random_state=seed,
         )
+    if spec.model == "mlp":
+        return MLPClassifier(
+            hidden_layer_sizes=(24,) if low else (48, 16),
+            activation="relu",
+            alpha=0.03 if low else 0.01,
+            learning_rate_init=0.001,
+            early_stopping=True,
+            validation_fraction=0.2,
+            n_iter_no_change=20,
+            max_iter=500,
+            random_state=seed,
+        )
+    if spec.model == "catboost":
+        try:
+            from catboost import CatBoostClassifier
+        except ImportError as exc:  # pragma: no cover - depende do extra opcional.
+            raise RuntimeError("CatBoost não está instalado no ambiente.") from exc
+        return CatBoostClassifier(
+            iterations=220 if low else 350,
+            depth=4 if low else 5,
+            learning_rate=0.04,
+            l2_leaf_reg=8.0 if low else 5.0,
+            auto_class_weights="Balanced",
+            random_seed=seed,
+            thread_count=1,
+            verbose=False,
+            allow_writing_files=False,
+        )
+    if spec.model == "catboost_ranker":
+        raise RuntimeError("O ranker é ajustado pelo caminho específico em _fit_predict.")
     forest = ExtraTreesClassifier if spec.model == "extra_trees" else RandomForestClassifier
     return forest(
         n_estimators=300,
@@ -102,6 +134,54 @@ def _fit_predict(
     *,
     history_pool: pd.DataFrame | None = None,
 ) -> np.ndarray:
+    if spec.model == "catboost_ranker":
+        try:
+            from catboost import CatBoostRanker
+        except ImportError as exc:  # pragma: no cover - depende do extra opcional.
+            raise RuntimeError("CatBoost não está instalado no ambiente.") from exc
+        ordered = train.copy()
+        if "vlm_protocol_cohort" in ordered.columns:
+            protocol = ordered["vlm_protocol_cohort"].fillna("no_protocol").astype(str)
+            ordered["_ranking_group"] = ordered["channel_id"].astype(str) + "::" + protocol
+        else:
+            ordered["_ranking_group"] = ordered["channel_id"].astype(str)
+        ordered = ordered.sort_values(["_ranking_group", "published_at"], kind="stable")
+        if ordered.empty:
+            return np.full(len(test), 0.5)
+        numeric, categorical = spec.columns()
+        train_history = test_history = None
+        if history_pool is not None:
+            train_history = known_channel_history_features(ordered, history_pool)
+            test_history = known_channel_history_features(test, history_pool)
+            numeric += HISTORY_NUMERIC
+        preprocessor = make_preprocessor(
+            {"features": {"numeric": numeric, "categorical": categorical}}
+        )
+        transformed_train = preprocessor.fit_transform(feature_frame(spec, ordered, train_history))
+        transformed_test = preprocessor.transform(feature_frame(spec, test, test_history))
+        relevance = (
+            ordered.groupby("_ranking_group")["adjusted_performance"]
+            .rank(method="average", pct=True)
+            .to_numpy()
+        )
+        ranker = CatBoostRanker(
+            loss_function="YetiRankPairwise",
+            iterations=220 if spec.complexity == "low" else 350,
+            depth=4 if spec.complexity == "low" else 5,
+            learning_rate=0.04,
+            l2_leaf_reg=8.0 if spec.complexity == "low" else 5.0,
+            random_seed=seed,
+            thread_count=1,
+            verbose=False,
+            allow_writing_files=False,
+        )
+        ranker.fit(
+            transformed_train,
+            relevance,
+            group_id=ordered["_ranking_group"].to_numpy(),
+        )
+        return np.asarray(ranker.predict(transformed_test), dtype=float)
+
     train, labels = training_rows_and_labels(spec, train)
     if len(train) == 0 or len(np.unique(labels)) < 2:
         fallback = float(labels.mean()) if len(labels) else 0.1
@@ -116,7 +196,10 @@ def _fit_predict(
         {"features": {"numeric": numeric, "categorical": categorical}},
         make_estimator(spec, seed),
     )
-    pipeline.fit(feature_frame(spec, train, train_history), labels)
+    fit_params = {}
+    if spec.model == "mlp":
+        fit_params["model__sample_weight"] = compute_sample_weight("balanced", labels)
+    pipeline.fit(feature_frame(spec, train, train_history), labels, **fit_params)
     return pipeline.predict_proba(feature_frame(spec, test, test_history))[:, 1]
 
 
@@ -231,6 +314,73 @@ def top_fraction_metrics(frame: pd.DataFrame, score_column: str) -> dict[str, fl
     }
 
 
+def channel_top_counts(frame: pd.DataFrame, score_column: str) -> pd.DataFrame:
+    """Contagens de seleção por canal para bootstrap de métricas Top-K."""
+    rows: list[dict[str, float | str]] = []
+    for channel, group in frame.groupby("channel_id", sort=True):
+        k = max(1, math.ceil(TOP_FRACTION * len(group)))
+        selected = group.nlargest(k, score_column)
+        rows.append(
+            {
+                "channel_id": str(channel),
+                "rows": float(len(group)),
+                "positives": float(group["viral"].sum()),
+                "selected": float(k),
+                "hits": float(selected["viral"].sum()),
+            }
+        )
+    return pd.DataFrame(rows).set_index("channel_id")
+
+
+def bootstrap_top_fraction(
+    counts: pd.DataFrame,
+    iterations: int,
+    seed: int,
+) -> dict[str, float]:
+    """IC95% por canal para recall, precisão e lift no orçamento Top-10%."""
+    if counts.empty:
+        return {
+            "recall_ci_low": float("nan"),
+            "recall_ci_high": float("nan"),
+            "precision_ci_low": float("nan"),
+            "precision_ci_high": float("nan"),
+            "lift_ci_low": float("nan"),
+            "lift_ci_high": float("nan"),
+        }
+    rng = np.random.default_rng(seed)
+    samples: list[tuple[float, float, float]] = []
+    values = counts[["rows", "positives", "selected", "hits"]].to_numpy(dtype=float)
+    for _ in range(iterations):
+        sample = values[rng.integers(0, len(values), len(values))]
+        total_rows, positives, selected, hits = sample.sum(axis=0)
+        if positives <= 0 or selected <= 0 or total_rows <= 0:
+            continue
+        recall = hits / positives
+        precision = hits / selected
+        lift = precision / (positives / total_rows)
+        samples.append((recall, precision, lift))
+    if not samples:
+        return {
+            "recall_ci_low": float("nan"),
+            "recall_ci_high": float("nan"),
+            "precision_ci_low": float("nan"),
+            "precision_ci_high": float("nan"),
+            "lift_ci_low": float("nan"),
+            "lift_ci_high": float("nan"),
+        }
+    sample_array = np.asarray(samples)
+    low = np.quantile(sample_array, 0.025, axis=0)
+    high = np.quantile(sample_array, 0.975, axis=0)
+    return {
+        "recall_ci_low": float(low[0]),
+        "recall_ci_high": float(high[0]),
+        "precision_ci_low": float(low[1]),
+        "precision_ci_high": float(high[1]),
+        "lift_ci_low": float(low[2]),
+        "lift_ci_high": float(high[2]),
+    }
+
+
 def summarize_scores(frame: pd.DataFrame, score_column: str) -> dict[str, float]:
     labels = frame["viral"].to_numpy()
     summary = {
@@ -336,6 +486,34 @@ def temporal_split(rows: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     if test.empty or train.empty:
         raise ValueError("Dados insuficientes para divisão temporal por canal.")
     return train, test
+
+
+def calendar_split(
+    rows: pd.DataFrame, test_fraction: float = 1 - TEMPORAL_TEST_QUANTILE
+) -> tuple[pd.DataFrame, pd.DataFrame, dict[str, str]]:
+    """Corte de calendário por setor: o treino termina antes da primeira data de teste.
+
+    ``temporal_split`` corta cada canal na sua própria data, e um modelo por
+    setor acaba treinando com vídeos de outros canais publicados depois de
+    vídeos do teste. Aqui cada setor tem uma única data de corte (o quantil
+    ``1 - test_fraction`` das publicações); tudo antes dela é treino e tudo a
+    partir dela é teste. Canais sem vídeos no treino saem do teste, porque o
+    rótulo usa o limiar do próprio canal ajustado no treino.
+    """
+    published = pd.to_datetime(rows["published_at"], utc=True)
+    cutoffs: dict[str, str] = {}
+    test_mask = pd.Series(False, index=rows.index)
+    for sector, sector_rows in rows.groupby("sector", sort=False):
+        dates = published.loc[sector_rows.index]
+        cutoff = dates.quantile(1 - test_fraction)
+        cutoffs[str(sector)] = cutoff.isoformat()
+        test_mask.loc[sector_rows.index] = dates >= cutoff
+    train = rows.loc[~test_mask].copy()
+    test = rows.loc[test_mask].copy()
+    test = test.loc[test["channel_id"].isin(set(train["channel_id"]))].copy()
+    if test.empty or train.empty:
+        raise ValueError("Dados insuficientes para o corte de calendário.")
+    return train, test, cutoffs
 
 
 def run_experiment(

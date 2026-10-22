@@ -10,9 +10,11 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 from pathlib import Path
+from types import SimpleNamespace
 
 import numpy as np
 import pandas as pd
+from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
@@ -23,6 +25,7 @@ from .evaluation import (
     bootstrap_auc,
     channel_pair_counts,
     summarize_scores,
+    training_rows_and_labels,
 )
 from .protocol import CADENCE_NUMERIC, METADATA_CATEGORICAL, METADATA_NUMERIC, load_dataset
 from .temporal_knn import temporal_other_channel_knn
@@ -47,6 +50,10 @@ class EmbeddingConfig:
     embeddings: tuple[str, ...] = ()
     pca_components: int | None = None
     knn_embedding: str | None = None
+    cluster_embedding: str | None = None
+    cluster_count: int | None = None
+    estimator: str = "hist_gb"
+    train_label: str = "top10"
 
 
 PRE_REGISTERED_CONFIGS = (
@@ -58,6 +65,51 @@ PRE_REGISTERED_CONFIGS = (
     EmbeddingConfig("reference_plus_thumb_title_pca16", ("thumb", "title"), 16),
     EmbeddingConfig("reference_plus_thumb_title_pca32", ("thumb", "title"), 32),
     EmbeddingConfig("reference_plus_temporal_knn_thumb", knn_embedding="thumb"),
+    # Extensões pequenas e pré-definidas: contrastam a referência limpa com
+    # CatBoost e clusters sem usar rótulo, teste ou canal do cofre para aprender
+    # qualquer transformação.
+    EmbeddingConfig("clean20vs50_reference", train_label="clean20vs50"),
+    EmbeddingConfig(
+        "clean20vs50_plus_temporal_knn_thumb",
+        knn_embedding="thumb",
+        train_label="clean20vs50",
+    ),
+    EmbeddingConfig(
+        "clean20vs50_thumb_cluster8_histgb",
+        cluster_embedding="thumb",
+        cluster_count=8,
+        train_label="clean20vs50",
+    ),
+    EmbeddingConfig(
+        "clean20vs50_thumb_pca16_catboost",
+        embeddings=("thumb",),
+        pca_components=16,
+        estimator="catboost",
+        train_label="clean20vs50",
+    ),
+    EmbeddingConfig(
+        "clean20vs50_thumb_pca16_knn_catboost",
+        embeddings=("thumb",),
+        pca_components=16,
+        knn_embedding="thumb",
+        estimator="catboost",
+        train_label="clean20vs50",
+    ),
+    EmbeddingConfig(
+        "clean20vs50_thumb_cluster8_catboost",
+        cluster_embedding="thumb",
+        cluster_count=8,
+        estimator="catboost",
+        train_label="clean20vs50",
+    ),
+    EmbeddingConfig(
+        "clean20vs50_thumb_cluster8_knn_catboost",
+        knn_embedding="thumb",
+        cluster_embedding="thumb",
+        cluster_count=8,
+        estimator="catboost",
+        train_label="clean20vs50",
+    ),
 )
 
 
@@ -141,6 +193,7 @@ def _fit_transform(
     train: pd.DataFrame,
     test: pd.DataFrame,
     config: EmbeddingConfig,
+    seed: int,
 ) -> tuple[np.ndarray, np.ndarray, int]:
     numeric_columns = list(BASE_NUMERIC)
     train_features = train[BASE_NUMERIC + BASE_CATEGORICAL].copy()
@@ -169,6 +222,25 @@ def _fit_transform(
     )
     base_train = preprocessor.fit_transform(train_features[numeric_columns + BASE_CATEGORICAL])
     base_test = preprocessor.transform(test_features[numeric_columns + BASE_CATEGORICAL])
+    if config.cluster_embedding:
+        cluster_vectors_train = _embedding_matrix(train, (config.cluster_embedding,))
+        cluster_vectors_test = _embedding_matrix(test, (config.cluster_embedding,))
+        components_for_cluster = min(32, len(train) - 1, cluster_vectors_train.shape[1])
+        if components_for_cluster < 1:
+            raise ValueError("Treino insuficiente para clusters de criativo.")
+        cluster_pca = PCA(n_components=components_for_cluster, random_state=seed)
+        cluster_train = cluster_pca.fit_transform(cluster_vectors_train)
+        cluster_test = cluster_pca.transform(cluster_vectors_test)
+        requested_clusters = config.cluster_count or 8
+        clusters = min(requested_clusters, len(train))
+        if clusters < 2:
+            raise ValueError("Treino insuficiente para K-Means.")
+        kmeans = KMeans(n_clusters=clusters, n_init=20, random_state=seed)
+        train_labels = kmeans.fit_predict(cluster_train)
+        test_labels = kmeans.predict(cluster_test)
+        base_train = np.hstack([base_train, np.eye(clusters)[train_labels]])
+        base_test = np.hstack([base_test, np.eye(clusters)[test_labels]])
+
     if not config.embeddings:
         return base_train, base_test, 0
 
@@ -186,7 +258,23 @@ def _fit_transform(
     )
 
 
-def _estimator(seed: int) -> HistGradientBoostingClassifier:
+def _estimator(config: EmbeddingConfig, seed: int) -> object:
+    if config.estimator == "catboost":
+        try:
+            from catboost import CatBoostClassifier
+        except ImportError as exc:  # pragma: no cover - mensagem para ambiente sem extra.
+            raise RuntimeError("CatBoost não está instalado no ambiente.") from exc
+        return CatBoostClassifier(
+            iterations=250,
+            depth=4,
+            learning_rate=0.04,
+            l2_leaf_reg=5.0,
+            auto_class_weights="Balanced",
+            random_seed=seed,
+            thread_count=1,
+            verbose=False,
+            allow_writing_files=False,
+        )
     return HistGradientBoostingClassifier(
         max_depth=2,
         learning_rate=0.05,
@@ -232,9 +320,15 @@ def score_channel(
         if train["viral"].nunique() < 2:
             scored.loc[sector_test.index, "score"] = float(train["viral"].mean())
             continue
-        x_train, x_test, components = _fit_transform(train, sector_test, config)
-        model = _estimator(seed)
-        model.fit(x_train, train["viral"].to_numpy())
+        selected_train, labels = training_rows_and_labels(
+            SimpleNamespace(train_label=config.train_label), train
+        )
+        if len(selected_train) == 0 or len(np.unique(labels)) < 2:
+            scored.loc[sector_test.index, "score"] = float(labels.mean()) if len(labels) else 0.1
+            continue
+        x_train, x_test, components = _fit_transform(selected_train, sector_test, config, seed)
+        model = _estimator(config, seed)
+        model.fit(x_train, labels)
         scored.loc[sector_test.index, "score"] = model.predict_proba(x_test)[:, 1]
         component_counts.append(components)
     if scored["score"].isna().any():
@@ -310,8 +404,12 @@ def paired_embedding_diagnostic(
                 continue
             x_pairs = np.vstack(pairs)
             y_pairs = np.concatenate(
-                [np.ones(len(block), dtype=int) if index % 2 == 0 else np.zeros(len(block), dtype=int)
-                 for index, block in enumerate(pairs)]
+                [
+                    np.ones(len(block), dtype=int)
+                    if index % 2 == 0
+                    else np.zeros(len(block), dtype=int)
+                    for index, block in enumerate(pairs)
+                ]
             )
             model = LogisticRegression(C=0.3, max_iter=3000, random_state=seed)
             model.fit(x_pairs, y_pairs)

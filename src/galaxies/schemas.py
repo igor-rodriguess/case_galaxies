@@ -51,6 +51,30 @@ class CreativePayload(ApiModel):
         return features
 
 
+class CreativeBattleResponse(ApiModel):
+    """Contrato de uma comparação A/B entre dois cenários pré-publicação.
+
+    A resposta é deliberadamente separada de ``PredictionResponse``: a baseline
+    congelada produz um escore de *ranking* para um rótulo histórico intra-canal,
+    não uma previsão de views absolutas. Isso impede que a interface comunique
+    uma alteração de criativo como efeito causal ou como garantia de viralização.
+    """
+
+    status: Literal["ok", "model_not_ready", "invalid_input"]
+    sector: Sector
+    channel_id: str
+    model_run_id: str | None = None
+    model_name: str | None = None
+    comparison_scope: str
+    changed_model_inputs: list[dict[str, Any]] = Field(default_factory=list)
+    baseline: dict[str, Any] | None = None
+    candidate: dict[str, Any] | None = None
+    delta: dict[str, float] = Field(default_factory=dict)
+    winner: Literal["baseline", "candidate", "tie", "undetermined"] = "undetermined"
+    confidence_flag: Literal["normal", "low", "unavailable"] = "unavailable"
+    warnings: list[str] = Field(default_factory=list)
+
+
 class Driver(ApiModel):
     feature: str
     importance: float

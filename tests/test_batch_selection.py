@@ -1,4 +1,5 @@
 import json
+from datetime import UTC, datetime
 
 import scripts.gemini_opening_batch as opening_batch
 from scripts.gemini_opening_batch import balance_pending, existing_permission_denials
@@ -57,3 +58,43 @@ def test_existing_permission_denials_only_keeps_permanent_403(
     assert result["blocked"]["error"].endswith(
         "run-a/videos/blocked/error.json"
     )
+
+
+def test_execution_lock_is_exclusive_and_recovers_after_expiration(tmp_path, monkeypatch) -> None:
+    lock_path = tmp_path / "gemini.lock.json"
+    monkeypatch.setattr(opening_batch, "COLLECTOR_LOCK_PATH", lock_path)
+    now = datetime(2026, 10, 20, tzinfo=UTC)
+
+    first_token, _ = opening_batch.acquire_execution_lock("first", now=now)
+    second_token, active_lock = opening_batch.acquire_execution_lock("second", now=now)
+
+    assert first_token is not None
+    assert second_token is None
+    assert active_lock is not None
+    assert active_lock["owner"] == "first"
+
+    later = datetime(2026, 10, 20, 1, tzinfo=UTC)
+    recovered_token, recovered_lock = opening_batch.acquire_execution_lock("recovered", now=later)
+
+    assert recovered_token is not None
+    assert recovered_lock is not None
+    assert recovered_lock["owner"] == "recovered"
+
+
+def test_video_claim_is_exclusive_and_released_by_its_owner(tmp_path, monkeypatch) -> None:
+    claims_dir = tmp_path / "claims"
+    monkeypatch.setattr(opening_batch, "VIDEO_CLAIMS_DIR", claims_dir)
+    now = datetime(2026, 10, 20, tzinfo=UTC)
+
+    first_token, _ = opening_batch.claim_video("video-123", "batch-a", now=now)
+    second_token, active_claim = opening_batch.claim_video("video-123", "batch-b", now=now)
+
+    assert first_token is not None
+    assert second_token is None
+    assert active_claim is not None
+    assert active_claim["owner"] == "batch-a"
+
+    opening_batch.release_video_claim("video-123", first_token)
+    third_token, _ = opening_batch.claim_video("video-123", "batch-c", now=now)
+
+    assert third_token is not None
