@@ -75,7 +75,8 @@ export const PT: Record<string, string> = {
   Reference: "Referência",
   "Gain [95% CI]": "Ganho [IC95%]",
   "Ranking on dataset v2": "Ranking na base v2",
-  "Earlier evaluation (Phase 2, old label)": "Avaliação anterior (Fase 2, rótulo antigo)",
+  "This is retrospective evidence; prospective validation is still required.":
+    "Esta é uma evidência retrospectiva; ainda é necessária validação prospectiva.",
   "With the cleaned dataset and the outlier label, the ranking beats the reference with a favorable CI. Automotive is strongest; fashion's point estimate is below chance, but uncertain. This is retrospective evidence and still needs prospective validation.":
     "Com a base limpa e o rótulo de outlier, o ranking supera a referência com IC favorável. Automotivo é o mais forte; a estimativa pontual de moda fica abaixo do acaso, mas é incerta. Esta é uma evidência retrospectiva e ainda precisa de validação prospectiva.",
   "Current dataset v2 report unavailable.": "Relatório atual da base v2 indisponível.",

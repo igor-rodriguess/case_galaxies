@@ -45,89 +45,24 @@ function Figures({ figures }: { figures: Figure[] }) {
 }
 
 function ShortsTab({ artifacts }: { artifacts: Artifacts }) {
-  const { t, locale } = useT();
-  const loaded = artifacts.shorts_only.report;
-  if (loaded.status !== "ok") return <Unavailable detail="Shorts-only evaluation not found." />;
-  const report = loaded.data;
-  const overall = report.overall;
+  const { t } = useT();
   const viral = artifacts.viral_v2?.report;
+  if (viral?.status !== "ok") {
+    return <Unavailable label="Current dataset v2 report unavailable." detail={viral?.path} />;
+  }
   return (
     <div className="space-y-6">
-      {viral?.status !== "ok" && (
-        <>
-          <Unavailable label="Current dataset v2 report unavailable." detail={viral?.path} />
-          <p className="eyebrow">{t("Earlier evaluation (Phase 2, old label)")}</p>
-        </>
-      )}
-      {viral?.status === "ok" && (
-        <>
-          <div className="card border-ok/40 p-6">
-            <p className="font-bold text-ok">{t("Ranking on dataset v2")}</p>
-            <div className="mt-4">
-              <ViralHeadline report={viral.data} path={viral.path} />
-            </div>
-          </div>
-          <ViralSectors report={viral.data} />
-          {artifacts.viral_v2 && <Figures figures={artifacts.viral_v2.figures} />}
-          <p className="eyebrow pt-4">{t("Earlier evaluation (Phase 2, old label)")}</p>
-        </>
-      )}
-      <div className="card border-warn/40 p-6">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <div>
-            <p className="font-bold text-warn">{t("With metadata and cadence, the order of Shorts was at chance level")}</p>
-            <p className="mt-1 text-sm text-muted">{t("Nested selection on calendar folds, one external read, Shorts only.")}</p>
-          </div>
-          <span className="mono text-xs text-muted">{loaded.path}</span>
+      <div className="card border-ok/40 p-6">
+        <p className="font-bold text-ok">{t("Ranking on dataset v2")}</p>
+        <div className="mt-4">
+          <ViralHeadline report={viral.data} path={viral.path} />
         </div>
-        <dl className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            ["AUC per channel", num(overall?.auc_macro_channel, 3, locale), `${t("95% CI")} ${ci(overall?.ci?.auc_macro_channel, 3, locale)}`],
-            ["Lift@10", num(overall?.lift_top10, 2, locale), `${t("95% CI")} ${ci(overall?.ci?.lift_top10, 2, locale)}`],
-            ["Precision@10", pct(overall?.precision_top10, 1, locale), ""],
-            ["Test set", report.population?.test_rows?.toLocaleString(locale) ?? "—", `${report.population?.test_positives ?? "—"} ${t("positives")} · ${report.population?.test_channels ?? "—"} ${t("channels")}`],
-          ].map(([label, value, detail]) => (
-            <div key={label}>
-              <dt className="label">{t(label)}</dt>
-              <dd className="display mt-1 text-3xl tabular-nums">{value}</dd>
-              {detail && <dd className="mono mt-1 text-xs text-muted">{detail}</dd>}
-            </div>
-          ))}
-        </dl>
       </div>
-      {report.sectors?.length ? (
-        <div className="card overflow-x-auto">
-          <table className="table min-w-[720px]">
-            <thead>
-              <tr>
-                <th scope="col">{t("Sector")}</th>
-                <th scope="col">{t("Chosen in inner folds")}</th>
-                <th scope="col">{t("AUC per channel [95% CI]")}</th>
-                <th scope="col">Lift@10 [IC95%]</th>
-                <th scope="col">{t("Channels")}</th>
-                <th scope="col">{t("Positives")}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {report.sectors.map((sector) => (
-                <tr key={sector.sector}>
-                  <th scope="row" className="font-semibold capitalize">{sector.sector}</th>
-                  <td className="mono text-xs">{sector.chosen}</td>
-                  <td className="num">
-                    {num(sector.auc_macro_channel, 3, locale)} <span className="text-muted">{ci(sector.ci?.auc_macro_channel, 3, locale)}</span>
-                  </td>
-                  <td className="num">
-                    {num(sector.lift_top10, 2, locale)} <span className="text-muted">{ci(sector.ci?.lift_top10, 2, locale)}</span>
-                  </td>
-                  <td className="num">{sector.channels}</td>
-                  <td className="num">{sector.positives}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : null}
-      <Figures figures={artifacts.shorts_only.figures} />
+      <p className="rounded-xl bg-warn-soft px-4 py-3 text-sm text-text-2">
+        {t("This is retrospective evidence; prospective validation is still required.")}
+      </p>
+      <ViralSectors report={viral.data} />
+      {artifacts.viral_v2 && <Figures figures={artifacts.viral_v2.figures} />}
     </div>
   );
 }
