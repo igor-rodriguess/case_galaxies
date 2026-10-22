@@ -1,0 +1,4 @@
+sector,top10_intersection_count,top10_jaccard,shared_features
+automotivo,2,0.1111111111111111,duration_seconds; thumbnail_pca_01
+moda,3,0.17647058823529413,prior_upload_interval_median_days; thumbnail_pca_00; thumbnail_pca_14
+beleza,1,0.05263157894736842,prior_upload_interval_median_days

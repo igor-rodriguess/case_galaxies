@@ -1,0 +1,48 @@
+sector,column,missing_share,distinct_values,reason,action
+automotivo,definition,0.0,1,constante,remover
+automotivo,channel_subscriber_count_at_prediction,1.0,0,100% ausente,remover
+automotivo,channel_video_count_at_prediction,1.0,0,100% ausente,remover
+automotivo,brand_legible,0.40606060606060607,1,constante nos observados,recodificar
+automotivo,setting_observed,0.0,1,constante,remover
+automotivo,transcript_exclamation_mark_count,0.3575757575757576,1,constante nos observados,recodificar
+automotivo,transcript_call_to_action_cue,0.3575757575757576,1,constante nos observados,recodificar
+automotivo,beauty_swatch_present,1.0,0,100% ausente,remover
+automotivo,beauty_skin_application_present,1.0,0,100% ausente,remover
+automotivo,beauty_before_after_present,1.0,0,100% ausente,remover
+automotivo,fashion_try_on_present,1.0,0,100% ausente,remover
+automotivo,fashion_full_body_present,1.0,0,100% ausente,remover
+automotivo,fashion_garment_detail_present,1.0,0,100% ausente,remover
+automotivo,automotive_car_closeup_present,1.0,0,100% ausente,remover
+automotivo,automotive_engine_sound_present,1.0,0,100% ausente,remover
+automotivo,automotive_driving_pov_present,1.0,0,100% ausente,remover
+automotivo,automotive_interior_present,1.0,0,100% ausente,remover
+beleza,definition,0.0,1,constante,remover
+beleza,channel_subscriber_count_at_prediction,1.0,0,100% ausente,remover
+beleza,channel_video_count_at_prediction,1.0,0,100% ausente,remover
+beleza,brand_legible,0.7512437810945274,1,constante nos observados,recodificar
+beleza,setting_observed,0.0,1,constante,remover
+beleza,beauty_swatch_present,1.0,0,100% ausente,remover
+beleza,beauty_skin_application_present,1.0,0,100% ausente,remover
+beleza,beauty_before_after_present,1.0,0,100% ausente,remover
+beleza,fashion_try_on_present,1.0,0,100% ausente,remover
+beleza,fashion_full_body_present,1.0,0,100% ausente,remover
+beleza,fashion_garment_detail_present,1.0,0,100% ausente,remover
+beleza,automotive_car_closeup_present,1.0,0,100% ausente,remover
+beleza,automotive_engine_sound_present,1.0,0,100% ausente,remover
+beleza,automotive_driving_pov_present,1.0,0,100% ausente,remover
+beleza,automotive_interior_present,1.0,0,100% ausente,remover
+moda,channel_subscriber_count_at_prediction,1.0,0,100% ausente,remover
+moda,channel_video_count_at_prediction,1.0,0,100% ausente,remover
+moda,brand_legible,0.8232558139534883,1,constante nos observados,recodificar
+moda,setting_observed,0.0,1,constante,remover
+moda,transcript_call_to_action_cue,0.3395348837209302,1,constante nos observados,recodificar
+moda,beauty_swatch_present,1.0,0,100% ausente,remover
+moda,beauty_skin_application_present,1.0,0,100% ausente,remover
+moda,beauty_before_after_present,1.0,0,100% ausente,remover
+moda,fashion_try_on_present,1.0,0,100% ausente,remover
+moda,fashion_full_body_present,1.0,0,100% ausente,remover
+moda,fashion_garment_detail_present,1.0,0,100% ausente,remover
+moda,automotive_car_closeup_present,1.0,0,100% ausente,remover
+moda,automotive_engine_sound_present,1.0,0,100% ausente,remover
+moda,automotive_driving_pov_present,1.0,0,100% ausente,remover
+moda,automotive_interior_present,1.0,0,100% ausente,remover

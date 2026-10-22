@@ -1,0 +1,4 @@
+sector,temporal_winner,temporal_mae,temporal_baseline_mae,channel_winner,channel_mae,channel_baseline_mae,promoted,decision
+automotivo,elastic_net_mi,0.993626552747623,1.1435885297170783,hist_gradient_boosting,0.8716028059981891,0.8890974595226661,False,não promovido: vencedor muda entre holdouts
+moda,hist_gradient_boosting,0.9119706124462,1.185716444908078,elastic_net_mi,1.1277404351589315,1.5561926724110415,False,não promovido: vencedor muda entre holdouts
+beleza,random_forest,0.9299651799864943,1.1924146244107636,mlp_regularized,1.0338170222104266,1.031932679415809,False,não promovido: vencedor muda entre holdouts

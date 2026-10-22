@@ -1,0 +1,7 @@
+column,distinct_raw,distinct_normalized,other_share_normalized,top_raw
+framing,74,6,0.043029259896729774,"{'medium shot': 265, 'medium_shot': 61, 'medium close-up': 61}"
+camera_movement,88,7,0.03442340791738382,"{'static': 376, 'panning': 37, 'handheld': 17}"
+motion_intensity,8,3,0.0,"{'low': 313, 'medium': 225, 'high': 30}"
+audio_language,4,3,0.007425742574257425,"{'pt': 387, 'en': 14, 'unknown': 2}"
+opening_type,8,8,0.04647160068846816,"{'person_speaking': 283, 'text_hook': 78, 'product_reveal': 75}"
+product_prominence,5,5,0.0,"{'none': 247, 'high': 173, 'medium': 82}"

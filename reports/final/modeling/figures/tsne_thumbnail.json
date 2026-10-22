@@ -1,0 +1,9 @@
+{
+  "videos": 20956,
+  "channels": 24,
+  "base_rate_top10": 0.09653559839664058,
+  "neighbor_top10_rate_if_top10": 0.14710825506673259,
+  "neighbor_top10_rate_if_not": 0.0923643021884188,
+  "same_sector_neighbors": 0.8237259018896737,
+  "same_channel_neighbors": 0.4893713813068652
+}

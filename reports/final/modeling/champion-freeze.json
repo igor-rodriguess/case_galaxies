@@ -1,0 +1,303 @@
+{
+  "schema_version": "1.0.0",
+  "frozen_at": "2026-10-20T11:36:26.668833Z",
+  "status": "frozen_no_ml_promotion",
+  "data": {
+    "feature_map": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\modeling\\runs\\feature-map-vlm1001-20261020\\feature_map.jsonl",
+    "records": 3425,
+    "vlm_rows": 1000,
+    "vlm_unique_video_ids": 1000,
+    "duplicate_vlm_video_ids": 0,
+    "sector_readiness": {
+      "automotivo": {
+        "ready_for_final_training": false,
+        "rows": 1200,
+        "channels": 10,
+        "rows_with_target": 1200,
+        "rows_with_fixed_horizon_target": 0,
+        "rows_with_vlm": 346,
+        "vlm_coverage": 0.28833333333333333,
+        "rows_with_temporally_valid_history": 0,
+        "rows_with_temporally_invalid_history": 1190,
+        "blocking_reasons": [
+          "Nem todas as linhas têm visualizações observadas em horizonte fixo.",
+          "Cobertura VLM 28.8%; mínimo: 80.0%.",
+          "1190 linhas possuem histórico temporalmente inválido."
+        ]
+      },
+      "moda": {
+        "ready_for_final_training": false,
+        "rows": 1098,
+        "channels": 10,
+        "rows_with_target": 1098,
+        "rows_with_fixed_horizon_target": 0,
+        "rows_with_vlm": 328,
+        "vlm_coverage": 0.2987249544626594,
+        "rows_with_temporally_valid_history": 0,
+        "rows_with_temporally_invalid_history": 1083,
+        "blocking_reasons": [
+          "Nem todas as linhas têm visualizações observadas em horizonte fixo.",
+          "Cobertura VLM 29.9%; mínimo: 80.0%.",
+          "1083 linhas possuem histórico temporalmente inválido."
+        ]
+      },
+      "beleza": {
+        "ready_for_final_training": false,
+        "rows": 1127,
+        "channels": 10,
+        "rows_with_target": 1127,
+        "rows_with_fixed_horizon_target": 0,
+        "rows_with_vlm": 326,
+        "vlm_coverage": 0.28926353149955636,
+        "rows_with_temporally_valid_history": 0,
+        "rows_with_temporally_invalid_history": 1117,
+        "blocking_reasons": [
+          "Nem todas as linhas têm visualizações observadas em horizonte fixo.",
+          "Cobertura VLM 28.9%; mínimo: 80.0%.",
+          "1117 linhas possuem histórico temporalmente inválido."
+        ]
+      }
+    }
+  },
+  "target": {
+    "name": "relative_performance",
+    "description": "Desempenho relativo à curva de idade e à referência histórica do canal, ajustada somente dentro do treino.",
+    "fixed_horizon_available": false
+  },
+  "selection": {
+    "policy": "Hiperparâmetros e algoritmo escolhidos por validação temporal interna; holdouts temporal e de canais usados apenas para confirmação.",
+    "promotion_rule": "Mesmo candidato precisa superar o baseline nos dois holdouts, com IC95% pareado abaixo de zero, ganho >=5% e R² >=0,05.",
+    "feature_set": "metadata_audiovisual",
+    "excluded_as_unsafe": [
+      "métricas pós-publicação como entrada",
+      "IDs e papel caso/controle",
+      "histórico de canal marcado como temporalmente inválido"
+    ]
+  },
+  "sectors": {
+    "automotivo": {
+      "selected_by_inner_validation": "random_forest",
+      "promoted": false,
+      "champion": "historical_median_baseline",
+      "decision": "baseline_retained_insufficient_external_evidence",
+      "temporal": {
+        "rows": 70,
+        "candidate_mae": 0.8693525438461074,
+        "baseline_mae": 1.0327645640816905,
+        "mae_difference": -0.1634120202355835,
+        "relative_improvement": 0.1582277567597269,
+        "ci95_lower": -0.3215699947142098,
+        "ci95_upper": 0.0007579834984115194,
+        "probability_candidate_better": 0.9746,
+        "statistically_better": false,
+        "r2": 0.183841607552863,
+        "passed": false
+      },
+      "channel_holdout": {
+        "rows": 68,
+        "candidate_mae": 0.7458182923713953,
+        "baseline_mae": 0.8726408549071387,
+        "mae_difference": -0.12682256253574353,
+        "relative_improvement": 0.14533191039885376,
+        "ci95_lower": -0.18785329795726685,
+        "ci95_upper": -0.06314612734101442,
+        "probability_candidate_better": 1.0,
+        "statistically_better": true,
+        "r2": 0.0252131583728546,
+        "passed": false
+      }
+    },
+    "moda": {
+      "selected_by_inner_validation": "ensemble_equal",
+      "promoted": false,
+      "champion": "historical_median_baseline",
+      "decision": "baseline_retained_insufficient_external_evidence",
+      "temporal": {
+        "rows": 66,
+        "candidate_mae": 1.188481202915283,
+        "baseline_mae": 1.198956719284034,
+        "mae_difference": -0.010475516368751178,
+        "relative_improvement": 0.008737193094848859,
+        "ci95_lower": -0.06009050506276602,
+        "ci95_upper": 0.037677239007111056,
+        "probability_candidate_better": 0.6608,
+        "statistically_better": false,
+        "r2": -0.3227542376885943,
+        "passed": false
+      },
+      "channel_holdout": {
+        "rows": 72,
+        "candidate_mae": 1.5568271479663487,
+        "baseline_mae": 1.5473167831169115,
+        "mae_difference": 0.009510364849437007,
+        "relative_improvement": -0.00614635926735027,
+        "ci95_lower": -0.0393541138342347,
+        "ci95_upper": 0.06038354416145767,
+        "probability_candidate_better": 0.3592,
+        "statistically_better": false,
+        "r2": -0.4835179319877658,
+        "passed": false
+      }
+    },
+    "beleza": {
+      "selected_by_inner_validation": "ensemble_equal",
+      "promoted": false,
+      "champion": "historical_median_baseline",
+      "decision": "baseline_retained_insufficient_external_evidence",
+      "temporal": {
+        "rows": 66,
+        "candidate_mae": 1.9935176032563087,
+        "baseline_mae": 2.267919588068368,
+        "mae_difference": -0.27440198481205913,
+        "relative_improvement": 0.12099281925854027,
+        "ci95_lower": -0.33952475034433904,
+        "ci95_upper": -0.20579582061170074,
+        "probability_candidate_better": 1.0,
+        "statistically_better": true,
+        "r2": -1.2525115239765516,
+        "passed": false
+      },
+      "channel_holdout": {
+        "rows": 71,
+        "candidate_mae": 1.1052780439271117,
+        "baseline_mae": 1.169539536216481,
+        "mae_difference": -0.06426149228937003,
+        "relative_improvement": 0.05494597685620662,
+        "ci95_lower": -0.1285166267633265,
+        "ci95_upper": -0.0006330119870227752,
+        "probability_candidate_better": 0.976,
+        "statistically_better": true,
+        "r2": 0.033976437888207,
+        "passed": false
+      }
+    }
+  },
+  "embedding_ablation": {
+    "protocol": "viral-intra-canal-v1",
+    "results": {
+      "reference": {
+        "auc_intra": 0.5703010577705452,
+        "auc_intra_ci95": [
+          0.5165329087223105,
+          0.6234782718114179
+        ],
+        "lift_top10": 1.2264278930945598,
+        "paired": null
+      },
+      "reference_plus_thumb_pca16": {
+        "auc_intra": 0.5847843775427176,
+        "auc_intra_ci95": [
+          0.536111622004338,
+          0.6372393533616634
+        ],
+        "lift_top10": 1.128313661646995,
+        "paired": {
+          "diff": 0.014483319772172498,
+          "ci_low": -0.024459761884279996,
+          "ci_high": 0.057932221453880044,
+          "p_better": 0.7575
+        }
+      },
+      "reference_plus_temporal_knn_thumb": {
+        "auc_intra": 0.5693653376729048,
+        "auc_intra_ci95": [
+          0.5160654407086284,
+          0.6274563924895042
+        ],
+        "lift_top10": 1.5207705874372541,
+        "paired": {
+          "diff": -0.0009357200976403581,
+          "ci_low": -0.02259744057410334,
+          "ci_high": 0.018485494270139458,
+          "p_better": 0.4565
+        }
+      }
+    },
+    "decision": "not_promoted_paired_ci_crosses_zero"
+  },
+  "catboost_ablation": {
+    "protocol": "viral-intra-canal-v1",
+    "results": {
+      "clean20vs50_reference": {
+        "auc_intra": 0.5937754271765663,
+        "auc_intra_ci95": [
+          0.534374982118525,
+          0.6554650281028392
+        ],
+        "lift_top10": 1.9132275132275134,
+        "paired": null
+      },
+      "clean20vs50_thumb_pca16_catboost": {
+        "auc_intra": 0.5716029292107404,
+        "auc_intra_ci95": [
+          0.5131226258037371,
+          0.6360937913471806
+        ],
+        "lift_top10": 1.5207705874372541,
+        "paired": {
+          "diff": -0.022172497965825873,
+          "ci_low": -0.07056726359894276,
+          "ci_high": 0.01704148406384673,
+          "p_better": 0.1635
+        }
+      },
+      "clean20vs50_thumb_pca16_knn_catboost": {
+        "auc_intra": 0.5759153783563873,
+        "auc_intra_ci95": [
+          0.5215897062278363,
+          0.6353804109054505
+        ],
+        "lift_top10": 1.5698277031610366,
+        "paired": {
+          "diff": -0.017860048820179008,
+          "ci_low": -0.05604856958463763,
+          "ci_high": 0.013625609508543638,
+          "p_better": 0.1675
+        }
+      },
+      "clean20vs50_thumb_cluster8_catboost": {
+        "auc_intra": 0.5614320585842149,
+        "auc_intra_ci95": [
+          0.48594758753719614,
+          0.6427105584168707
+        ],
+        "lift_top10": 1.7660561660561662,
+        "paired": {
+          "diff": -0.032343368592351505,
+          "ci_low": -0.09055658892208725,
+          "ci_high": 0.02353860740266012,
+          "p_better": 0.1515
+        }
+      },
+      "clean20vs50_thumb_cluster8_knn_catboost": {
+        "auc_intra": 0.5717656631407648,
+        "auc_intra_ci95": [
+          0.49850189749498575,
+          0.6523960350581575
+        ],
+        "lift_top10": 1.9132275132275134,
+        "paired": {
+          "diff": -0.022009764035801464,
+          "ci_low": -0.079177172059696,
+          "ci_high": 0.029678722515115774,
+          "p_better": 0.222
+        }
+      }
+    },
+    "decision": "not_promoted_reference_auc_higher_and_paired_ci_crosses_zero"
+  },
+  "limitations": [
+    "O alvo não é uma observação de views em horizonte fixo.",
+    "Os 1.000 VLMs incluem protocolos de 3 s e 15 s; o modelo usa somente a taxonomia comum.",
+    "Nenhum candidato cumpriu a regra completa de promoção nos dois holdouts.",
+    "A interpretação causal de mudanças no criativo não é suportada por estes dados observacionais."
+  ],
+  "artifacts": {
+    "optimization_summary": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\modeling\\evaluations\\optimized-vlm1001-relative-metadata-av-20261020\\summary.json",
+    "winner_evidence": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\modeling\\evaluations\\optimized-vlm1001-relative-metadata-av-20261020\\winner_evidence.json",
+    "metrics": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\modeling\\evaluations\\optimized-vlm1001-relative-metadata-av-20261020\\model_metrics.csv",
+    "predictions": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\modeling\\evaluations\\optimized-vlm1001-relative-metadata-av-20261020\\predictions.csv",
+    "embedding_report": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\modeling\\runs\\embedding-ablation-vlm1001-20261020\\report.json",
+    "catboost_report": "C:\\Users\\Inteli\\Documents\\case_galaxies\\data\\modeling\\runs\\catboost-vlm1001-20261020\\report.json"
+  }
+}

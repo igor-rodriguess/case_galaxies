@@ -1,0 +1,791 @@
+{
+  "audit_version": "final-audit-v1",
+  "scope": {
+    "youtube_run": "data/youtube/runs/expansion-1000-per-sector-balanced-2026-10-16",
+    "second_snapshot": "data/youtube/full_snapshots/full-2026-10-20",
+    "case_control_plan": "data/features/plans/case-control-opening-v1/manifest.json",
+    "vlm_completed_before": "2026-10-20T01:45:00Z",
+    "vlm_model": "gemini-3.5-flash-lite",
+    "vlm_prompt_version": "galaxies-opening-v0.1.0",
+    "vlm_start_seconds": 0.0,
+    "vlm_end_seconds": 3.0,
+    "vlm_fps": 4.0,
+    "age_candidates_days": [
+      7,
+      14,
+      30
+    ],
+    "age_window_days": 7.0,
+    "growth_threshold_per_day": 0.01,
+    "fallback_min_age_days": 30,
+    "sensitivity_min_age_days": 30,
+    "short_max_seconds": 180.0
+  },
+  "reproducibility": {
+    "git_commit": "a41af26639daa13214addac31661e4c87f418f3c",
+    "python": "3.12.10",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "3.0.6",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2",
+      "pyarrow": "24.0.0"
+    },
+    "inputs_sha256": {
+      "data/youtube/runs/expansion-1000-per-sector-balanced-2026-10-16/normalized_records.json": "d66e1257dfba2fa3490d7ee39d1a8ad26f86830c419323ae8f0081c683f5eb1a",
+      "data/youtube/full_snapshots/full-2026-10-20/manifest.json": "544d223e56d57ca24a01359707e9c0a42fd4ae739e207a217a18e4ab079af877",
+      "data/features/plans/case-control-opening-v1/manifest.json": "7a8acc8c94e162f92068b753a5709cf887b23aca0ec0cc7333a7d2d4870f94d7",
+      "data/features/embeddings/thumb.parquet": "0143b28d5b2283327387ebba4db9ff55e821d8ad2d6f025cc404ece861149d74"
+    },
+    "base_principal_sha256": "cfba645f37935596d672cfaaa6910ffa0d6712bd81eb854c1273a12abfdf5dbc"
+  },
+  "vlm": {
+    "vlm_results_total": 775,
+    "orphan_vlm_ids": [
+      "synthetic-lipstick-opening"
+    ],
+    "with_youtube_record": 774,
+    "models": {
+      "gemini-3.5-flash-lite": 714,
+      "pegasus1.6": 41,
+      "gemini-3.8-flash": 19
+    },
+    "prompt_versions": {
+      "galaxies-opening-v0.1.0": 714,
+      "galaxies-opening-v0.2.0-closed-taxonomy": 60
+    },
+    "roles_by_sector": {
+      "automotivo": {
+        "case": 10,
+        "control": 12,
+        "lote": 247
+      },
+      "beleza": {
+        "case": 10,
+        "control": 10,
+        "lote": 227
+      },
+      "moda": {
+        "case": 9,
+        "control": 9,
+        "lote": 240
+      }
+    }
+  },
+  "minimum_age": {
+    "chosen_days": 7,
+    "rule": [
+      {
+        "candidate_days": 7,
+        "window": "[7, 14) dias",
+        "videos": 111,
+        "median_daily_log_growth": 0.00981955746168795,
+        "median_ci95_bootstrap": [
+          0.007176482961510405,
+          0.011791872152747343
+        ],
+        "passes": true
+      },
+      {
+        "candidate_days": 14,
+        "window": "[14, 21) dias",
+        "videos": 140,
+        "median_daily_log_growth": 0.003525023240268499,
+        "median_ci95_bootstrap": [
+          0.0026698556295783413,
+          0.004497767921222741
+        ],
+        "passes": true
+      },
+      {
+        "candidate_days": 30,
+        "window": "[30, 37) dias",
+        "videos": 121,
+        "median_daily_log_growth": 0.0013128176422981283,
+        "median_ci95_bootstrap": [
+          0.0009924956421917782,
+          0.001745168649492512
+        ],
+        "passes": true
+      }
+    ]
+  },
+  "funnel": [
+    {
+      "etapa": "base_data_api",
+      "automotivo": 1200,
+      "moda": 1098,
+      "beleza": 1127,
+      "total": 3425
+    },
+    {
+      "etapa": "com_vlm",
+      "automotivo": 269,
+      "moda": 258,
+      "beleza": 247,
+      "total": 774
+    },
+    {
+      "etapa": "fora_caso_controle",
+      "automotivo": 247,
+      "moda": 240,
+      "beleza": 227,
+      "total": 714
+    },
+    {
+      "etapa": "protocolo_principal",
+      "automotivo": 247,
+      "moda": 240,
+      "beleza": 227,
+      "total": 714
+    },
+    {
+      "etapa": "idade_minima",
+      "automotivo": 165,
+      "moda": 215,
+      "beleza": 201,
+      "total": 581
+    }
+  ],
+  "samples": {
+    "principal": {
+      "automotivo": {
+        "videos": 165,
+        "channels": 9,
+        "channels_10plus": 6
+      },
+      "moda": {
+        "videos": 215,
+        "channels": 10,
+        "channels_10plus": 10
+      },
+      "beleza": {
+        "videos": 201,
+        "channels": 10,
+        "channels_10plus": 10
+      }
+    },
+    "idade_14_dias": {
+      "automotivo": {
+        "videos": 117,
+        "channels": 8,
+        "channels_10plus": 4
+      },
+      "moda": {
+        "videos": 192,
+        "channels": 10,
+        "channels_10plus": 9
+      },
+      "beleza": {
+        "videos": 176,
+        "channels": 10,
+        "channels_10plus": 9
+      }
+    },
+    "idade_30_dias": {
+      "automotivo": {
+        "videos": 88,
+        "channels": 3,
+        "channels_10plus": 3
+      },
+      "moda": {
+        "videos": 142,
+        "channels": 6,
+        "channels_10plus": 6
+      },
+      "beleza": {
+        "videos": 133,
+        "channels": 9,
+        "channels_10plus": 7
+      }
+    },
+    "ate_180s": {
+      "automotivo": {
+        "videos": 62,
+        "channels": 8,
+        "channels_10plus": 2
+      },
+      "moda": {
+        "videos": 103,
+        "channels": 7,
+        "channels_10plus": 6
+      },
+      "beleza": {
+        "videos": 123,
+        "channels": 10,
+        "channels_10plus": 7
+      }
+    },
+    "todos_os_extratores_v010": {
+      "automotivo": {
+        "videos": 165,
+        "channels": 9,
+        "channels_10plus": 6
+      },
+      "moda": {
+        "videos": 215,
+        "channels": 10,
+        "channels_10plus": 10
+      },
+      "beleza": {
+        "videos": 201,
+        "channels": 10,
+        "channels_10plus": 10
+      }
+    }
+  },
+  "formats": {
+    "automotivo": {
+      "61_180s": 38,
+      "acima_180s": 103,
+      "ate_60s": 24
+    },
+    "beleza": {
+      "61_180s": 51,
+      "acima_180s": 78,
+      "ate_60s": 72
+    },
+    "moda": {
+      "61_180s": 38,
+      "acima_180s": 112,
+      "ate_60s": 65
+    }
+  },
+  "periods_by_year": {
+    "automotivo": {
+      "2018": 0,
+      "2019": 0,
+      "2020": 0,
+      "2021": 0,
+      "2022": 0,
+      "2023": 0,
+      "2024": 18,
+      "2025": 5,
+      "2026": 142
+    },
+    "beleza": {
+      "2018": 0,
+      "2019": 0,
+      "2020": 0,
+      "2021": 8,
+      "2022": 4,
+      "2023": 17,
+      "2024": 8,
+      "2025": 9,
+      "2026": 155
+    },
+    "moda": {
+      "2018": 15,
+      "2019": 36,
+      "2020": 19,
+      "2021": 2,
+      "2022": 4,
+      "2023": 6,
+      "2024": 7,
+      "2025": 24,
+      "2026": 102
+    }
+  },
+  "age_days": {
+    "automotivo": {
+      "count": 165.0,
+      "mean": 154.07,
+      "std": 215.63,
+      "min": 7.52,
+      "10%": 8.87,
+      "25%": 12.81,
+      "50%": 69.64,
+      "75%": 181.1,
+      "90%": 654.57,
+      "max": 668.84
+    },
+    "beleza": {
+      "count": 201.0,
+      "mean": 309.48,
+      "std": 513.41,
+      "min": 7.46,
+      "10%": 12.64,
+      "25%": 20.91,
+      "50%": 50.59,
+      "75%": 219.59,
+      "90%": 1245.58,
+      "max": 1872.6
+    },
+    "moda": {
+      "count": 215.0,
+      "mean": 1025.65,
+      "std": 1165.81,
+      "min": 7.55,
+      "10%": 13.84,
+      "25%": 17.96,
+      "50%": 359.88,
+      "75%": 2390.08,
+      "90%": 2715.09,
+      "max": 3017.54
+    }
+  },
+  "log1p_views_by_format": {
+    "automotivo|61_180s": {
+      "count": 38.0,
+      "mean": 8.859,
+      "std": 1.344,
+      "min": 6.091,
+      "25%": 7.829,
+      "50%": 8.613,
+      "75%": 9.607,
+      "max": 12.037
+    },
+    "automotivo|acima_180s": {
+      "count": 103.0,
+      "mean": 10.178,
+      "std": 1.079,
+      "min": 7.209,
+      "25%": 9.404,
+      "50%": 10.144,
+      "75%": 10.913,
+      "max": 12.742
+    },
+    "automotivo|ate_60s": {
+      "count": 24.0,
+      "mean": 9.523,
+      "std": 1.354,
+      "min": 8.242,
+      "25%": 8.467,
+      "50%": 8.861,
+      "75%": 10.286,
+      "max": 12.358
+    },
+    "beleza|61_180s": {
+      "count": 51.0,
+      "mean": 11.377,
+      "std": 2.092,
+      "min": 6.981,
+      "25%": 9.525,
+      "50%": 11.126,
+      "75%": 13.587,
+      "max": 15.037
+    },
+    "beleza|acima_180s": {
+      "count": 78.0,
+      "mean": 11.498,
+      "std": 1.755,
+      "min": 5.273,
+      "25%": 10.85,
+      "50%": 11.665,
+      "75%": 12.524,
+      "max": 14.533
+    },
+    "beleza|ate_60s": {
+      "count": 72.0,
+      "mean": 10.306,
+      "std": 2.324,
+      "min": 6.021,
+      "25%": 9.043,
+      "50%": 10.363,
+      "75%": 11.734,
+      "max": 15.158
+    },
+    "moda|61_180s": {
+      "count": 38.0,
+      "mean": 9.3,
+      "std": 2.365,
+      "min": 5.855,
+      "25%": 7.666,
+      "50%": 8.85,
+      "75%": 10.889,
+      "max": 14.802
+    },
+    "moda|acima_180s": {
+      "count": 112.0,
+      "mean": 10.706,
+      "std": 1.847,
+      "min": 5.991,
+      "25%": 9.561,
+      "50%": 10.848,
+      "75%": 11.925,
+      "max": 15.451
+    },
+    "moda|ate_60s": {
+      "count": 65.0,
+      "mean": 8.387,
+      "std": 2.054,
+      "min": 5.011,
+      "25%": 7.169,
+      "50%": 7.835,
+      "75%": 9.472,
+      "max": 14.306
+    }
+  },
+  "snapshot_quality": {
+    "second_snapshot_videos": 3425,
+    "views_decreased": 10,
+    "title_changed_base": 1,
+    "title_changed_main": 0,
+    "not_public_second_snapshot": 0,
+    "days_between_median": 3.5964757229166664
+  },
+  "duplicates": {
+    "video_id_in_base": 0,
+    "repeated_titles_in_main_same_channel": 16,
+    "thumbnail_pairs_cosine_097_in_main": 1,
+    "identical_vlm_analyses_in_main": 0
+  },
+  "columns": {
+    "roles": {
+      "candidate_feature": 61,
+      "target_only": 10,
+      "provenance": 9,
+      "extraction_protocol": 7,
+      "post_publication_history": 4,
+      "snapshot_contaminated": 2,
+      "time_index": 1
+    },
+    "candidate_features": [
+      "duration_seconds",
+      "definition",
+      "category_id",
+      "title_character_count",
+      "description_character_count",
+      "tag_count",
+      "publish_hour_utc",
+      "publish_weekday_utc",
+      "channel_subscriber_count_at_prediction",
+      "channel_video_count_at_prediction",
+      "vlm_mean_confidence",
+      "people_present",
+      "people_count_estimate",
+      "faces_visible",
+      "product_in_focus",
+      "brand_legible",
+      "on_screen_text_count",
+      "setting_observed",
+      "framing",
+      "camera_movement",
+      "scene_change_count",
+      "motion_intensity",
+      "speech_present",
+      "speech_start_seconds",
+      "transcript_excerpt_word_count",
+      "transcript_character_count",
+      "transcript_unique_word_ratio",
+      "transcript_words_per_second",
+      "transcript_question_mark_count",
+      "transcript_exclamation_mark_count",
+      "transcript_number_token_count",
+      "transcript_second_person_cue",
+      "transcript_call_to_action_cue",
+      "audio_language",
+      "music_present",
+      "sound_effect_count",
+      "opening_type",
+      "product_prominence",
+      "call_to_action_present",
+      "evidence_count",
+      "uncertainty_count",
+      "beauty_swatch_present",
+      "beauty_skin_application_present",
+      "beauty_before_after_present",
+      "fashion_try_on_present",
+      "fashion_full_body_present",
+      "fashion_garment_detail_present",
+      "automotive_car_closeup_present",
+      "automotive_engine_sound_present",
+      "automotive_driving_pov_present",
+      "automotive_interior_present",
+      "prior_upload_interval_median_days",
+      "days_since_previous_upload"
+    ],
+    "usable_by_sector": {
+      "automotivo": [
+        "audio_language",
+        "call_to_action_present",
+        "camera_movement",
+        "category_id",
+        "days_since_previous_upload",
+        "description_character_count",
+        "duration_seconds",
+        "evidence_count",
+        "faces_visible",
+        "framing",
+        "motion_intensity",
+        "music_present",
+        "on_screen_text_count",
+        "opening_type",
+        "people_count_estimate",
+        "people_present",
+        "prior_upload_interval_median_days",
+        "product_in_focus",
+        "product_prominence",
+        "publish_hour_utc",
+        "publish_weekday_utc",
+        "scene_change_count",
+        "sound_effect_count",
+        "speech_present",
+        "speech_start_seconds",
+        "tag_count",
+        "title_character_count",
+        "transcript_character_count",
+        "transcript_excerpt_word_count",
+        "transcript_number_token_count",
+        "transcript_question_mark_count",
+        "transcript_second_person_cue",
+        "transcript_unique_word_ratio",
+        "transcript_words_per_second",
+        "uncertainty_count",
+        "vlm_mean_confidence"
+      ],
+      "moda": [
+        "audio_language",
+        "call_to_action_present",
+        "camera_movement",
+        "category_id",
+        "days_since_previous_upload",
+        "definition",
+        "description_character_count",
+        "duration_seconds",
+        "evidence_count",
+        "faces_visible",
+        "framing",
+        "motion_intensity",
+        "music_present",
+        "on_screen_text_count",
+        "opening_type",
+        "people_count_estimate",
+        "people_present",
+        "prior_upload_interval_median_days",
+        "product_in_focus",
+        "product_prominence",
+        "publish_hour_utc",
+        "publish_weekday_utc",
+        "scene_change_count",
+        "sound_effect_count",
+        "speech_present",
+        "speech_start_seconds",
+        "tag_count",
+        "title_character_count",
+        "transcript_character_count",
+        "transcript_excerpt_word_count",
+        "transcript_exclamation_mark_count",
+        "transcript_number_token_count",
+        "transcript_question_mark_count",
+        "transcript_second_person_cue",
+        "transcript_unique_word_ratio",
+        "transcript_words_per_second",
+        "uncertainty_count",
+        "vlm_mean_confidence"
+      ],
+      "beleza": [
+        "audio_language",
+        "call_to_action_present",
+        "camera_movement",
+        "category_id",
+        "days_since_previous_upload",
+        "description_character_count",
+        "duration_seconds",
+        "evidence_count",
+        "faces_visible",
+        "framing",
+        "motion_intensity",
+        "music_present",
+        "on_screen_text_count",
+        "opening_type",
+        "people_count_estimate",
+        "people_present",
+        "prior_upload_interval_median_days",
+        "product_in_focus",
+        "product_prominence",
+        "publish_hour_utc",
+        "publish_weekday_utc",
+        "scene_change_count",
+        "sound_effect_count",
+        "speech_present",
+        "speech_start_seconds",
+        "tag_count",
+        "title_character_count",
+        "transcript_call_to_action_cue",
+        "transcript_character_count",
+        "transcript_excerpt_word_count",
+        "transcript_exclamation_mark_count",
+        "transcript_number_token_count",
+        "transcript_question_mark_count",
+        "transcript_second_person_cue",
+        "transcript_unique_word_ratio",
+        "transcript_words_per_second",
+        "uncertainty_count",
+        "vlm_mean_confidence"
+      ]
+    }
+  },
+  "coverage": [
+    {
+      "sector": "automotivo",
+      "main_videos": 165,
+      "eligible_population": 1113,
+      "vlm_protocol_share_of_eligible": 0.1482479784,
+      "thumb_embedding": 1.0,
+      "title_embedding": 0.6606060606,
+      "title_desc_embedding": 0.0,
+      "speech_in_0_3s": 0.6424242424,
+      "full_transcript": 0.0
+    },
+    {
+      "sector": "moda",
+      "main_videos": 215,
+      "eligible_population": 1073,
+      "vlm_protocol_share_of_eligible": 0.2003727866,
+      "thumb_embedding": 1.0,
+      "title_embedding": 0.6837209302,
+      "title_desc_embedding": 0.0,
+      "speech_in_0_3s": 0.6604651163,
+      "full_transcript": 0.0
+    },
+    {
+      "sector": "beleza",
+      "main_videos": 201,
+      "eligible_population": 1101,
+      "vlm_protocol_share_of_eligible": 0.1825613079,
+      "thumb_embedding": 1.0,
+      "title_embedding": 0.736318408,
+      "title_desc_embedding": 0.0,
+      "speech_in_0_3s": 0.7512437811,
+      "full_transcript": 0.0
+    }
+  ],
+  "selection_check": [
+    {
+      "sector": "automotivo",
+      "group": "analisados",
+      "videos": 165,
+      "mean_percentile": 0.5508812545,
+      "mean_percentile_ci95": [
+        0.5083226782,
+        0.5934398309
+      ],
+      "top10_share": 0.1333333333
+    },
+    {
+      "sector": "automotivo",
+      "group": "nao_analisados",
+      "videos": 948,
+      "mean_percentile": 0.496418347,
+      "mean_percentile_ci95": [
+        0.477966293,
+        0.5148704011
+      ],
+      "top10_share": 0.0981012658
+    },
+    {
+      "sector": "beleza",
+      "group": "analisados",
+      "videos": 201,
+      "mean_percentile": 0.5012955841,
+      "mean_percentile_ci95": [
+        0.4580861556,
+        0.5445050126
+      ],
+      "top10_share": 0.1194029851
+    },
+    {
+      "sector": "beleza",
+      "group": "nao_analisados",
+      "videos": 900,
+      "mean_percentile": 0.5052662084,
+      "mean_percentile_ci95": [
+        0.4867507519,
+        0.523781665
+      ],
+      "top10_share": 0.0988888889
+    },
+    {
+      "sector": "moda",
+      "group": "analisados",
+      "videos": 215,
+      "mean_percentile": 0.5214604699,
+      "mean_percentile_ci95": [
+        0.4817308695,
+        0.5611900704
+      ],
+      "top10_share": 0.1348837209
+    },
+    {
+      "sector": "moda",
+      "group": "nao_analisados",
+      "videos": 858,
+      "mean_percentile": 0.5004498822,
+      "mean_percentile_ci95": [
+        0.4812667533,
+        0.5196330112
+      ],
+      "top10_share": 0.0944055944
+    }
+  ],
+  "vlm_cardinality": [
+    {
+      "column": "framing",
+      "distinct_raw": 74,
+      "distinct_normalized": 6,
+      "other_share_normalized": 0.0430292599,
+      "top_raw": {
+        "medium shot": 265,
+        "medium_shot": 61,
+        "medium close-up": 61
+      }
+    },
+    {
+      "column": "camera_movement",
+      "distinct_raw": 88,
+      "distinct_normalized": 7,
+      "other_share_normalized": 0.0344234079,
+      "top_raw": {
+        "static": 376,
+        "panning": 37,
+        "handheld": 17
+      }
+    },
+    {
+      "column": "motion_intensity",
+      "distinct_raw": 8,
+      "distinct_normalized": 3,
+      "other_share_normalized": 0.0,
+      "top_raw": {
+        "low": 313,
+        "medium": 225,
+        "high": 30
+      }
+    },
+    {
+      "column": "audio_language",
+      "distinct_raw": 4,
+      "distinct_normalized": 3,
+      "other_share_normalized": 0.0074257426,
+      "top_raw": {
+        "pt": 387,
+        "en": 14,
+        "unknown": 2
+      }
+    },
+    {
+      "column": "opening_type",
+      "distinct_raw": 8,
+      "distinct_normalized": 8,
+      "other_share_normalized": 0.0464716007,
+      "top_raw": {
+        "person_speaking": 283,
+        "text_hook": 78,
+        "product_reveal": 75
+      }
+    },
+    {
+      "column": "product_prominence",
+      "distinct_raw": 5,
+      "distinct_normalized": 5,
+      "other_share_normalized": 0.0,
+      "top_raw": {
+        "none": 247,
+        "high": 173,
+        "medium": 82
+      }
+    }
+  ]
+}
