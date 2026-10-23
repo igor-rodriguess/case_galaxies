@@ -23,3 +23,13 @@ data/video_pilot/
 # Base v2 derivada da coleta (fora do git, como a coleta)
 data/dataset_v2/
 data/dataset_v3/
+
+# Artefatos gerados localmente
+catboost_info/
+data/features/embeddings/
+data/features/thumbnails/
+data/modeling/evaluations/
+data/modeling/logs/
+data/youtube/channel_discovery/
+data/youtube/full_snapshots/
+data/youtube/prospective/
